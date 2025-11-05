@@ -8,10 +8,7 @@
 // import '../utils/enums.dart';
 // import '../utils/shared_pref .dart';
 
-
-
-// const kGoogleApiKey = "AIzaSyAf8I5_7UDuc66z53Wbryj7m98Ofee44lg";
-
+// const kGoogleApiKey = "";
 
 // class ApiBaseHelper {
 //   SharedPref sharedPref = SharedPref();
@@ -80,6 +77,5 @@
 //     headers.putIfAbsent('Authorization', () => 'Bearer ${autToken?? ''}');
 //     return headers;
 //   }
-
 
 // }
