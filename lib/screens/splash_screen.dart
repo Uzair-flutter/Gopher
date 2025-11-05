@@ -3,103 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utills/assets.dart';
 import 'package:gopher/utills/color_constant.dart';
 
-// class SplashScreen extends StatefulWidget {
-//   const SplashScreen({super.key});
-//
-//   @override
-//   State<SplashScreen> createState() => _SplashScreenState();
-// }
-//
-// class _SplashScreenState extends State<SplashScreen>
-//     with SingleTickerProviderStateMixin {
-//   late AnimationController _controller;
-//   @override
-//   void initState() {
-//     super.initState();
-//     _controller = AnimationController(
-//       vsync: this,
-//       duration: Duration(milliseconds: 800),
-//       lowerBound: 0,
-//       upperBound: 1,
-//     );
-//     _controller.forward(from: 0);
-//     WidgetsBinding.instance.addPostFrameCallback((_) async {
-//       _controller.addStatusListener((status) async {
-//         if (status.isCompleted) {
-//           await Future.delayed(Duration(milliseconds: 11500));
-//           if (mounted) {
-//             // Navigator.pushNamed(context, homeScreen);
-//           }
-//         }
-//       });
-//     });
-//   }
-//
-//   @override
-//   void dispose() {
-//     _controller.dispose();
-//     super.dispose();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final width = MediaQuery.widthOf(context);
-//     return Scaffold(
-//       backgroundColor: Color(0xFF28609B),
-//       body: Container(
-//         decoration: BoxDecoration(
-//           // gradient: LinearGradient(
-//           //   begin: Alignment(0.50, -0.00),
-//           //   end: Alignment(0.50, 1.00),
-//           //   colors: [const Color(0xFF57A11E), const Color(0xFF8AA2DB)],
-//           // ),
-//         ),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Center(
-//               child: AnimatedBuilder(
-//                 animation: _controller,
-//                 builder: (context, child) {
-//                   final value = _controller.value;
-//                   return Transform.scale(
-//                     scale: value,
-//                     child: SizedBox(
-//                       height: 180.h,
-//                       width: width * 0.6,
-//                       child: Image.asset(PngAssets.logo),
-//                     ),
-//                   );
-//                 },
-//               ),
-//             ),
-//             SizedBox(height: 15.h),
-//             Center(
-//               child: AnimatedBuilder(
-//                 animation: _controller,
-//                 builder: (context, child) {
-//                   final value = _controller.value;
-//                   return Transform.scale(
-//                     scale: value,
-//                     child: Text(
-//                       'GOPHER',
-//                       style: TextStyle(
-//                         fontSize: 40.sp,
-//                         color: Colors.white,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   );
-//                 },
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+import '../route_generator.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -148,9 +52,9 @@ class _SplashScreenState extends State<SplashScreen>
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(Duration(milliseconds: 12300));
+      await Future.delayed(Duration(milliseconds: 2000));
       if (mounted) {
-        // Navigator.pushNamed(context, homeScreen);
+        Navigator.pushNamed(context, homeScreen);
       }
     });
   }
