@@ -8,6 +8,10 @@ import 'package:gopher/utills/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
 import 'package:provider/provider.dart';
 
+import 'route_generator.dart';
+import 'utils/theme.dart';
+import 'view_models/theme_view_model.dart';
+
 class AppInit extends StatelessWidget {
   const AppInit({super.key});
 
@@ -18,6 +22,8 @@ class AppInit extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gopher',
+      initialRoute: splashScreen,
+      onGenerateRoute: RouteGenerator.generateRoute,
       // initialRoute: '/',
       // onGenerateRoute: RouteGenerator.generateRoute,
       home: HomeScreen(),

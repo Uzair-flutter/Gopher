@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utills/color_constant.dart';
-import 'package:gopher/widgets/custom_app_bar.dart';
+
+import '../widgets/custom_app_bar.dart';
 
 class CreateNewAccountScreen extends StatelessWidget {
   const CreateNewAccountScreen({super.key});

@@ -1,13 +1,14 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gopher/app_init.dart';
-import 'package:gopher/services/storage_service.dart';
-import 'package:gopher/utills/screen_size.dart';
-import 'package:gopher/view_models/theme_view_model.dart';
 import 'package:provider/provider.dart';
+
+import 'app_init.dart';
+import 'services/storage_service.dart';
+import 'utils/screen_size.dart';
+import 'view_models/bottom_nav_view_model.dart';
+import 'view_models/theme_view_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeViewModel()),
+        ChangeNotifierProvider(create: (context) => BottomNavViewModel()),
       ],
       child: ScreenUtilInit(
         designSize: getDesignSize(),
