@@ -12,6 +12,14 @@ class PngAssets {
 class SvgAssets {
   static const String _assets = 'assets/svg/';
   static const String logo = '${_assets}gopher_logo.svg';
+
+  static const String home = '${_assets}home.svg';
+  static const String homeFilled = '${_assets}home_filled.svg';
+  static const String jobs = '${_assets}jobs.svg';
+  static const String jobsFilled = '${_assets}jobs_filled.svg';
+  static const String services = '${_assets}services.svg';
+  static const String profile = '${_assets}profile.svg';
+  static const String profileFilled = '${_assets}profile_filled.svg';
 }
 
 class LottieAssets {
