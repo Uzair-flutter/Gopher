@@ -6,4 +6,6 @@ class AppColors {
   static const Color blackColor = Color(0xff1C1C1C);
   static const Color textBlackColor = Color(0xff1E1E1E);
   static const Color appbarBackColor = Color(0xffEFF2F1);
+  static const Color widgetBackColor = Color(0xffEEEFF3);
+  static const Color iconColor = Color(0xff757273);
 }
