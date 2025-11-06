@@ -7,11 +7,15 @@ class PngAssets {
   static const String launch2 = '${_assets}launch_2.png';
   static const String launch3 = '${_assets}launch_3.png';
   static const String beautyNear = '${_assets}beauty_near.png';
+  static const String flower = '${_assets}flower.png';
 }
 
 class SvgAssets {
   static const String _assets = 'assets/svg/';
   static const String logo = '${_assets}gopher_logo.svg';
+  static const String google = '${_assets}google.svg';
+  static const String facebook = '${_assets}facebook.svg';
+  static const String apple = '${_assets}apple.svg';
 }
 
 class LottieAssets {

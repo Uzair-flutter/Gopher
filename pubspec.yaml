@@ -1,18 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 name: gopher
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
@@ -52,6 +40,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.2
   iconsax: ^0.0.8
+  flutter_svg: ^2.2.2
+  pinput: ^5.0.2
+  country_picker: ^2.0.27
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +52,7 @@ dev_dependencies:
   shared_preferences: ^2.5.3
   flutter_easyloading: ^3.0.5
   provider: ^6.1.5+1
-  flutter_svg: ^2.2.2
+  
   pinput: ^5.0.2
   dropdown_button2: ^2.3.9
 

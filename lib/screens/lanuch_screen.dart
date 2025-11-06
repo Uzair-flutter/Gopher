@@ -59,7 +59,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      _navigateToLogin();
+      _navigateToCreateNewAccount();
     }
   }
 
@@ -69,13 +69,11 @@ class _LaunchScreenState extends State<LaunchScreen> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+    _navigateToCreateNewAccount();
   }
 
-  void _navigateToLogin() {
-    Navigator.pushReplacementNamed(
-      context,
-    createNewAccountScreen,
-    );
+  void _navigateToCreateNewAccount() {
+    Navigator.pushReplacementNamed(context, createNewAccountScreen);
   }
 
   @override

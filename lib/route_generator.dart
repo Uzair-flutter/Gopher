@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
+import 'package:gopher/screens/create_password_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
+import 'package:gopher/screens/register_your_details_screen.dart' show RegisterYourDetailsScreen;
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
+import 'package:gopher/screens/successfully_created_screen.dart';
+import 'package:gopher/screens/verify_your_email_screen.dart';
 
 const String splashScreen = '/';
 const String homeScreen = '/home_screen';
 const String loginScreen = '/login_screen';
 const String launchScreen = '/launch_screen';
 const String createNewAccountScreen = '/create_new_account_screen';
+const String addYourEmailScreen = '/add_your_email_screen';
+const String verifyYourEmailScreen = '/verify_your_email_screen';
+const String createPasswordScreen = '/create_password_screen';
+const String registerYourDetailsScreen = '/register_your_details_screen';
+const String successfullyCreatedScreen = '/successfully_created_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -39,6 +49,32 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: createNewAccountScreen),
           builder: (_) => const CreateNewAccountScreen(),
+        );
+        case addYourEmailScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: addYourEmailScreen),
+          builder: (_) => const AddEmailYourScreen(),
+        );
+        case verifyYourEmailScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: verifyYourEmailScreen),
+          builder: (_) => const VerifyYourEmailScreen(),
+        );
+        case createPasswordScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: createPasswordScreen),
+          builder: (_) => const CreatePasswordScreen(),
+        );
+
+        case registerYourDetailsScreen: 
+        return MaterialPageRoute(
+          settings: RouteSettings(name: registerYourDetailsScreen),
+          builder: (_) => const RegisterYourDetailsScreen(),
+        );
+        case successfullyCreatedScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: successfullyCreatedScreen), 
+          builder: (_) => const SuccessfullyCreatedScreen(),
         );
       default:
         return _errorRoute();

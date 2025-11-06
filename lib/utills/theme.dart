@@ -58,24 +58,29 @@ class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 15.h),
+        
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 19.h),
         filled: true,
-
+        fillColor: AppColors.textFieldFillColor,
         errorStyle: TextStyle(fontSize: 11.sp, overflow: TextOverflow.visible),
         errorMaxLines: 2,
 
-        hintStyle: TextStyle(fontSize: 14.sp, color: const Color(0xffB5B5B5)),
+        hintStyle: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: Colors.grey,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14.r),
-          borderSide: BorderSide(color: Color(0xffB5B5B5)),
+          borderSide: BorderSide(color: AppColors.textFieldFillColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14.r),
-          borderSide: BorderSide(color: Color(0xffB5B5B5)),
+          borderSide: BorderSide(color: AppColors.textFieldFillColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14.r),
-          borderSide: BorderSide(color: Color(0xffB5B5B5)),
+          borderSide: BorderSide(color: AppColors.textFieldFillColor),
         ),
       ),
     );
