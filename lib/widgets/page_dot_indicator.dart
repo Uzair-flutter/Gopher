@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utills/color_constant.dart';
+import '../utils/color_constant.dart';
 
 class PageDotIndicator extends StatelessWidget {
   final int length;

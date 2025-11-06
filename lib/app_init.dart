@@ -1,16 +1,13 @@
 // app_init.dart
 //
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/home_screen.dart';
-import 'package:gopher/utills/theme.dart';
+import 'package:gopher/utils/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'route_generator.dart';
-import 'utils/theme.dart';
-import 'view_models/theme_view_model.dart';
 
 class AppInit extends StatelessWidget {
   const AppInit({super.key});

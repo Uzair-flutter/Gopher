@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utills/assets.dart';
-import 'package:gopher/utills/color_constant.dart';
+import 'package:gopher/utils/assets.dart';
+import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/service_chip_widget.dart';
 
 class GopherModel {

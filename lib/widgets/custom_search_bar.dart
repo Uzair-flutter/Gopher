@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utills/color_constant.dart';
+import '../utils/color_constant.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});
