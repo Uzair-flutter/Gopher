@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
+import 'package:gopher/screens/lanuch_screen.dart';
 
 const String splashScreen = '/';
 const String homeScreen = '/home_screen';
 const String loginScreen = '/login_screen';
+const String launchScreen = '/launch_screen';
+const String createNewAccountScreen = '/create_new_account_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
 
     switch (settings.name) {
       case splashScreen:
@@ -26,6 +29,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: loginScreen),
           builder: (_) => LoginScreen(),
+        );
+      case launchScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: launchScreen),
+          builder: (_) => const LaunchScreen(),
+        );
+        case createNewAccountScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: createNewAccountScreen),
+          builder: (_) => const CreateNewAccountScreen(),
         );
       default:
         return _errorRoute();

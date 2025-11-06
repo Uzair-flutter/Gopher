@@ -48,16 +48,10 @@ class AppTheme {
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 14.h),
-          textStyle: GoogleFonts.inter(
-            textStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-
+          textStyle: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+          backgroundColor: AppColors.kPrimaryColor,
           foregroundColor: Colors.white,
+          padding: EdgeInsets.symmetric(vertical: 19.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),

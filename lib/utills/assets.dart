@@ -3,7 +3,9 @@
 class PngAssets {
   static const String _assets = 'assets/png/';
   static const String logo = '${_assets}splash_logo.png';
-
+  static const String launch1 = '${_assets}launch_1.png';
+  static const String launch2 = '${_assets}launch_2.png';
+  static const String launch3 = '${_assets}launch_3.png';
   static const String beautyNear = '${_assets}beauty_near.png';
 }
 

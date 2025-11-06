@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(Duration(milliseconds: 2000));
       if (mounted) {
-        Navigator.pushNamed(context, homeScreen);
+        Navigator.pushNamed(context, launchScreen);
       }
     });
   }

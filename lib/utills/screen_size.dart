@@ -19,6 +19,6 @@ Size getDesignSize() {
     return Size(600, 900); // Small tablets
   } else {
     log('DEFAULT: ${size.width}');
-    return const Size(393, 852);
+    return const Size(390, 844);
   }
 }
