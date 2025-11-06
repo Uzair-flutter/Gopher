@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utills/assets.dart';
-import 'package:gopher/utills/color_constant.dart';
 
 import '../route_generator.dart';
+import '../utils/assets.dart';
+import '../utils/color_constant.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +14,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  // Changed from SingleTickerProviderStateMixin
   late AnimationController _controller;
   late AnimationController _textController;
   bool _showText = false;
@@ -102,7 +101,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
             SizedBox(height: 15.h),
-            // Text Blink Animation
             Center(
               child: _showText
                   ? AnimatedBuilder(

@@ -1,14 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utills/color_constant.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../utils/color_constant.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isBackButtonVisible;
 
-   CustomAppBar({super.key, required this.title, this.isBackButtonVisible = true});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.isBackButtonVisible = true,
+  });
 
   @override
   Widget build(BuildContext context) {

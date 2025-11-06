@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gopher/route_generator.dart';
-import 'package:gopher/utills/assets.dart';
-import 'package:gopher/utills/color_constant.dart';
-import 'package:gopher/screens/login_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../route_generator.dart';
+import '../utils/assets.dart';
+import '../utils/color_constant.dart';
+
 class LaunchScreen extends StatefulWidget {
-  const LaunchScreen({Key? key}) : super(key: key);
+  const LaunchScreen({super.key});
 
   @override
   State<LaunchScreen> createState() => _LaunchScreenState();
