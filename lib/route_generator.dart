@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:gopher/screens/add_your_email_screen.dart';
-import 'package:gopher/screens/create_new_account_screen.dart';
-import 'package:gopher/screens/create_password_screen.dart';
-import 'package:gopher/screens/home_screen.dart';
-import 'package:gopher/screens/login_screen.dart';
-import 'package:gopher/screens/register_your_details_screen.dart' show RegisterYourDetailsScreen;
-import 'package:gopher/screens/splash_screen.dart';
-import 'package:gopher/screens/lanuch_screen.dart';
-import 'package:gopher/screens/successfully_created_screen.dart';
-import 'package:gopher/screens/verify_your_email_screen.dart';
+import 'package:provider/provider.dart';
 
+import 'screens/add_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
 import 'screens/create_new_account_screen.dart';
+import 'screens/create_password_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/lanuch_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/register_your_details_screen.dart';
+import 'screens/select_service_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/successfully_created_screen.dart';
+import 'screens/verify_your_email_screen.dart';
+import 'view_models/service_view_model.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -28,6 +26,7 @@ const String verifyYourEmailScreen = '/verify_your_email_screen';
 const String createPasswordScreen = '/create_password_screen';
 const String registerYourDetailsScreen = '/register_your_details_screen';
 const String successfullyCreatedScreen = '/successfully_created_screen';
+const String selectServiceScreen = '/select_service_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -62,31 +61,39 @@ class RouteGenerator {
           settings: RouteSettings(name: createNewAccountScreen),
           builder: (_) => const CreateNewAccountScreen(),
         );
-        case addYourEmailScreen:
+      case addYourEmailScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: addYourEmailScreen),
           builder: (_) => const AddEmailYourScreen(),
         );
-        case verifyYourEmailScreen:
+      case verifyYourEmailScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: verifyYourEmailScreen),
           builder: (_) => const VerifyYourEmailScreen(),
         );
-        case createPasswordScreen:
+      case createPasswordScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: createPasswordScreen),
           builder: (_) => const CreatePasswordScreen(),
         );
 
-        case registerYourDetailsScreen: 
+      case registerYourDetailsScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: registerYourDetailsScreen),
           builder: (_) => const RegisterYourDetailsScreen(),
         );
-        case successfullyCreatedScreen:
+      case successfullyCreatedScreen:
         return MaterialPageRoute(
-          settings: RouteSettings(name: successfullyCreatedScreen), 
+          settings: RouteSettings(name: successfullyCreatedScreen),
           builder: (_) => const SuccessfullyCreatedScreen(),
+        );
+      case selectServiceScreen:
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider(
+            create: (_) => ServiceViewModel(),
+            child: SelectServiceScreen(),
+          ),
+          settings: RouteSettings(name: selectServiceScreen),
         );
       default:
         return _errorRoute();
