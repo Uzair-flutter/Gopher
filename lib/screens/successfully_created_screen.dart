@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utills/assets.dart';
+import 'package:gopher/route_generator.dart';
+
+import 'package:gopher/utils/assets.dart';
 
 class SuccessfullyCreatedScreen extends StatelessWidget {
   const SuccessfullyCreatedScreen({super.key});
@@ -35,7 +37,12 @@ class SuccessfullyCreatedScreen extends StatelessWidget {
             SizedBox(height: 20.h),
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: Text("Countinue")),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, bottomNavPage);
+                },
+                child: Text("Countinue"),
+              ),
             ),
           ],
         ),

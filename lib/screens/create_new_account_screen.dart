@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 import 'package:gopher/route_generator.dart';
-import 'package:gopher/utills/assets.dart';
-import 'package:gopher/utills/color_constant.dart';
+import 'package:gopher/utils/assets.dart';
+
+import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
 class CreateNewAccountScreen extends StatelessWidget {
