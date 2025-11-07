@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,38 +83,39 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        toolbarHeight: 70.h,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(top: 24.h, right: 24.0.w),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                log('SABOOR');
+                print('SABOOR');
+                // Navigator.pushNamedAndRemoveUntil(
+                //   context,
+                //   createNewAccountScreen,
+                //   (route) => false,
+                // );
+              },
+              child: AbsorbPointer(child: Center(child: _buildSkipButton())),
+            ),
+          ),
+        ],
       ),
       // Dark gray background
-      body: Stack(
-        children: [
-          PageView.builder(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            itemCount: _pages.length,
-            itemBuilder: (context, index) {
-              return _buildPage(_pages[index], index);
-            },
-          ),
+      body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(),
 
-          if (_currentPage < 2)
-            Positioned(
-              top: 43.h,
-              right: 24.w,
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    createNewAccountScreen,
-                    (route) => false,
-                  );
-                },
-                child: _buildSkipButton(),
-              ),
-            ),
-        ],
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+        itemCount: _pages.length,
+        itemBuilder: (context, index) {
+          return _buildPage(_pages[index], index);
+        },
       ),
     );
   }
@@ -225,6 +228,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Widget _buildSkipButton() {
     return Container(
+      width: 71.w,
+      height: 32.h,
       padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
       decoration: BoxDecoration(
         color: Colors.white,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:iconsax/iconsax.dart';
 
 class JobTitle extends StatelessWidget {
   final bool isUpcoming;
@@ -21,11 +22,15 @@ class JobTitle extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            decoration: BoxDecoration(shape: BoxShape.rectangle),
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
             child: Image.asset(
               DummyAssets.job,
-              fit: BoxFit.cover,
-              height: 81.w,
+              fit: BoxFit.fill,
+              height: 81.h,
               width: 81.w,
             ),
           ),
@@ -46,13 +51,13 @@ class JobTitle extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
-                    Icons.location_on,
-                    size: 12.sp,
+                    Iconsax.location,
+                    size: 18.sp,
                     color: AppColors.textGreyColor,
                   ),
                   SizedBox(width: 3.w),
                   Text(
-                    "Home",
+                    "Home 1",
                     style: TextStyle(
                       height: 0,
                       fontSize: 12.sp,
@@ -62,7 +67,7 @@ class JobTitle extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 19.h),
+              Spacer(),
               Text(
                 "\$25",
                 style: TextStyle(
