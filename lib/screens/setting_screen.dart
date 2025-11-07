@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gopher/route_generator.dart';
 
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
@@ -19,7 +21,7 @@ class SettingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 24.0.h),
-            profileBar(),
+            profileBar(context: context),
             SizedBox(height: 30.h),
             Text(
               "My Booking Service",
@@ -59,20 +61,74 @@ class SettingScreen extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 30.h),
+            Text(
+              "General",
+              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 14.h),
+            profileTitle(
+              context: context,
+              title: "Contact Us",
+              svgIcon: SvgAssets.info,
+              onTap: () {},
+            ),
+            SizedBox(height: 20.h),
+            profileTitle(
+              context: context,
+              title: "Change Password",
+              svgIcon: SvgAssets.lock,
+              onTap: () {
+                Navigator.pushNamed(context, changePasswordScreen);
+              },
+            ),
+            SizedBox(height: 20.h),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.5),
+              decoration: BoxDecoration(
+                color: AppColors.textFieldFillColor,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Row(
+                children: [
+                  Transform.flip(
+                    flipX: true,
+                    flipY: true,
+                    child: Icon(Iconsax.logout, color: Colors.red),
+                  ),
+                  //  SvgPicture.asset(svgIcon, height: 20.h),
+                  SizedBox(width: 8.w),
+                  Text(
+                    "Logout",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Spacer(),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 19.sp,
+                    color: AppColors.textBlackColor,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Row profileBar() {
+  Row profileBar({required BuildContext context}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         ClipOval(
           child: Center(
             child: Image.asset(
-              PngAssets.flower,
+              DummyAssets.person,
               fit: BoxFit.cover,
               height: 64.w,
               width: 64.w,
@@ -104,24 +160,68 @@ class SettingScreen extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Container(
-          height: 32.h,
-          width: 32.w,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.textFieldFillColor,
-            border: Border.all(color: Colors.grey[200]!),
-            //  borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Icon(
-            Iconsax.setting_2,
-            size: 18.sp,
-            color: AppColors.textBlackColor,
+        GestureDetector(
+          onTap: () {
+            // Navigate to Edit Profile Screen
+            Navigator.pushNamed(context, editProfileScreen);
+          },
+          child: Container(
+            height: 32.h,
+            width: 32.w,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.textFieldFillColor,
+              border: Border.all(color: Colors.grey[200]!),
+              //  borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Icon(
+              Iconsax.setting_2,
+              size: 18.sp,
+              color: AppColors.textBlackColor,
+            ),
           ),
         ),
       ],
     );
   }
+}
+
+Widget profileTitle({
+  required BuildContext context,
+  required String title,
+  required String svgIcon,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.5),
+      decoration: BoxDecoration(
+        color: AppColors.textFieldFillColor,
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      child: Row(
+        children: [
+          SvgPicture.asset(svgIcon, height: 20.h),
+          SizedBox(width: 8.w),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textBlackColor,
+            ),
+          ),
+          Spacer(),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 19.sp,
+            color: AppColors.textBlackColor,
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 bookingService({

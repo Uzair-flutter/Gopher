@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottomSheet/cancel_booking.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -12,28 +13,25 @@ class JobDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Booking Detail"),
-      body: SingleChildScrollView(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Stack(
-            children: [
-              SizedBox(height: 24.h),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Stack(
+          children: [
+            SizedBox(height: 24.h),
 
-              Positioned.fill(
-                top: 66.h,
+            Positioned.fill(
+              top: 66.h,
 
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 26.h,
-                    horizontal: 16.w,
-                  ),
-                  height: 556.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.textFieldFillColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                  ),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 26.h, horizontal: 16.w),
+                //   height: 556.h,
+                decoration: BoxDecoration(
+                  color: AppColors.textFieldFillColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                ),
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       profilebar(),
@@ -159,28 +157,53 @@ class JobDetailScreen extends StatelessWidget {
                         DummyAssets.map,
                         height: 208.h,
                         width: double.infinity,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ],
                   ),
                 ),
               ),
-              Positioned(
-                top: 24,
-                left: 0,
+            ),
+            Positioned(
+              top: 24,
+              left: 0,
 
-                right: 0,
-                child: Container(
-                  height: 60.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.kSecondaryColor,
-                  ),
-                  child: Icon(Iconsax.clock, size: 24.sp, color: Colors.white),
+              right: 0,
+              child: Container(
+                height: 60.h,
+                width: 60.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.kSecondaryColor,
                 ),
+                child: Icon(Iconsax.clock, size: 24.sp, color: Colors.white),
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: GestureDetector(
+          onTap: () {
+            showCancelBookingSheet(context);
+          },
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 19.h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+              color: Color(0xffD72547).withValues(alpha: 0.2),
+            ),
+            child: Text(
+              textAlign: TextAlign.center,
+              "Cancel Booking",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Color(0xffD72547),
+              ),
+            ),
           ),
         ),
       ),
