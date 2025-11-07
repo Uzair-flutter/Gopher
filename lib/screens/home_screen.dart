@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
 
+import '../utils/assets.dart';
 import '../widgets/custom_appbar_home.dart';
 import '../widgets/custom_search_bar.dart';
 import '../widgets/gopher_tile_widget.dart';
@@ -37,6 +38,26 @@ class HomeScreen extends StatelessWidget {
             ),
             // SizedBox(height: 8.h),
             HomeCarouselWidget(),
+            SizedBox(height: 10.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Container(
+                // height: 158.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.r),
+                  //    color: Colors.red,
+                  // image: DecorationImage(
+                  //   image: AssetImage(DummyAssets.map),
+                  //   fit: BoxFit.cover,
+                  // ),
+                ),
+                child: Image.asset(
+                  DummyAssets.map,
+                  fit: BoxFit.cover,
+                  // height: 185.h,
+                ),
+              ),
+            ),
             SizedBox(height: 25.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -142,9 +163,9 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 300.h,
               child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 80.h),
                 itemCount: gophers.length,
-                separatorBuilder: (context, index) => SizedBox(height: 16.h),
+                separatorBuilder: (context, index) => SizedBox(height: 10.h),
                 itemBuilder: (context, index) {
                   return GopherTile(
                     gopher: gophers[index],
