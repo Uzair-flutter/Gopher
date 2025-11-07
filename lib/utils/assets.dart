@@ -10,6 +10,13 @@ class PngAssets {
   static const String flower = '${_assets}flower.png';
 }
 
+class DummyAssets {
+  static const String _assets = 'assets/dummy/';
+  static const String carouselBackground = '${_assets}carouselBackground.png';
+  static const String map = '${_assets}map.png';
+  static const String person = '${_assets}person.png';
+}
+
 class SvgAssets {
   static const String _assets = 'assets/svg/';
   static const String logo = '${_assets}gopher_logo.svg';
@@ -36,5 +43,3 @@ class GifAssets {
 
   // static const String logAnimation = '${_assets}logo_animate.gif';
 }
-
-class DummyAssets {}

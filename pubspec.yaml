@@ -49,10 +49,12 @@ dependencies:
   
  
   dropdown_button2: ^2.3.9
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -77,6 +79,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/png/
+    - assets/dummy/
 
   #   - images/a_dot_ham.jpeg
 

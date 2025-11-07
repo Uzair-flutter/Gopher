@@ -11,4 +11,6 @@ class AppColors {
 
 
 
+  static const Color widgetBackColor = Color(0xffEEEFF3);
+  static const Color iconColor = Color(0xff757273);
 }
