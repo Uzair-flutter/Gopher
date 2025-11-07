@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/job_title.dart';
-import 'package:iconsax/iconsax.dart';
 
 class JobsScreen extends StatefulWidget {
   const JobsScreen({super.key});
@@ -14,84 +11,85 @@ class JobsScreen extends StatefulWidget {
   State<JobsScreen> createState() => _JobsScreenState();
 }
 
-bool alljobs = true;
-bool upcoming = false;
-bool completed = false;
-
 class _JobsScreenState extends State<JobsScreen> {
+  bool alljobs = true;
+  bool upcoming = false;
+  bool completed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Jobs", showSearchIcon: true),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 30.h),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              SizedBox(height: 24.0),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColors.textFieldFillColor,
-                  borderRadius: BorderRadius.circular(7.0.r),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: 30.h),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                SizedBox(height: 24.0),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.textFieldFillColor,
+                    borderRadius: BorderRadius.circular(7.0.r),
+                  ),
+                  padding: EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      jobTags(
+                        title: "All Jobs",
+                        isSelected: alljobs,
+                        onTap: () {
+                          setState(() {
+                            alljobs = true;
+                            upcoming = false;
+                            completed = false;
+                          });
+                        },
+                      ),
+                      SizedBox(width: 6.w),
+                      jobTags(
+                        title: "Upcoming",
+                        isSelected: upcoming,
+                        onTap: () {
+                          setState(() {
+                            alljobs = false;
+                            upcoming = true;
+                            completed = false;
+                          });
+                        },
+                      ),
+                      SizedBox(width: 6.w),
+                      jobTags(
+                        title: "Completed",
+                        isSelected: completed,
+                        onTap: () {
+                          setState(() {
+                            alljobs = false;
+                            upcoming = false;
+                            completed = true;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                padding: EdgeInsets.all(4.0),
-                child: Row(
-                  children: [
-                    jobTags(
-                      title: "All Jobs",
-                      isSelected: alljobs,
-                      onTap: () {
-                        setState(() {
-                          alljobs = true;
-                          upcoming = false;
-                          completed = false;
-                        });
-                      },
-                    ),
-                    SizedBox(width: 6.w),
-                    jobTags(
-                      title: "Upcoming",
-                      isSelected: upcoming,
-                      onTap: () {
-                        setState(() {
-                          alljobs = false;
-                          upcoming = true;
-                          completed = false;
-                        });
-                      },
-                    ),
-                    SizedBox(width: 6.w),
-                    jobTags(
-                      title: "Completed",
-                      isSelected: completed,
-                      onTap: () {
-                        setState(() {
-                          alljobs = false;
-                          upcoming = false;
-                          completed = true;
-                        });
-                      },
-                    ),
-                  ],
+                SizedBox(height: 16.h),
+                Column(
+                  spacing: 20.h,
+                  children: List.generate(5, (index) {
+                    return JobTitle(
+                      isUpcoming: alljobs
+                          ? index % 2 == 0
+                                ? true
+                                : false
+                          : upcoming
+                          ? true
+                          : false,
+                    );
+                  }),
                 ),
-              ),
-              SizedBox(height: 16.h),
-              Column(
-                spacing: 20.h,
-                children: List.generate(5, (index) {
-                  return JobTitle(
-                    isUpcoming: alljobs
-                        ? index % 2 == 0
-                              ? true
-                              : false
-                        : upcoming
-                        ? true
-                        : false,
-                  );
-                }),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
