@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
+import 'package:gopher/screens/all_gopher_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/job_detail_screen.dart';
+import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
 import 'package:gopher/screens/splash_screen.dart';
-import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 
 import 'screens/bottom_nav_page.dart';
-import 'screens/create_new_account_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/lanuch_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/splash_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -31,6 +27,7 @@ const String createPasswordScreen = '/create_password_screen';
 const String registerYourDetailsScreen = '/register_your_details_screen';
 const String successfullyCreatedScreen = '/successfully_created_screen';
 const String jobsDetailScreen = '/jobs_detail_screen';
+const String allGopherScreen = '/all_gopher_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -95,6 +92,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: jobsDetailScreen),
           builder: (_) => const JobDetailScreen(),
+        );
+      case allGopherScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allGopherScreen),
+          builder: (_) => const AllGopherScreen(),
         );
       default:
         return _errorRoute();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/color_constant.dart';
 
 import '../utils/assets.dart';
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: CustomSearchBar(),
             ),
             // SizedBox(height: 8.h),
@@ -145,7 +146,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, allGopherScreen);
+                    },
                     child: Text(
                       'View All',
                       style: TextStyle(

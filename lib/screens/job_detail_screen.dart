@@ -23,7 +23,6 @@ class JobDetailScreen extends StatelessWidget {
 
               Positioned.fill(
                 top: 66.h,
-
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 26.h,
@@ -191,7 +190,6 @@ class JobDetailScreen extends StatelessWidget {
 profilebar() {
   return Container(
     height: 81.h,
-
     child: Row(
       children: [
         Container(

@@ -6,7 +6,6 @@ class PngAssets {
   static const String launch1 = '${_assets}launch_1.png';
   static const String launch2 = '${_assets}launch_2.png';
   static const String launch3 = '${_assets}launch_3.png';
-  static const String beautyNear = '${_assets}beauty_near.png';
   static const String flower = '${_assets}flower.png';
 }
 
@@ -16,6 +15,8 @@ class DummyAssets {
   static const String map = '${_assets}map.png';
   static const String person = '${_assets}person.png';
   static const String job = '${_assets}job.png';
+  static const String servicePerson = '${_assets}service_person.png';
+  static const String serviceDetail = '${_assets}service_detail.png';
 }
 
 class SvgAssets {
