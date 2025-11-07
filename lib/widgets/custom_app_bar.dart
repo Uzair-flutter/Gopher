@@ -55,6 +55,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: SizedBox(
                   width: 72.w,
                   child: Card(
+                    elevation: 0,
                     color: AppColors.appbarBackColor,
                     shape: CircleBorder(),
                     clipBehavior: Clip.antiAlias,
