@@ -114,6 +114,6 @@ class JobTitle extends StatelessWidget {
         ],
       ),
     );
-    ;
+    
   }
 }
