@@ -7,11 +7,13 @@ import '../utils/color_constant.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isBackButtonVisible;
+  final bool showSearchIcon;
 
   const CustomAppBar({
     super.key,
     required this.title,
     this.isBackButtonVisible = true,
+    this.showSearchIcon = false,
   });
 
   @override
@@ -29,6 +31,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       leadingWidth: isBackButtonVisible ? 60.w : 0,
+      actions: [
+        showSearchIcon
+            ? Container(
+                margin: EdgeInsets.only(right: 18.w),
+                height: 32.h,
+                width: 32.w,
+                decoration: BoxDecoration(
+                  color: AppColors.textFieldFillColor,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.search_sharp,
+                  color: AppColors.textBlackColor,
+                ),
+              )
+            : SizedBox(),
+      ],
       leading: isBackButtonVisible
           ? Padding(
               padding: EdgeInsets.only(left: 10.0.w),

@@ -64,11 +64,11 @@ class _LaunchScreenState extends State<LaunchScreen> {
   }
 
   void _skipToEnd() {
-    _pageController.animateToPage(
-      _pages.length - 1,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
+    // _pageController.animateToPage(
+    //   _pages.length - 1,
+    //   duration: const Duration(milliseconds: 300),
+    //   curve: Curves.easeInOut,
+    // );
     _navigateToCreateNewAccount();
   }
 
@@ -96,9 +96,22 @@ class _LaunchScreenState extends State<LaunchScreen> {
               return _buildPage(_pages[index], index);
             },
           ),
-          // Skip button (only for first two pages)
+
           if (_currentPage < 2)
-            Positioned(top: 43.h, right: 24.w, child: _buildSkipButton()),
+            Positioned(
+              top: 43.h,
+              right: 24.w,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    createNewAccountScreen,
+                    (route) => false,
+                  );
+                },
+                child: _buildSkipButton(),
+              ),
+            ),
         ],
       ),
     );
@@ -211,34 +224,31 @@ class _LaunchScreenState extends State<LaunchScreen> {
   }
 
   Widget _buildSkipButton() {
-    return GestureDetector(
-      onTap: _skipToEnd,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Skip',
-              style: GoogleFonts.inter(
-                height: 0,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.kSecondaryColor,
-              ),
-            ),
-            SizedBox(width: 6.w),
-            Icon(
-              Iconsax.arrow_right_1,
-              size: 18.sp,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'Skip',
+            style: GoogleFonts.inter(
+              height: 0,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
               color: AppColors.kSecondaryColor,
             ),
-          ],
-        ),
+          ),
+          SizedBox(width: 6.w),
+          Icon(
+            Iconsax.arrow_right_1,
+            size: 18.sp,
+            color: AppColors.kSecondaryColor,
+          ),
+        ],
       ),
     );
   }

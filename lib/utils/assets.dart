@@ -15,6 +15,7 @@ class DummyAssets {
   static const String carouselBackground = '${_assets}carouselBackground.png';
   static const String map = '${_assets}map.png';
   static const String person = '${_assets}person.png';
+  static const String job = '${_assets}job.png';
 }
 
 class SvgAssets {
@@ -31,7 +32,8 @@ class SvgAssets {
   static const String services = '${_assets}services.svg';
   static const String profile = '${_assets}profile.svg';
   static const String profileFilled = '${_assets}profile_filled.svg';
-
+  static const String message = '${_assets}message.svg';
+  static const String star = '${_assets}star.svg';
 }
 
 class LottieAssets {

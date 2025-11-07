@@ -23,7 +23,7 @@ class AppInit extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
       // initialRoute: '/',
       // onGenerateRoute: RouteGenerator.generateRoute,
-      home: HomeScreen(),
+     // home: HomeScreen(),
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
