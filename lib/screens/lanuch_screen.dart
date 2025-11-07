@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,7 +81,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: 70.h,
+        toolbarHeight: 65.h,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -93,15 +91,13 @@ class _LaunchScreenState extends State<LaunchScreen> {
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () {
-                log('SABOOR');
-                print('SABOOR');
-                // Navigator.pushNamedAndRemoveUntil(
-                //   context,
-                //   createNewAccountScreen,
-                //   (route) => false,
-                // );
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  createNewAccountScreen,
+                  (route) => false,
+                );
               },
-              child: AbsorbPointer(child: Center(child: _buildSkipButton())),
+              child: _buildSkipButton(),
             ),
           ),
         ],
@@ -228,8 +224,6 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Widget _buildSkipButton() {
     return Container(
-      width: 71.w,
-      height: 32.h,
       padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
       decoration: BoxDecoration(
         color: Colors.white,
