@@ -8,3 +8,12 @@ enum ServiceType {
 
   const ServiceType(this.asset);
 }
+
+enum GopherType {
+  rider(PngAssets.rider),
+  delivery(PngAssets.delivery);
+
+  final String asset;
+
+  const GopherType(this.asset);
+}

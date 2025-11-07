@@ -8,6 +8,7 @@ import 'app_init.dart';
 import 'services/storage_service.dart';
 import 'utils/screen_size.dart';
 import 'view_models/bottom_nav_view_model.dart';
+import 'view_models/service_view_model.dart';
 import 'view_models/theme_view_model.dart';
 
 Future<void> main() async {
@@ -24,6 +25,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeViewModel()),
         ChangeNotifierProvider(create: (context) => BottomNavViewModel()),
+        ChangeNotifierProvider(create: (_) => ServiceViewModel()),
       ],
       child: ScreenUtilInit(
         designSize: getDesignSize(),

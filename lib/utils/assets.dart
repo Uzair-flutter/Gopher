@@ -9,6 +9,8 @@ abstract final class PngAssets {
   static const String flower = '${_assets}flower.png';
   static const String professional = '${_assets}professional.png';
   static const String gopher = '${_assets}gopher.png';
+  static const String rider = '${_assets}rider.png';
+  static const String delivery = '${_assets}delivery.png';
 }
 
 class DummyAssets {
