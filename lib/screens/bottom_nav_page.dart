@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/jobs_screen.dart';
 import 'package:gopher/screens/service_screen.dart';
+import 'package:gopher/screens/setting_screen.dart';
+import 'package:gopher/screens/setting_screen.dart';
+import 'package:gopher/screens/service_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/color_constant.dart';
@@ -16,7 +19,8 @@ class BottomNavPage extends StatelessWidget {
     HomeScreen(),
     JobsScreen(),
     ServiceScreen(),
-    Scaffold(body: Center(child: Text('Profile'))),
+    JobsScreen(),
+    SettingScreen(),
   ];
 
   @override

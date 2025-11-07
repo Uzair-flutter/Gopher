@@ -35,6 +35,8 @@ class SvgAssets {
   static const String profileFilled = '${_assets}profile_filled.svg';
   static const String message = '${_assets}message.svg';
   static const String star = '${_assets}star.svg';
+  static const String info = '${_assets}info.svg';
+  static const String lock = '${_assets}lock.svg';
 }
 
 class LottieAssets {

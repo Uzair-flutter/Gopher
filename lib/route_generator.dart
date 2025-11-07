@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/all_gopher_screen.dart';
+import 'package:gopher/screens/change_password_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
+import 'package:gopher/screens/edit_profile_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/job_detail_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
@@ -27,6 +29,8 @@ const String createPasswordScreen = '/create_password_screen';
 const String registerYourDetailsScreen = '/register_your_details_screen';
 const String successfullyCreatedScreen = '/successfully_created_screen';
 const String jobsDetailScreen = '/jobs_detail_screen';
+const String editProfileScreen = '/edit_profile_screen';
+const String changePasswordScreen = '/change_password_screen';
 const String allGopherScreen = '/all_gopher_screen';
 
 class RouteGenerator {
@@ -92,6 +96,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: jobsDetailScreen),
           builder: (_) => const JobDetailScreen(),
+        );
+        case editProfileScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: editProfileScreen),
+          builder: (_) => const EditProfileScreen(),
+        );
+        case changePasswordScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: changePasswordScreen),
+          builder: (_) => const ChangePasswordScreen(),
         );
       case allGopherScreen:
         return MaterialPageRoute(
