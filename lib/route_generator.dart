@@ -97,12 +97,12 @@ class RouteGenerator {
           settings: RouteSettings(name: jobsDetailScreen),
           builder: (_) => const JobDetailScreen(),
         );
-        case editProfileScreen:
+      case editProfileScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: editProfileScreen),
           builder: (_) => const EditProfileScreen(),
         );
-        case changePasswordScreen:
+      case changePasswordScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: changePasswordScreen),
           builder: (_) => const ChangePasswordScreen(),

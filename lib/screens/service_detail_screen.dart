@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
+import 'package:gopher/widgets/custom_app_bar.dart';
 
 import '../utils/color_constant.dart';
 
@@ -19,10 +20,11 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: CustomAppBar(title: 'Home Cleaning', isBackButtonVisible: true),
       body: Column(
         children: [
           // Custom AppBar
-          _buildAppBar(),
+          // _buildAppBar(),
 
           // Scrollable Content
           Expanded(
@@ -144,7 +146,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
         // Message Icon
         Positioned(
           right: 24.w,
-          bottom: 16.h,
+          bottom: -40.h,
           child: Container(
             width: 32.w,
             height: 32.h,

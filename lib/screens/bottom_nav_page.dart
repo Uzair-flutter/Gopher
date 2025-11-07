@@ -4,8 +4,6 @@ import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/jobs_screen.dart';
 import 'package:gopher/screens/service_screen.dart';
 import 'package:gopher/screens/setting_screen.dart';
-import 'package:gopher/screens/setting_screen.dart';
-import 'package:gopher/screens/service_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/color_constant.dart';
