@@ -6,6 +6,7 @@ import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
+import 'package:gopher/widgets/dialog%20box/success_dialog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -17,105 +18,155 @@ class SettingScreen extends StatelessWidget {
       appBar: CustomAppBar(title: "Settings"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 24.0.h),
-            profileBar(context: context),
-            SizedBox(height: 30.h),
-            Text(
-              "My Booking Service",
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(height: 14.h),
-            Container(
-              height: 78.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
-                gradient: LinearGradient(
-                  colors: [Color(0xff053F7C), Color(0xff28609B)],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 24.0.h),
+              profileBar(context: context),
+              SizedBox(height: 30.h),
+              Text(
+                "My Booking Service",
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 14.h),
+              Container(
+                height: 78.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.r),
+                  gradient: LinearGradient(
+                    colors: [Color(0xff053F7C), Color(0xff28609B)],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    bookingService(
+                      title: "Upcoming",
+                      icon: Iconsax.export,
+                      notificationCount: "2",
+                    ),
+                    bookingService(
+                      title: "Completed",
+                      icon: Iconsax.truck,
+                      notificationCount: "4",
+                    ),
+                    bookingService(
+                      showBadge: false,
+                      title: "Notifications",
+                      icon: Iconsax.notification,
+                      notificationCount: "0",
+                    ),
+                  ],
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  bookingService(
-                    title: "Upcoming",
-                    icon: Iconsax.export,
-                    notificationCount: "2",
-                  ),
-                  bookingService(
-                    title: "Completed",
-                    icon: Iconsax.truck,
-                    notificationCount: "4",
-                  ),
-                  bookingService(
-                    showBadge: false,
-                    title: "Notifications",
-                    icon: Iconsax.notification,
-                    notificationCount: "0",
-                  ),
-                ],
+              SizedBox(height: 30.h),
+              Text(
+                "General",
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
               ),
-            ),
-            SizedBox(height: 30.h),
-            Text(
-              "General",
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(height: 14.h),
-            profileTitle(
-              context: context,
-              title: "Contact Us",
-              svgIcon: SvgAssets.info,
-              onTap: () {},
-            ),
-            SizedBox(height: 20.h),
-            profileTitle(
-              context: context,
-              title: "Change Password",
-              svgIcon: SvgAssets.lock,
-              onTap: () {
-                Navigator.pushNamed(context, changePasswordScreen);
-              },
-            ),
-            SizedBox(height: 20.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.5),
-              decoration: BoxDecoration(
-                color: AppColors.textFieldFillColor,
-                borderRadius: BorderRadius.circular(10.r),
+              SizedBox(height: 14.h),
+              profileTitle(
+                context: context,
+                title: "Change Password",
+                svgIcon: SvgAssets.lock,
+                onTap: () {
+                  Navigator.pushNamed(context, changePasswordScreen);
+                },
               ),
-              child: Row(
-                children: [
-                  Transform.flip(
-                    flipX: true,
-                    flipY: true,
-                    child: Icon(Iconsax.logout, color: Colors.red),
-                  ),
-                  //  SvgPicture.asset(svgIcon, height: 20.h),
-                  SizedBox(width: 8.w),
-                  Text(
-                    "Logout",
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.red,
-                    ),
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 19.sp,
-                    color: AppColors.textBlackColor,
-                  ),
-                ],
+              SizedBox(height: 20.h),
+              profileTitle(
+                context: context,
+                title: "Contact Us",
+                svgIcon: SvgAssets.info,
+                onTap: () {
+                  Navigator.pushNamed(context, contactUsScreen);
+                },
               ),
-            ),
-          ],
+              SizedBox(height: 20.h),
+              profileTitle(
+                context: context,
+                title: "FAQ's",
+                svgIcon: SvgAssets.faqs,
+                onTap: () {
+                  Navigator.pushNamed(context, faqsScreen);
+                },
+              ),
+              SizedBox(height: 20.h),
+              profileTitle(
+                context: context,
+                title: "Privacy Policy",
+                svgIcon: SvgAssets.privacyPolicy,
+                onTap: () {
+                  Navigator.pushNamed(context, privacyPolicyScreen);
+                },
+              ),
+              SizedBox(height: 20.h),
+              profileTitle(
+                context: context,
+                title: "Terms & Condition",
+                svgIcon: SvgAssets.termsAndConditions,
+                onTap: () {
+                  Navigator.pushNamed(context, termsAndConditionsScreen);
+                },
+              ),
+              SizedBox(height: 20.h),
+              InkWell(
+                onTap: () {
+                  showSuccessDialog(
+                    screenContext: context,
+                    desc: "Logout successful",
+                    onSuccess: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        createNewAccountScreen,
+                        (route) => false,
+                      );
+                    },
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 14.5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.textFieldFillColor,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Row(
+                    children: [
+                      Transform.flip(
+                        flipX: true,
+                        flipY: true,
+                        child: Icon(Iconsax.logout, color: Colors.red),
+                      ),
+                      //  SvgPicture.asset(svgIcon, height: 20.h),
+                      SizedBox(width: 8.w),
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 19.sp,
+                        color: AppColors.textBlackColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 80.h),
+            ],
+          ),
         ),
       ),
     );
