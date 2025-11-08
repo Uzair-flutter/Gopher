@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/all_gopher_screen.dart';
 import 'package:gopher/screens/all_reviews_screen.dart';
-import 'package:gopher/screens/change_password_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
@@ -18,6 +17,7 @@ import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
+
 import 'screens/bottom_nav_page.dart';
 
 const String splashScreen = '/';
@@ -109,15 +109,20 @@ class RouteGenerator {
           builder: (_) => SelectServiceScreen(),
           settings: RouteSettings(name: selectServiceScreen),
         );
-        case editProfileScreen:
+      case editProfileScreen:
         return MaterialPageRoute(
           builder: (_) => SelectGopherScreen(),
           settings: RouteSettings(name: selectGopherScreen),
         );
-        case changePasswordScreen:
+      case changePasswordScreen:
         return MaterialPageRoute(
           builder: (_) => RiderFormScreen(),
           settings: RouteSettings(name: riderFormScreen),
+        );
+      case jobsDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => JobDetailScreen(),
+          settings: RouteSettings(name: jobsDetailScreen),
         );
       case allGopherScreen:
         return MaterialPageRoute(
