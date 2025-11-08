@@ -4,13 +4,16 @@ import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
-import 'package:gopher/screens/register_your_details_screen.dart' show RegisterYourDetailsScreen;
+import 'package:gopher/screens/register_your_details_screen.dart'
+    show RegisterYourDetailsScreen;
+import 'package:gopher/screens/rider_form_screen.dart';
+import 'package:gopher/screens/select_gopher_screen.dart';
+import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
-
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -92,6 +95,21 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: successfullyCreatedScreen),
           builder: (_) => const SuccessfullyCreatedScreen(),
+        );
+      case selectServiceScreen:
+        return MaterialPageRoute(
+          builder: (_) => SelectServiceScreen(),
+          settings: RouteSettings(name: selectServiceScreen),
+        );
+      case selectGopherScreen:
+        return MaterialPageRoute(
+          builder: (_) => SelectGopherScreen(),
+          settings: RouteSettings(name: selectGopherScreen),
+        );
+      case riderFormScreen:
+        return MaterialPageRoute(
+          builder: (_) => RiderFormScreen(),
+          settings: RouteSettings(name: riderFormScreen),
         );
       default:
         return _errorRoute();
