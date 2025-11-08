@@ -24,8 +24,8 @@ class SelectGopherScreen extends StatelessWidget {
           onPressed: viewModel.selectedGopherType == null
               ? null
               : () {
-                  if (viewModel.selectedGopherType == GopherType.rider) {
-                    Navigator.pushNamed(context, riderFormScreen);
+                  if (viewModel.selectedGopherType == GopherType.delivery) {
+                    Navigator.pushNamed(context, deliveryFormScreen);
                   }
                 },
           child: Text('Continue'),
