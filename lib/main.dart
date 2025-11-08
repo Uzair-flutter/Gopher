@@ -11,13 +11,15 @@ import 'view_models/bottom_nav_view_model.dart';
 import 'view_models/service_view_model.dart';
 import 'view_models/theme_view_model.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await ScreenUtil.ensureScreenSize();
   // Initialize StorageService before creating providers
   await StorageService().init();
   await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
-  await ScreenUtil.ensureScreenSize();
+
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(
@@ -27,11 +29,16 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (context) => BottomNavViewModel()),
         ChangeNotifierProvider(create: (_) => ServiceViewModel()),
       ],
-      child: ScreenUtilInit(
-        designSize: getDesignSize(),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        child: AppInit(),
+      child: Builder(
+        builder: (context) {
+          return ScreenUtilInit(
+            ensureScreenSize: true,
+            designSize: getDesignSize(context: context),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            child: AppInit(),
+          );
+        },
       ),
     ),
   );

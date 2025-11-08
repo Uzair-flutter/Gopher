@@ -43,36 +43,40 @@ class CreateNewAccountScreen extends StatelessWidget {
                 child: Text("Continue with email"),
               ),
             ),
-            SizedBox(height: 12.h),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(
-                    color: AppColors.kSecondaryColor,
-                    width: 2.w,
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 19.h),
+            // SizedBox(height: 12.h),
+            // SizedBox(
+            //   width: double.infinity,
+            //   child: OutlinedButton(
+            //     style: OutlinedButton.styleFrom(
+            //       side: BorderSide(
+            //         color: AppColors.kSecondaryColor,
+            //         width: 2.w,
+            //       ),
+            //       padding: EdgeInsets.symmetric(vertical: 19.h),
 
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                ),
-                onPressed: () {},
-                child: Text(
-                  "Continue with Phone number",
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.kSecondaryColor,
-                  ),
-                ),
-              ),
-            ),
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(10.r),
+            //       ),
+            //     ),
+            //     onPressed: () {},
+            //     child: Text(
+            //       "Continue with Phone number",
+            //       style: TextStyle(
+            //         fontSize: 15.sp,
+            //         fontWeight: FontWeight.w600,
+            //         color: AppColors.kSecondaryColor,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SizedBox(height: 25.h),
             Text(
               "or",
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                height: 0,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             SizedBox(height: 25.h),
             socialLogin(type: "Continue with Apple", logo: SvgAssets.apple),
@@ -91,6 +95,7 @@ class CreateNewAccountScreen extends StatelessWidget {
                 Text(
                   "Already have an account?",
                   style: TextStyle(
+                    height: 0,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                   ),
@@ -98,11 +103,12 @@ class CreateNewAccountScreen extends StatelessWidget {
                 SizedBox(width: 8.w),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, addYourEmailScreen);
+                    Navigator.pushNamed(context, loginScreen);
                   },
                   child: Text(
                     "Log in",
                     style: TextStyle(
+                      height: 0,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.kSecondaryColor,
@@ -117,31 +123,32 @@ class CreateNewAccountScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container socialLogin({required String type, required String logo}) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 15.h),
-      decoration: BoxDecoration(
-        color: Color(0xffFDFBFC),
-        border: Border.all(color: Colors.grey[200]!, width: 1.w),
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(logo),
-          SizedBox(width: 8.w),
-          Text(
-            type,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: AppColors.textBlackColor,
-            ),
+Container socialLogin({required String type, required String logo}) {
+  return Container(
+    padding: EdgeInsets.symmetric(vertical: 15.h),
+    decoration: BoxDecoration(
+      color: Color(0xffFDFBFC),
+      border: Border.all(color: Colors.grey[200]!, width: 1.w),
+      borderRadius: BorderRadius.circular(10.r),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(logo),
+        SizedBox(width: 8.w),
+        Text(
+          type,
+          style: TextStyle(
+            height: 0,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.textBlackColor,
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
 }

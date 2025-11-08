@@ -26,7 +26,7 @@ class AppInit extends StatelessWidget {
      // home: HomeScreen(),
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      darkTheme: AppTheme.lightTheme,
     );
   }
 }
