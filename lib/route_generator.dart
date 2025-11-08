@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/all_gopher_screen.dart';
+import 'package:gopher/screens/all_reviews_screen.dart';
 import 'package:gopher/screens/change_password_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
@@ -11,6 +12,7 @@ import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
+import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
@@ -32,6 +34,8 @@ const String jobsDetailScreen = '/jobs_detail_screen';
 const String editProfileScreen = '/edit_profile_screen';
 const String changePasswordScreen = '/change_password_screen';
 const String allGopherScreen = '/all_gopher_screen';
+const String allReviewsScreen = '/all_reviews_screen';
+const String serviceBookingScreen = '/service_booking_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -111,6 +115,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
           builder: (_) => const AllGopherScreen(),
+        );
+      case allReviewsScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allReviewsScreen),
+          builder: (_) => const AllReviewsScreen(),
+        );
+      case serviceBookingScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: serviceBookingScreen),
+          builder: (_) => const ServiceBookingScreen(),
         );
       default:
         return _errorRoute();

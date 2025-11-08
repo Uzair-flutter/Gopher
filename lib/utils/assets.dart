@@ -25,7 +25,6 @@ class SvgAssets {
   static const String google = '${_assets}google.svg';
   static const String facebook = '${_assets}facebook.svg';
   static const String apple = '${_assets}apple.svg';
-
   static const String home = '${_assets}home.svg';
   static const String homeFilled = '${_assets}home_filled.svg';
   static const String jobs = '${_assets}jobs.svg';
@@ -37,6 +36,18 @@ class SvgAssets {
   static const String star = '${_assets}star.svg';
   static const String info = '${_assets}info.svg';
   static const String lock = '${_assets}lock.svg';
+  static const String appliance = '${_assets}Appliance.svg';
+  static const String filter = '${_assets}filter.svg';
+  static const String message_1 = '${_assets}message_1.svg';
+  static const String repairing = '${_assets}reparing.svg';
+  static const String shifting = '${_assets}shifting.svg';
+  static const String bell = '${_assets}bell.svg';
+  static const String massage = '${_assets}massage.svg';
+  static const String beauty = '${_assets}beauty.svg';
+  static const String laundry = '${_assets}shifting.svg';
+  static const String ac = '${_assets}ac.svg';
+  static const String cleaning = '${_assets}cleaning.svg';
+  static const String reviewShare = '${_assets}review_share.svg';
 }
 
 class LottieAssets {

@@ -12,14 +12,14 @@ import '../widgets/service_item_widget.dart';
 
 class ServicesData {
   static final List<ServiceItem> services = [
-    ServiceItem(icon: Icons.kitchen, label: 'Appliance'),
-    ServiceItem(icon: Icons.format_paint, label: 'Painting'),
-    ServiceItem(icon: Icons.local_shipping, label: 'Shifting'),
-    ServiceItem(icon: Icons.cleaning_services, label: 'Cleaning'),
-    ServiceItem(icon: Icons.ac_unit, label: 'AC Clean'),
-    ServiceItem(icon: Icons.spa, label: 'Massage'),
-    ServiceItem(icon: Icons.local_laundry_service, label: 'Laundry'),
-    ServiceItem(icon: Icons.face, label: 'Beauty'),
+    ServiceItem(icon: SvgAssets.appliance, label: 'Appliance'),
+    ServiceItem(icon: SvgAssets.repairing, label: 'Painting'),
+    ServiceItem(icon: SvgAssets.shifting, label: 'Shifting'),
+    ServiceItem(icon: SvgAssets.cleaning, label: 'Cleaning'),
+    ServiceItem(icon: SvgAssets.ac, label: 'AC Clean'),
+    ServiceItem(icon: SvgAssets.massage, label: 'Massage'),
+    ServiceItem(icon: SvgAssets.laundry, label: 'Laundry'),
+    ServiceItem(icon: SvgAssets.beauty, label: 'Beauty'),
   ];
 }
 

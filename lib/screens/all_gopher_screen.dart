@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
-import 'package:iconsax/iconsax.dart';
 
+import '../utils/assets.dart';
 import '../widgets/bottom_sheets/filter_bottom_sheet.dart';
 import '../widgets/custom_search_bar.dart';
 import '../widgets/gopher_tile_widget.dart';
@@ -16,7 +16,7 @@ class AllGopherScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: 'All Gopher',
         showSearchIcon: true,
-        actionIcon: Iconsax.filter,
+        actionIcon: SvgAssets.filter,
       ),
       body: SingleChildScrollView(
         child: Padding(
