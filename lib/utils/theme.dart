@@ -49,23 +49,34 @@ class AppTheme {
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          textStyle: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+          textStyle: TextStyle(
+            height: 0,
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w600,
+          ),
           backgroundColor: AppColors.kPrimaryColor,
           foregroundColor: Colors.white,
-          padding: EdgeInsets.symmetric(vertical: 19.h),
+          padding: EdgeInsets.symmetric(vertical: 15.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),
         ),
       ),
+      cardTheme: CardThemeData(
+        color: AppColors.textFieldFillColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 19.h),
         filled: true,
         fillColor: AppColors.textFieldFillColor,
         errorStyle: TextStyle(fontSize: 11.sp, overflow: TextOverflow.visible),
         errorMaxLines: 2,
 
         hintStyle: TextStyle(
+          height: 0,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: Colors.grey,

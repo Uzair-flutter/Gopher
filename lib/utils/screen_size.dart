@@ -1,10 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:gopher/main.dart';
 
-Size getDesignSize() {
+Size getDesignSize({required BuildContext context}) {
   // Get the actual screen size
-  final window = WidgetsBinding.instance.window;
+  final window = View.of(context);
   final size = window.physicalSize / window.devicePixelRatio;
   // Return appropriate design size based on screen width
   if (size.width >= 1200) {
@@ -18,7 +19,7 @@ Size getDesignSize() {
     log('SMALL: ${size.width}');
     return Size(600, 900); // Small tablets
   } else {
-    log('DEFAULT: ${size.width}');
-    return const Size(390, 844);
+    log('DEFAULT: ${size.width } ${size.height }');
+    return const Size(1080, 2060);
   }
 }

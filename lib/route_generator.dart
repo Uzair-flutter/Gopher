@@ -5,18 +5,19 @@ import 'package:gopher/screens/all_reviews_screen.dart';
 import 'package:gopher/screens/change_password_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
-import 'package:gopher/screens/edit_profile_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/job_detail_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
+import 'package:gopher/screens/rider_form_screen.dart';
+import 'package:gopher/screens/select_gopher_screen.dart';
+import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
-
 import 'screens/bottom_nav_page.dart';
 
 const String splashScreen = '/';
@@ -34,6 +35,13 @@ const String jobsDetailScreen = '/jobs_detail_screen';
 const String editProfileScreen = '/edit_profile_screen';
 const String changePasswordScreen = '/change_password_screen';
 const String allGopherScreen = '/all_gopher_screen';
+const String contactUsScreen = '/contact_us_screen';
+const String faqsScreen = '/faqs_screen';
+const String termsAndConditionsScreen = '/terms_and_conditions_screen';
+const String privacyPolicyScreen = '/privacy_policy_screen';
+const String selectServiceScreen = '/select_service_screen';
+const String selectGopherScreen = '/select_gopher_screen';
+const String riderFormScreen = '/rider_form_screen';
 const String allReviewsScreen = '/all_reviews_screen';
 const String serviceBookingScreen = '/service_booking_screen';
 
@@ -96,20 +104,20 @@ class RouteGenerator {
           settings: RouteSettings(name: successfullyCreatedScreen),
           builder: (_) => const SuccessfullyCreatedScreen(),
         );
-      case jobsDetailScreen:
+      case selectServiceScreen:
         return MaterialPageRoute(
-          settings: RouteSettings(name: jobsDetailScreen),
-          builder: (_) => const JobDetailScreen(),
+          builder: (_) => SelectServiceScreen(),
+          settings: RouteSettings(name: selectServiceScreen),
         );
-      case editProfileScreen:
+        case editProfileScreen:
         return MaterialPageRoute(
-          settings: RouteSettings(name: editProfileScreen),
-          builder: (_) => const EditProfileScreen(),
+          builder: (_) => SelectGopherScreen(),
+          settings: RouteSettings(name: selectGopherScreen),
         );
-      case changePasswordScreen:
+        case changePasswordScreen:
         return MaterialPageRoute(
-          settings: RouteSettings(name: changePasswordScreen),
-          builder: (_) => const ChangePasswordScreen(),
+          builder: (_) => RiderFormScreen(),
+          settings: RouteSettings(name: riderFormScreen),
         );
       case allGopherScreen:
         return MaterialPageRoute(

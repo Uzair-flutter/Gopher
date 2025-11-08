@@ -66,7 +66,7 @@ class RegisterYourDetailsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.h),
-              PhoneWidget(controller: TextEditingController()),
+              PhoneWidget(controller: TextEditingController(), filled: true),
               SizedBox(height: 20.h),
               SizedBox(
                 width: double.infinity,
@@ -74,7 +74,7 @@ class RegisterYourDetailsScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, successfullyCreatedScreen);
                   },
-                  child: Text("Countinue"),
+                  child: Text("Continue"),
                 ),
               ),
             ],

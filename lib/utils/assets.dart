@@ -7,6 +7,10 @@ class PngAssets {
   static const String launch2 = '${_assets}launch_2.png';
   static const String launch3 = '${_assets}launch_3.png';
   static const String flower = '${_assets}flower.png';
+  static const String professional = '${_assets}professional.png';
+  static const String gopher = '${_assets}gopher.png';
+  static const String rider = '${_assets}rider.png';
+  static const String delivery = '${_assets}delivery.png';
 }
 
 class DummyAssets {
@@ -36,6 +40,9 @@ class SvgAssets {
   static const String star = '${_assets}star.svg';
   static const String info = '${_assets}info.svg';
   static const String lock = '${_assets}lock.svg';
+  static const String privacyPolicy = '${_assets}privacy_policy.svg';
+  static const String termsAndConditions = '${_assets}termsAndCondition.svg';
+  static const String faqs = '${_assets}faqs.svg';
   static const String appliance = '${_assets}Appliance.svg';
   static const String filter = '${_assets}filter.svg';
   static const String message_1 = '${_assets}message_1.svg';
