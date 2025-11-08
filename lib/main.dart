@@ -13,7 +13,6 @@ import 'view_models/theme_view_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   // Initialize StorageService before creating providers
   await StorageService().init();
   await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
