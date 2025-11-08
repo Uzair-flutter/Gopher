@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/screens/your_address_screen.dart';
 
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
@@ -468,7 +469,10 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
           GestureDetector(
             onTap: () {
               // Handle continue
-              debugPrint('Continue button pressed');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => YourAddressScreen()),
+              );
             },
             child: Container(
               width: 210.w,
