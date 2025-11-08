@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
-import 'package:gopher/screens/change_password_screen.dart';
-import 'package:gopher/screens/contact_us.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
-import 'package:gopher/screens/edit_profile_screen.dart';
-import 'package:gopher/screens/faqs_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
-import 'package:gopher/screens/job_detail_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
-import 'package:gopher/screens/privacy_policy_screen.dart';
-import 'package:gopher/screens/register_your_details_screen.dart'
-    show RegisterYourDetailsScreen;
+import 'package:gopher/screens/register_your_details_screen.dart' show RegisterYourDetailsScreen;
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
-import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
-
 import 'screens/bottom_nav_page.dart';
-import 'screens/create_new_account_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/lanuch_screen.dart';
-import 'screens/login_screen.dart';
-import 'screens/splash_screen.dart';
+
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -43,6 +30,9 @@ const String contactUsScreen = '/contact_us_screen';
 const String faqsScreen = '/faqs_screen';
 const String termsAndConditionsScreen = '/terms_and_conditions_screen';
 const String privacyPolicyScreen = '/privacy_policy_screen';
+const String selectServiceScreen = '/select_service_screen';
+const String selectGopherScreen = '/select_gopher_screen';
+const String riderFormScreen = '/rider_form_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -102,41 +92,6 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: successfullyCreatedScreen),
           builder: (_) => const SuccessfullyCreatedScreen(),
-        );
-      case jobsDetailScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: jobsDetailScreen),
-          builder: (_) => const JobDetailScreen(),
-        );
-        case editProfileScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: editProfileScreen),
-          builder: (_) => const EditProfileScreen(),
-        );
-        case changePasswordScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: changePasswordScreen),
-          builder: (_) => const ChangePasswordScreen(),
-        );
-        case contactUsScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: contactUsScreen),
-          builder: (_) => const ContactUs(),
-        );
-        case faqsScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: faqsScreen),
-          builder: (_) => const FaqsScreen(),
-        );
-        case termsAndConditionsScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: termsAndConditionsScreen),
-          builder: (_) => const TermsAndConditionsScreen(),
-        );
-        case privacyPolicyScreen:
-        return MaterialPageRoute(
-          settings: RouteSettings(name: privacyPolicyScreen),
-          builder: (_) => const PrivacyPolicyScreen(),
         );
       default:
         return _errorRoute();

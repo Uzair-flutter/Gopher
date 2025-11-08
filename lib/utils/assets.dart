@@ -1,13 +1,16 @@
 // ignore_for_file: camel_case_types
 
-class PngAssets {
+abstract final class PngAssets {
   static const String _assets = 'assets/png/';
   static const String logo = '${_assets}splash_logo.png';
   static const String launch1 = '${_assets}launch_1.png';
   static const String launch2 = '${_assets}launch_2.png';
   static const String launch3 = '${_assets}launch_3.png';
-  static const String beautyNear = '${_assets}beauty_near.png';
   static const String flower = '${_assets}flower.png';
+  static const String professional = '${_assets}professional.png';
+  static const String gopher = '${_assets}gopher.png';
+  static const String rider = '${_assets}rider.png';
+  static const String delivery = '${_assets}delivery.png';
 }
 
 class DummyAssets {

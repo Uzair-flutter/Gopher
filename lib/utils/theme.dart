@@ -58,8 +58,15 @@ class AppTheme {
           ),
         ),
       ),
+      cardTheme: CardThemeData(
+        color: AppColors.textFieldFillColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 19.h),
         filled: true,
         fillColor: AppColors.textFieldFillColor,
         errorStyle: TextStyle(fontSize: 11.sp, overflow: TextOverflow.visible),
