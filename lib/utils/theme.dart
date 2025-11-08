@@ -65,6 +65,7 @@ class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
+        
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 19.h),
         filled: true,
         fillColor: AppColors.textFieldFillColor,

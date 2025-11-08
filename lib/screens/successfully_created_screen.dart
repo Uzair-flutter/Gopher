@@ -41,7 +41,7 @@ class SuccessfullyCreatedScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, bottomNavPage);
                 },
-                child: Text("Countinue"),
+                child: Text("Continue"),
               ),
             ),
           ],

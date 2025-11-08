@@ -8,10 +8,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isBackButtonVisible;
   final bool showSearchIcon;
+  final IconData? actionIcon;
 
   const CustomAppBar({
     super.key,
     required this.title,
+    this.actionIcon,
     this.isBackButtonVisible = true,
     this.showSearchIcon = false,
   });
@@ -32,21 +34,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leadingWidth: isBackButtonVisible ? 60.w : 0,
       actions: [
-        showSearchIcon
-            ? Container(
-                margin: EdgeInsets.only(right: 18.w),
-                height: 32.h,
-                width: 32.w,
-                decoration: BoxDecoration(
-                  color: AppColors.textFieldFillColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.search_sharp,
-                  color: AppColors.textBlackColor,
-                ),
-              )
-            : SizedBox(),
+        if (showSearchIcon)
+          Container(
+            margin: EdgeInsets.only(right: 18.w),
+            height: 32.h,
+            width: 32.w,
+            decoration: BoxDecoration(
+              color: AppColors.textFieldFillColor,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              actionIcon ?? Icons.search_sharp,
+              color: AppColors.textBlackColor,
+            ),
+          ),
       ],
       leading: isBackButtonVisible
           ? Padding(
@@ -55,6 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: SizedBox(
                   width: 72.w,
                   child: Card(
+                    elevation: 0,
                     color: AppColors.appbarBackColor,
                     shape: CircleBorder(),
                     clipBehavior: Clip.antiAlias,

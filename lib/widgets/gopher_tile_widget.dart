@@ -202,9 +202,7 @@ class GopherTile extends StatelessWidget {
                 // ),
               ],
             ),
-
             SizedBox(height: 16.h),
-
             // Price and Availability
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -217,6 +215,7 @@ class GopherTile extends StatelessWidget {
                         text: '\$${gopher.pricePerHour.toStringAsFixed(0)}',
                         style: TextStyle(
                           fontSize: 20.sp,
+                          height: 0,
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
                         ),
@@ -225,6 +224,7 @@ class GopherTile extends StatelessWidget {
                         text: '/hour',
                         style: TextStyle(
                           fontSize: 13.sp,
+                          height: 0,
                           color: AppColors.iconColor,
                         ),
                       ),
@@ -269,6 +269,50 @@ class GopherTile extends StatelessWidget {
 
 // Create a list of gophers
 final List<GopherModel> gophers = [
+  GopherModel(
+    name: 'Christopher Smith',
+    imageUrl: DummyAssets.person,
+    profession: 'Electrician',
+    rating: 4.9,
+    services: ['Electric', 'Plumbing', 'Cleaning'],
+    additionalServicesCount: 3,
+    pricePerHour: 25,
+    isAvailable: true,
+    isVerified: true,
+  ),
+  GopherModel(
+    name: 'Christopher Smith',
+    imageUrl: DummyAssets.person,
+    profession: 'Electrician',
+    rating: 4.9,
+    services: ['Electric', 'Plumbing', 'Cleaning'],
+    additionalServicesCount: 3,
+    pricePerHour: 25,
+    isAvailable: true,
+    isVerified: true,
+  ),
+  GopherModel(
+    name: 'Christopher Smith',
+    imageUrl: DummyAssets.person,
+    profession: 'Electrician',
+    rating: 4.9,
+    services: ['Electric', 'Plumbing', 'Cleaning'],
+    additionalServicesCount: 3,
+    pricePerHour: 25,
+    isAvailable: true,
+    isVerified: true,
+  ),
+  GopherModel(
+    name: 'Christopher Smith',
+    imageUrl: DummyAssets.person,
+    profession: 'Electrician',
+    rating: 4.9,
+    services: ['Electric', 'Plumbing', 'Cleaning'],
+    additionalServicesCount: 3,
+    pricePerHour: 25,
+    isAvailable: true,
+    isVerified: true,
+  ),
   GopherModel(
     name: 'Christopher Smith',
     imageUrl: DummyAssets.person,

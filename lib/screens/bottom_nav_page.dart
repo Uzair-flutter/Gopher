@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/jobs_screen.dart';
+import 'package:gopher/screens/service_screen.dart';
+import 'package:gopher/screens/setting_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../route_generator.dart';
@@ -15,8 +17,9 @@ class BottomNavPage extends StatelessWidget {
   static const List<Widget> _children = [
     HomeScreen(),
     JobsScreen(),
-    Scaffold(body: Center(child: Text('Services'))),
-    Scaffold(body: Center(child: Text('Profile'))),
+    ServiceScreen(),
+    JobsScreen(),
+    SettingScreen(),
   ];
 
   @override

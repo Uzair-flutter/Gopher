@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'screens/add_your_email_screen.dart';
+import 'screens/all_gopher_screen.dart';
 import 'screens/bottom_nav_page.dart';
+import 'screens/change_password_screen.dart';
 import 'screens/create_new_account_screen.dart';
 import 'screens/create_password_screen.dart';
 import 'screens/delivery_form_screen.dart';
@@ -26,6 +28,14 @@ const String verifyYourEmailScreen = '/verify_your_email_screen';
 const String createPasswordScreen = '/create_password_screen';
 const String registerYourDetailsScreen = '/register_your_details_screen';
 const String successfullyCreatedScreen = '/successfully_created_screen';
+const String jobsDetailScreen = '/jobs_detail_screen';
+const String editProfileScreen = '/edit_profile_screen';
+const String changePasswordScreen = '/change_password_screen';
+const String allGopherScreen = '/all_gopher_screen';
+const String contactUsScreen = '/contact_us_screen';
+const String faqsScreen = '/faqs_screen';
+const String termsAndConditionsScreen = '/terms_and_conditions_screen';
+const String privacyPolicyScreen = '/privacy_policy_screen';
 const String selectServiceScreen = '/select_service_screen';
 const String selectGopherScreen = '/select_gopher_screen';
 const String deliveryFormScreen = '/delivery_form_screen';
@@ -94,7 +104,7 @@ class RouteGenerator {
           builder: (_) => SelectServiceScreen(),
           settings: RouteSettings(name: selectServiceScreen),
         );
-      case selectGopherScreen:
+      case editProfileScreen:
         return MaterialPageRoute(
           builder: (_) => SelectGopherScreen(),
           settings: RouteSettings(name: selectGopherScreen),
@@ -103,6 +113,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => DeliveryFormScreen(),
           settings: RouteSettings(name: deliveryFormScreen),
+        );
+      case changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => ChangePasswordScreen(),
+          settings: RouteSettings(name: changePasswordScreen),
+        );
+      case allGopherScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allGopherScreen),
+          builder: (_) => const AllGopherScreen(),
         );
       default:
         return _errorRoute();

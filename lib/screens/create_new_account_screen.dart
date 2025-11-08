@@ -97,7 +97,9 @@ class CreateNewAccountScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 8.w),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, addYourEmailScreen);
+                  },
                   child: Text(
                     "Log in",
                     style: TextStyle(

@@ -19,6 +19,8 @@ class DummyAssets {
   static const String map = '${_assets}map.png';
   static const String person = '${_assets}person.png';
   static const String job = '${_assets}job.png';
+  static const String servicePerson = '${_assets}service_person.png';
+  static const String serviceDetail = '${_assets}service_detail.png';
 }
 
 class SvgAssets {
@@ -37,6 +39,11 @@ class SvgAssets {
   static const String profileFilled = '${_assets}profile_filled.svg';
   static const String message = '${_assets}message.svg';
   static const String star = '${_assets}star.svg';
+  static const String info = '${_assets}info.svg';
+  static const String lock = '${_assets}lock.svg';
+  static const String privacyPolicy = '${_assets}privacy_policy.svg';
+  static const String termsAndConditions = '${_assets}termsAndCondition.svg';
+  static const String faqs = '${_assets}faqs.svg';
 }
 
 class LottieAssets {

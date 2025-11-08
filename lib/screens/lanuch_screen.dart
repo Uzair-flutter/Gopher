@@ -24,19 +24,19 @@ class _LaunchScreenState extends State<LaunchScreen> {
       description:
           'Find trusted workers for any task painting, delivery, and more.',
       buttonText: 'Next',
-      showSkip: true,
+     
     ),
     OnboardingPage(
       title: 'Find the Right Worker',
       description: 'View profiles, ratings, and select the best fit.',
       buttonText: 'Next',
-      showSkip: true,
+      
     ),
     OnboardingPage(
       title: 'Book & Track',
       description: 'Set your time and track progress easily.',
       buttonText: 'Get Started',
-      showSkip: false,
+    
     ),
   ];
 
@@ -59,23 +59,12 @@ class _LaunchScreenState extends State<LaunchScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      _navigateToCreateNewAccount();
+        Navigator.pushReplacementNamed(context, createNewAccountScreen);
     }
   }
 
-  void _skipToEnd() {
-    // _pageController.animateToPage(
-    //   _pages.length - 1,
-    //   duration: const Duration(milliseconds: 300),
-    //   curve: Curves.easeInOut,
-    // );
-    _navigateToCreateNewAccount();
-  }
-
-  void _navigateToCreateNewAccount() {
-    Navigator.pushReplacementNamed(context, createNewAccountScreen);
-  }
-
+ 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +75,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
+          if(_currentPage< 2)
           Padding(
             padding: EdgeInsets.only(top: 24.h, right: 24.0.w),
             child: GestureDetector(
@@ -97,7 +87,9 @@ class _LaunchScreenState extends State<LaunchScreen> {
                   (route) => false,
                 );
               },
-              child: _buildSkipButton(),
+              child:
+              
+               _buildSkipButton(),
             ),
           ),
         ],
@@ -257,12 +249,13 @@ class OnboardingPage {
   final String title;
   final String description;
   final String buttonText;
-  final bool showSkip;
+  
 
   OnboardingPage({
     required this.title,
     required this.description,
     required this.buttonText,
-    required this.showSkip,
+    
   });
 }
+

@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/utils/color_constant.dart';
 
 class PhoneWidget extends StatelessWidget {
   final TextEditingController controller;
@@ -29,7 +30,6 @@ class PhoneWidget extends StatelessWidget {
       children: [
         TextFormField(
           controller: controller,
-
           // focusNode: _focusNode,
           onChanged: onChanged,
           autofocus: false,
@@ -46,8 +46,8 @@ class PhoneWidget extends StatelessWidget {
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
             filled: filled,
-            fillColor: const Color(0xffEBEBEB),
-            hintText: '3333 3333',
+            fillColor: AppColors.textFieldFillColor,
+            hintText: '921 - 2341 -99908',
             // hintStyle:
             //     Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
             //           // color: Colors.amber
