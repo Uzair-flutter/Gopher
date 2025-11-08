@@ -19,6 +19,8 @@ class DummyAssets {
   static const String map = '${_assets}map.png';
   static const String person = '${_assets}person.png';
   static const String job = '${_assets}job.png';
+  static const String servicePerson = '${_assets}service_person.png';
+  static const String serviceDetail = '${_assets}service_detail.png';
 }
 
 class SvgAssets {
