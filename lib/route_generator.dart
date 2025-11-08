@@ -104,6 +104,11 @@ class RouteGenerator {
           builder: (_) => SelectServiceScreen(),
           settings: RouteSettings(name: selectServiceScreen),
         );
+      case selectGopherScreen:
+        return MaterialPageRoute(
+          builder: (_) => SelectGopherScreen(),
+          settings: RouteSettings(name: selectGopherScreen),
+        );
       case editProfileScreen:
         return MaterialPageRoute(
           builder: (_) => SelectGopherScreen(),
