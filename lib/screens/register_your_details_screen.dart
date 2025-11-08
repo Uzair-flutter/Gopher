@@ -74,7 +74,7 @@ class RegisterYourDetailsScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, successfullyCreatedScreen);
                   },
-                  child: Text("Countinue"),
+                  child: Text("Continue"),
                 ),
               ),
             ],
