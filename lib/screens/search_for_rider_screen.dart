@@ -28,7 +28,12 @@ class SearchForRider extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned.fill(child: Image.asset(DummyAssets.searchForRideMap)),
+            Positioned.fill(
+              child: Image.asset(
+                DummyAssets.searchForRideMap,
+                width: double.infinity,
+              ),
+            ),
             Image.asset(
               DummyAssets.blueCircle,
               height: 252.h,
