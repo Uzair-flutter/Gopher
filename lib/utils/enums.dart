@@ -17,3 +17,5 @@ enum GopherType {
 
   const GopherType(this.asset);
 }
+
+enum DeliveryCategory { food, clothes, documents, electronics, pharmacy }

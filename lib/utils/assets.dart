@@ -11,6 +11,9 @@ class PngAssets {
   static const String gopher = '${_assets}gopher.png';
   static const String rider = '${_assets}rider.png';
   static const String delivery = '${_assets}delivery.png';
+  static const String upto5Kg = '${_assets}upto_5_kg.png';
+  static const String upto10Kg = '${_assets}upto_10_kg.png';
+  static const String upto15Kg = '${_assets}upto_15_kg.png';
 }
 
 class DummyAssets {

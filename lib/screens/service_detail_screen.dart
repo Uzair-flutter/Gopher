@@ -782,7 +782,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
             Icon(
               Icons.mail_outline_rounded,
               size: 18.sp,
-              color: AppColors.textGreyColor.withOpacity(0.6),
+              color: AppColors.textGreyColor.withValues(alpha: 0.6),
             ),
             SizedBox(width: 3.w),
             Text(
@@ -855,7 +855,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(5.r),
             ),
             child: Text(
@@ -994,7 +994,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.kPrimaryColor.withOpacity(0.16),
+                    color: AppColors.kPrimaryColor.withValues(alpha: 0.16),
                     blurRadius: 12,
                     offset: Offset(0, 12),
                     spreadRadius: -8,
