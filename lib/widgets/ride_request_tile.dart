@@ -133,7 +133,7 @@ class RideRequestTile extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.kSecondaryColor,
+                          color: AppColors.textBlackColor,
                         ),
                       ),
                     ),
