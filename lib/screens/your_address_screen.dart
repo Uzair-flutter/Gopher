@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:provider/provider.dart';
 
+import '../route_generator.dart';
 import '../utils/color_constant.dart';
 import '../view_models/address_view provider.dart';
 import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
-import 'booking_review_screen.dart';
 import 'confirm_address_screen.dart';
 
 class YourAddressScreen extends StatelessWidget {
@@ -109,10 +109,7 @@ class YourAddressScreen extends StatelessWidget {
       bottomNavigationBar: BottomShadowBar(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => BookingReviewScreen()),
-            );
+            Navigator.pushNamed(context, bookingReviewScreen);
           },
           child: Text('Continue'),
         ),
@@ -276,7 +273,7 @@ class YourAddressScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             boxShadow: [
               BoxShadow(
-                color: AppColors.kPrimaryColor.withOpacity(0.16),
+                color: AppColors.kPrimaryColor.withValues(alpha: 0.16),
                 blurRadius: 12,
                 offset: Offset(0, 12),
                 spreadRadius: -8,
