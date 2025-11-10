@@ -2,7 +2,10 @@
 //
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/screens/chat_list_screen.dart';
+import 'package:gopher/screens/delivery_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
+import 'package:gopher/screens/notification_screen.dart';
 import 'package:gopher/utils/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +26,7 @@ class AppInit extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
       // initialRoute: '/',
       // onGenerateRoute: RouteGenerator.generateRoute,
-     // home: HomeScreen(),
+      home: DeliveryScreen(),
       themeMode: themeMode,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.lightTheme,

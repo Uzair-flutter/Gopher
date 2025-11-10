@@ -3,20 +3,30 @@ import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/all_gopher_screen.dart';
 import 'package:gopher/screens/all_reviews_screen.dart';
 import 'package:gopher/screens/change_password_screen.dart';
+import 'package:gopher/screens/chat_list_screen.dart';
+import 'package:gopher/screens/chat_screen.dart';
+import 'package:gopher/screens/contact_us.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
+import 'package:gopher/screens/delivery_screen.dart';
+import 'package:gopher/screens/edit_profile_screen.dart';
+import 'package:gopher/screens/faqs_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
 import 'package:gopher/screens/job_detail_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
+import 'package:gopher/screens/notification_screen.dart';
+import 'package:gopher/screens/privacy_policy_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
+import 'package:gopher/screens/search_for_rider_screen.dart';
 
 import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
+import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
 
@@ -48,6 +58,11 @@ const String selectGopherScreen = '/select_gopher_screen';
 const String deliveryFormScreen = '/delivery_form_screen';
 const String allReviewsScreen = '/all_reviews_screen';
 const String serviceBookingScreen = '/service_booking_screen';
+const String chatListScreenRoute = '/chat_list_screen';
+const String chatScreen = '/chat_screen';
+const String notificationScreen = '/notification_screen';
+const String deliveryScreen = '/delivery_screen';
+const String searchForRider = '/search_for_rider';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -120,8 +135,8 @@ class RouteGenerator {
         );
       case editProfileScreen:
         return MaterialPageRoute(
-          builder: (_) => SelectGopherScreen(),
-          settings: RouteSettings(name: selectGopherScreen),
+          builder: (_) => EditProfileScreen(),
+          settings: RouteSettings(name: editProfileScreen),
         );
       case deliveryFormScreen:
         return MaterialPageRoute(
@@ -138,11 +153,7 @@ class RouteGenerator {
           builder: (_) => JobDetailScreen(),
           settings: RouteSettings(name: jobsDetailScreen),
         );
-      case jobsDetailScreen:
-        return MaterialPageRoute(
-          builder: (_) => JobDetailScreen(),
-          settings: RouteSettings(name: jobsDetailScreen),
-        );
+
       case allGopherScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
@@ -157,6 +168,51 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: serviceBookingScreen),
           builder: (_) => const ServiceBookingScreen(),
+        );
+      case contactUsScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: contactUsScreen),
+          builder: (_) => ContactUs(),
+        );
+      case faqsScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: faqsScreen),
+          builder: (_) => const FaqsScreen(),
+        );
+      case termsAndConditionsScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: termsAndConditionsScreen),
+          builder: (_) => const TermsAndConditionsScreen(),
+        );
+      case privacyPolicyScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: privacyPolicyScreen),
+          builder: (_) => const PrivacyPolicyScreen(),
+        );
+      case chatListScreenRoute:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: chatListScreenRoute),
+          builder: (_) => const ChatListScreen(),
+        );
+      case chatScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: chatScreen),
+          builder: (_) => const ChatScreen(),
+        );
+      case notificationScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: notificationScreen),
+          builder: (_) => const NotificationScreen(),
+        );
+      case deliveryScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: deliveryScreen),
+          builder: (_) =>DeliveryScreen(),
+        );
+      case searchForRider:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: searchForRider),
+          builder: (_) => const SearchForRider(),
         );
       default:
         return _errorRoute();
