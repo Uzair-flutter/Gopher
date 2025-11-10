@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import '../utils/color_constant.dart';
 import '../utils/enums.dart';
 import '../view_models/service_view_model.dart';
-import '../widgets/bottom_shadow_bar.dart';
 
 class SelectGopherScreen extends StatelessWidget {
   const SelectGopherScreen({super.key});
@@ -18,23 +17,11 @@ class SelectGopherScreen extends StatelessWidget {
     final ServiceViewModel viewModel = context.watch();
     return Scaffold(
       appBar: CustomAppBar(title: 'Select Gopher'),
-      body: _buildBody(viewModel),
-      bottomNavigationBar: BottomShadowBar(
-        child: ElevatedButton(
-          onPressed: viewModel.selectedGopherType == null
-              ? null
-              : () {
-                  if (viewModel.selectedGopherType == GopherType.rider) {
-                    Navigator.pushNamed(context, riderFormScreen);
-                  }
-                },
-          child: Text('Continue'),
-        ),
-      ),
+      body: _buildBody(context, viewModel),
     );
   }
 
-  Widget _buildBody(ServiceViewModel viewModel) {
+  Widget _buildBody(BuildContext context, ServiceViewModel viewModel) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -42,7 +29,7 @@ class SelectGopherScreen extends StatelessWidget {
         children: [
           _buildTitle(),
           for (final type in GopherType.values)
-            _buildServiceCard(type, viewModel),
+            _buildServiceCard(context, type, viewModel),
         ],
       ),
     );
@@ -74,10 +61,19 @@ class SelectGopherScreen extends StatelessWidget {
     );
   }
 
-  InkWell _buildServiceCard(GopherType type, ServiceViewModel viewModel) {
+  InkWell _buildServiceCard(
+    BuildContext context,
+    GopherType type,
+    ServiceViewModel viewModel,
+  ) {
     final bool isSelected = viewModel.selectedGopherType == type;
     return InkWell(
-      onTap: () => viewModel.setGopherType(type),
+      onTap: () {
+        viewModel.setGopherType(type);
+        if (type == GopherType.delivery) {
+          Navigator.pushNamed(context, deliveryFormScreen);
+        }
+      },
       borderRadius: BorderRadius.circular(10.r),
       child: Ink(
         height: 156.h,

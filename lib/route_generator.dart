@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gopher/screens/add_your_email_screen.dart';
 import 'package:gopher/screens/all_gopher_screen.dart';
+import 'package:gopher/screens/all_reviews_screen.dart';
 import 'package:gopher/screens/change_password_screen.dart';
 import 'package:gopher/screens/create_new_account_screen.dart';
 import 'package:gopher/screens/create_password_screen.dart';
@@ -10,13 +11,27 @@ import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
-import 'package:gopher/screens/rider_form_screen.dart';
+
 import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
+import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
+import 'screens/change_password_screen.dart';
+import 'screens/create_new_account_screen.dart';
+import 'screens/create_password_screen.dart';
+import 'screens/delivery_form_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/lanuch_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/register_your_details_screen.dart';
+import 'screens/select_gopher_screen.dart';
+import 'screens/select_service_screen.dart';
+import 'screens/splash_screen.dart';
+import 'screens/successfully_created_screen.dart';
+import 'screens/verify_your_email_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -39,7 +54,9 @@ const String termsAndConditionsScreen = '/terms_and_conditions_screen';
 const String privacyPolicyScreen = '/privacy_policy_screen';
 const String selectServiceScreen = '/select_service_screen';
 const String selectGopherScreen = '/select_gopher_screen';
-const String riderFormScreen = '/rider_form_screen';
+const String deliveryFormScreen = '/delivery_form_screen';
+const String allReviewsScreen = '/all_reviews_screen';
+const String serviceBookingScreen = '/service_booking_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -105,20 +122,51 @@ class RouteGenerator {
           builder: (_) => SelectServiceScreen(),
           settings: RouteSettings(name: selectServiceScreen),
         );
-        case editProfileScreen:
+      case selectGopherScreen:
         return MaterialPageRoute(
           builder: (_) => SelectGopherScreen(),
           settings: RouteSettings(name: selectGopherScreen),
         );
-        case changePasswordScreen:
+      case editProfileScreen:
         return MaterialPageRoute(
-          builder: (_) => RiderFormScreen(),
-          settings: RouteSettings(name: riderFormScreen),
+          builder: (_) => SelectGopherScreen(),
+          settings: RouteSettings(name: selectGopherScreen),
+        );
+      case deliveryFormScreen:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryFormScreen(),
+          settings: RouteSettings(name: deliveryFormScreen),
+        );
+      case changePasswordScreen:
+      case changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => ChangePasswordScreen(),
+          settings: RouteSettings(name: changePasswordScreen),
+        );
+      case jobsDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => JobDetailScreen(),
+          settings: RouteSettings(name: jobsDetailScreen),
+        );
+      case jobsDetailScreen:
+        return MaterialPageRoute(
+          builder: (_) => JobDetailScreen(),
+          settings: RouteSettings(name: jobsDetailScreen),
         );
       case allGopherScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
           builder: (_) => const AllGopherScreen(),
+        );
+      case allReviewsScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allReviewsScreen),
+          builder: (_) => const AllReviewsScreen(),
+        );
+      case serviceBookingScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: serviceBookingScreen),
+          builder: (_) => const ServiceBookingScreen(),
         );
       default:
         return _errorRoute();

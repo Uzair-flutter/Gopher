@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../utils/assets.dart';
@@ -84,37 +85,34 @@ class CustomAppBarHome extends StatelessWidget implements PreferredSizeWidget {
       ),
       actionsPadding: EdgeInsets.zero,
       actions: [
-        InkWell(
-          onTap: () {},
-          child: Container(
-            height: 32.h,
-            width: 35.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24.r),
-              color: AppColors.appbarBackColor,
-            ),
-            child: Icon(
-              Iconsax.message,
-              color: AppColors.iconColor,
-              size: 18.sp,
-            ),
-          ),
-        ),
+        // InkWell(
+        //   onTap: () {},
+        //   child: Container(
+        //     height: 32.h,
+        //     width: 35.w,
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(24.r),
+        //       color: AppColors.appbarBackColor,
+        //     ),
+        //     child: Icon(
+        //       Iconsax.message,
+        //       color: AppColors.iconColor,
+        //       size: 18.sp,
+        //     ),
+        //   ),
+        // ),
         SizedBox(width: 10.w),
         InkWell(
           onTap: () {},
           child: Container(
             height: 32.h,
             width: 35.w,
+            padding: EdgeInsets.all(7.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
               color: AppColors.appbarBackColor,
             ),
-            child: Icon(
-              Iconsax.notification4,
-              color: AppColors.blackColor,
-              size: 18.sp,
-            ),
+            child: SvgPicture.asset(SvgAssets.bell),
           ),
         ),
         SizedBox(width: 20.w),

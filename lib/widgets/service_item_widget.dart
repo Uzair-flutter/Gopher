@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../utils/color_constant.dart';
 
 class ServiceItem {
-  final IconData icon;
+  final String icon;
   final String label;
 
   ServiceItem({required this.icon, required this.label});
@@ -26,15 +27,23 @@ class ServiceItemWidget extends StatelessWidget {
           Container(
             width: 52.w,
             height: 52.h,
+            padding: EdgeInsets.all(13.w),
             decoration: BoxDecoration(
               color: AppColors.widgetBackColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: SvgPicture.asset(
               service.icon,
               color: AppColors.kPrimaryColor,
-              size: 24.sp,
+              height: 18.w,
+              width: 18.w,
             ),
+
+            // Icon(
+            //   service.icon,
+            //   color: AppColors.kPrimaryColor,
+            //   size: 24.sp,
+            // ),
           ),
           SizedBox(height: 3.h),
           // Label

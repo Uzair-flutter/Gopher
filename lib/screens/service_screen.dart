@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gopher/screens/service_detail_screen.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
@@ -19,11 +19,11 @@ class ServiceScreen extends StatefulWidget {
 class _ServiceScreenState extends State<ServiceScreen> {
   String selectedService = 'All';
   final List<String> services = ['All', 'Appliance', 'Repairing', 'Shifting'];
-  final List<IconData?> serviceIcons = [
+  final List<String?> serviceIcons = [
     null, // No icon for 'All'
-    Icons.kitchen_outlined, // Appliance
-    Icons.build_outlined, // Repairing
-    Icons.local_shipping_outlined, // Shifting
+    SvgAssets.appliance,
+    SvgAssets.repairing,
+    SvgAssets.shifting, // Shifting
   ];
 
   final List<ServiceCard> servicesList = [
@@ -75,7 +75,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
       appBar: CustomAppBar(
         title: 'All Services',
         showSearchIcon: true,
-        actionIcon: Iconsax.filter,
+        actionIcon: SvgAssets.filter,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -117,14 +117,13 @@ class _ServiceScreenState extends State<ServiceScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                if (icon != null)
-                                  Icon(
-                                    icon,
-                                    size: 15.sp,
-                                    color: isSelected
-                                        ? AppColors.kPrimaryColor
-                                        : AppColors.textGreyColor,
-                                  ),
+                                if (icon != null) SvgPicture.asset(icon),
+                                //   icon,
+                                //   size: 15.sp,
+                                //   color: isSelected
+                                //       ? AppColors.kPrimaryColor
+                                //       : AppColors.textGreyColor,
+                                // ),
                                 if (icon != null) SizedBox(width: 4.w),
                                 Text(
                                   service,
@@ -155,7 +154,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   itemCount: servicesList.length + 1,
                   itemBuilder: (context, index) {
                     if (index == servicesList.length) {
-                      return SizedBox(height: 50.h);
+                      return SizedBox(height: 30.h);
                     }
                     return Padding(
                       padding: EdgeInsets.only(bottom: 12.h),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../utils/color_constant.dart';
@@ -8,7 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isBackButtonVisible;
   final bool showSearchIcon;
-  final IconData? actionIcon;
+  final String? actionIcon;
 
   const CustomAppBar({
     super.key,
@@ -36,6 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (showSearchIcon)
           Container(
+            padding: EdgeInsets.all(7.w),
             margin: EdgeInsets.only(right: 18.w),
             height: 32.h,
             width: 32.w,
@@ -43,10 +45,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: AppColors.textFieldFillColor,
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              actionIcon ?? Icons.search_sharp,
-              color: AppColors.textBlackColor,
-            ),
+            child: actionIcon != null
+                ? SvgPicture.asset(actionIcon!, height: 18.w, width: 18.w)
+                : Icon(Icons.search_sharp, color: AppColors.textBlackColor),
           ),
       ],
       leading: isBackButtonVisible

@@ -8,7 +8,6 @@ import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/enums.dart';
-import '../widgets/bottom_shadow_bar.dart';
 
 class SelectServiceScreen extends StatelessWidget {
   const SelectServiceScreen({super.key});
@@ -19,23 +18,11 @@ class SelectServiceScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Select Service'),
-      body: _buildBody(viewModel),
-      bottomNavigationBar: BottomShadowBar(
-        child: ElevatedButton(
-          onPressed: viewModel.selectedServiceType == null
-              ? null
-              : () {
-                  if (viewModel.selectedServiceType == ServiceType.gopher) {
-                    Navigator.pushNamed(context, selectGopherScreen);
-                  }
-                },
-          child: Text('Continue'),
-        ),
-      ),
+      body: _buildBody(context, viewModel),
     );
   }
 
-  Widget _buildBody(ServiceViewModel viewModel) {
+  Widget _buildBody(BuildContext context, ServiceViewModel viewModel) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -43,16 +30,25 @@ class SelectServiceScreen extends StatelessWidget {
         children: [
           _buildTitle(),
           for (final type in ServiceType.values)
-            _buildServiceCard(type, viewModel),
+            _buildServiceCard(context, type, viewModel),
         ],
       ),
     );
   }
 
-  InkWell _buildServiceCard(ServiceType type, ServiceViewModel viewModel) {
+  InkWell _buildServiceCard(
+    BuildContext context,
+    ServiceType type,
+    ServiceViewModel viewModel,
+  ) {
     final bool isSelected = viewModel.selectedServiceType == type;
     return InkWell(
-      onTap: () => viewModel.setServiceType(type),
+      onTap: () {
+        viewModel.setServiceType(type);
+        if (type == ServiceType.gopher) {
+          Navigator.pushNamed(context, selectGopherScreen);
+        }
+      },
       borderRadius: BorderRadius.circular(10.r),
       child: Ink(
         height: 156.h,
