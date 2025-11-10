@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
+import '../route_generator.dart';
 import '../utils/color_constant.dart';
 
 class ServiceDetailScreen extends StatefulWidget {
@@ -23,9 +26,6 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
       appBar: CustomAppBar(title: 'Home Cleaning', isBackButtonVisible: true),
       body: Column(
         children: [
-          // Custom AppBar
-          // _buildAppBar(),
-
           // Scrollable Content
           Expanded(
             child: SingleChildScrollView(
@@ -48,8 +48,10 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                         SizedBox(height: 16.h),
                         _buildTabBar(),
                         SizedBox(height: 16.h),
-                        _buildAboutSection(),
-                        SizedBox(height: 100.h), // Space for bottom bar
+
+                        // Dynamic Content Based on Selected Tab
+                        _buildTabContent(),
+                        SizedBox(height: 10.h), // Space for bottom bar
                       ],
                     ),
                   ),
@@ -65,47 +67,613 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
     );
   }
 
-  Widget _buildAppBar() {
-    return Container(
-      padding: EdgeInsets.only(
-        left: 24.w,
-        right: 24.w,
-        top: MediaQuery.of(context).padding.top + 16.h,
-        bottom: 16.h,
-      ),
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 32.w,
-              height: 32.h,
-              decoration: BoxDecoration(
-                color: Color(0xFFF6F8F9),
-                shape: BoxShape.circle,
-                border: Border.all(color: Color(0xFFEFF2F1), width: 0.76),
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_new,
-                size: 16.sp,
-                color: AppColors.textBlackColor,
-              ),
-            ),
+  // Dynamic Tab Content
+  Widget _buildTabContent() {
+    switch (selectedTabIndex) {
+      case 0:
+        return _buildOverviewTab();
+      case 1:
+        return _buildServicesTab();
+      case 2:
+        return _buildPhotosTab();
+      case 3:
+        return _buildReviewsTab();
+      default:
+        return _buildOverviewTab();
+    }
+  }
+
+  // Overview Tab Content
+  Widget _buildOverviewTab() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'About Christopher',
+          style: TextStyle(
+            height: 0,
+            color: AppColors.textBlackColor,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
           ),
+        ),
+        SizedBox(height: 16.h),
+        Text(
+          'I believe a clean home is a happy home. Led by Christopher and backed by years of experience in the cleaning industry, we specialize in providing top-notch cleaning services tailored to meet the unique needs of each client. Whether you\'re looking for routine cleaning, a deep scrub, eco-friendly solutions, or post-construction cleanup, we\'ve got you covered.',
+          style: TextStyle(
+            color: Color(0xFF757273),
+            fontSize: 13.sp,
+            fontWeight: FontWeight.w400,
+            height: 1.62,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Services Tab Content
+  // Widget _buildServicesTab() {
+  //   final services = [
+  //     {'name': 'House Cleaning', 'price': '\$25/hour', 'duration': '2-3 hours'},
+  //     {'name': 'Deep Cleaning', 'price': '\$40/hour', 'duration': '4-5 hours'},
+  //     {
+  //       'name': 'Move In/Out Cleaning',
+  //       'price': '\$50/hour',
+  //       'duration': '3-4 hours',
+  //     },
+  //     {
+  //       'name': 'Window Cleaning',
+  //       'price': '\$30/hour',
+  //       'duration': '1-2 hours',
+  //     },
+  //     {
+  //       'name': 'Window Cleaning',
+  //       'price': '\$30/hour',
+  //       'duration': '1-2 hours',
+  //     },
+  //     {
+  //       'name': 'Window Cleaning',
+  //       'price': '\$30/hour',
+  //       'duration': '1-2 hours',
+  //     },
+  //   ];
+  //
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text(
+  //         'All Services',
+  //         style: TextStyle(
+  //           height: 0,
+  //           color: AppColors.textBlackColor,
+  //           fontSize: 16.sp,
+  //           fontWeight: FontWeight.w600,
+  //         ),
+  //       ),
+  //       SizedBox(height: 16.h),
+  //       ...services.map(
+  //         (service) => GestureDetector(
+  //           onTap: () {},
+  //           child: Container(
+  //             margin: EdgeInsets.only(bottom: 12.h),
+  //             // height: 72.h,
+  //             padding: EdgeInsets.all(16.w),
+  //             decoration: BoxDecoration(
+  //               color: AppColors.textFieldFillColor,
+  //               borderRadius: BorderRadius.circular(10.r),
+  //               border: Border.all(color: Color(0xFFEEEFF3)),
+  //             ),
+  //             child: Row(
+  //               children: [
+  //                 ClipOval(
+  //                   child: Image.asset(
+  //                     DummyAssets.job,
+  //                     height: 40.w,
+  //                     width: 40.w,
+  //                   ),
+  //                 ),
+  //                 SizedBox(width: 15.w),
+  //                 Text(
+  //                   service['name']!,
+  //                   style: TextStyle(
+  //                     height: 0,
+  //                     color: AppColors.textBlackColor,
+  //                     fontSize: 14.sp,
+  //                     fontWeight: FontWeight.w400,
+  //                   ),
+  //                 ),
+  //                 Spacer(),
+  //                 RichText(
+  //                   text: TextSpan(
+  //                     children: [
+  //                       TextSpan(
+  //                         text: '\$25',
+  //                         style: TextStyle(
+  //                           height: 0,
+  //                           color: AppColors.textBlackColor,
+  //                           fontSize: 20.sp,
+  //                           fontWeight: FontWeight.w600,
+  //                         ),
+  //                       ),
+  //                       TextSpan(
+  //                         text: '/hour',
+  //                         style: TextStyle(
+  //                           height: 0,
+  //                           color: AppColors.textGreyColor,
+  //                           fontSize: 13.sp,
+  //                           fontWeight: FontWeight.w400,
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // Photos Tab Content
+  // Add this at the top of _ServiceDetailScreenState class
+  int? selectedServiceIndex;
+
+  Widget _buildServicesTab() {
+    final services = [
+      {'name': 'House Cleaning', 'price': '\$25/hour', 'duration': '2-3 hours'},
+      {'name': 'Deep Cleaning', 'price': '\$40/hour', 'duration': '4-5 hours'},
+      {
+        'name': 'Move In/Out Cleaning',
+        'price': '\$50/hour',
+        'duration': '3-4 hours',
+      },
+      {
+        'name': 'Window Cleaning',
+        'price': '\$30/hour',
+        'duration': '1-2 hours',
+      },
+      {
+        'name': 'Carpet Cleaning',
+        'price': '\$35/hour',
+        'duration': '2-3 hours',
+      },
+      {
+        'name': 'Office Cleaning',
+        'price': '\$28/hour',
+        'duration': '3-4 hours',
+      },
+    ];
+
+    return SizedBox(
+      //height: 300.h,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Text(
-            'Home Cleaner',
+            'All Services',
             style: TextStyle(
               height: 0,
-              color: Colors.white,
-              fontSize: 13.sp,
+              color: AppColors.textBlackColor,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(width: 32.w), // Placeholder for symmetry
+          SizedBox(height: 16.h),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: services.length,
+            itemBuilder: (context, index) {
+              final service = services[index];
+              final isSelected = selectedServiceIndex == index;
+
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedServiceIndex = index;
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 12.h),
+                  padding: EdgeInsets.all(16.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.textFieldFillColor,
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(
+                      color: isSelected
+                          ? AppColors.kPrimaryColor
+                          : Color(0xFFEEEFF3),
+                      width: isSelected ? 1.5 : 1,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      ClipOval(
+                        child: Image.asset(
+                          DummyAssets.job,
+                          height: 40.w,
+                          width: 40.w,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(width: 15.w),
+                      Expanded(
+                        child: Text(
+                          service['name']!,
+                          style: TextStyle(
+                            height: 0,
+                            color: AppColors.textBlackColor,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: service['price']!.split(
+                                '/',
+                              )[0], // Gets the price part
+                              style: TextStyle(
+                                height: 0,
+                                color: AppColors.textBlackColor,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                                  '/${service['price']!.split('/')[1]}', // Gets the /hour part
+                              style: TextStyle(
+                                height: 0,
+                                color: AppColors.textGreyColor,
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildPhotosTab() {
+    final List<String> photos = List.generate(
+      9,
+      (index) => DummyAssets.serviceDetail,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Photos',
+              style: TextStyle(
+                height: 0,
+                color: AppColors.textBlackColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                'View All',
+                style: TextStyle(
+                  height: 0,
+                  color: AppColors.textBlackColor,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        StaggeredGrid.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 8.h,
+          crossAxisSpacing: 8.w,
+          children: [
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: _buildPhotoTile(photos[0]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _buildPhotoTile(photos[1]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _buildPhotoTile(photos[2]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: _buildPhotoTile(photos[3]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: _buildPhotoTile(photos[4]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _buildPhotoTile(photos[5]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _buildPhotoTile(photos[6]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: _buildPhotoTile(photos[7]),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: _buildPhotoTile(photos[8]),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPhotoTile(String imagePath) {
+    return GestureDetector(
+      onTap: () {
+        debugPrint('Tapped on image');
+        // You can add full-screen image viewer here
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFEEEFF3),
+          borderRadius: BorderRadius.circular(10.r),
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildReviewsTab() {
+    final reviews = [
+      {
+        'name': 'John Doe',
+        'rating': '5.0',
+        'date': 'Oct 16, 2025',
+        'comment': 'Excellent service! Very professional and thorough.',
+      },
+      {
+        'name': 'Jane Smith',
+        'rating': '4.5',
+        'date': 'Oct 05, 2025',
+        'comment': 'Great job! My house looks amazing.',
+      },
+      {
+        'name': 'Mike Johnson',
+        'rating': '4.8',
+        'date': 'Oct 26, 2025',
+        'comment': 'Highly recommended. Will book again!',
+      },
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Reviews',
+              style: TextStyle(
+                height: 0,
+                color: AppColors.textBlackColor,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, allReviewsScreen);
+              },
+              child: Text(
+                'View All',
+                style: TextStyle(
+                  height: 0,
+                  color: AppColors.textBlackColor,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        ...reviews.map(
+          (review) => Container(
+            margin: EdgeInsets.only(bottom: 16.h),
+            padding: EdgeInsets.all(16.w),
+            decoration: BoxDecoration(
+              color: AppColors.textFieldFillColor,
+              borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Color(0xFFEEEFF3)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /// Row(
+                ///   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ///   children: [
+                Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipOval(
+                      child: Image.asset(
+                        DummyAssets.person,
+                        height: 42.w,
+                        width: 42.w,
+                      ),
+                    ),
+                    SizedBox(width: 10.w),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            // mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    review['name']!,
+                                    style: TextStyle(
+                                      height: 0,
+                                      color: AppColors.textBlackColor,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  SizedBox(width: 4.w),
+                                  Icon(
+                                    Icons.verified,
+                                    size: 17.sp,
+                                    color: AppColors.kSecondaryColor,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 4.h),
+                              Text(
+                                review['date']!,
+                                style: TextStyle(
+                                  height: 0,
+                                  color: Color(0xFF757273),
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.star,
+                                size: 16.sp,
+                                color: Color(0xFFFFC627),
+                              ),
+                              SizedBox(width: 3.w),
+                              Text(
+                                review['rating']!,
+                                style: TextStyle(
+                                  height: 0,
+                                  color: AppColors.textBlackColor,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   // mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     ClipOval(
+                //       child: Image.asset(DummyAssets.person, height: 42.w),
+                //     ),
+                //     SizedBox(width: 10.w),
+                //     Column(
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(
+                //           review['name']!,
+                //           style: TextStyle(
+                //             height: 0,
+                //             color: AppColors.textBlackColor,
+                //             fontSize: 14.sp,
+                //             fontWeight: FontWeight.w600,
+                //           ),
+                //         ),
+                //         SizedBox(height: 4.h),
+                //         Text(
+                //           review['date']!,
+                //           style: TextStyle(
+                //             height: 0,
+                //             color: Color(0xFF757273),
+                //             fontSize: 11.sp,
+                //             fontWeight: FontWeight.w400,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //     SizedBox(width: 4.w),
+                //     Icon(
+                //       Icons.verified,
+                //       size: 17.sp,
+                //       color: AppColors.kSecondaryColor,
+                //     ),
+                //     SizedBox(width: 4.w),
+                //     Spacer(),
+                //     Icon(Icons.star, size: 16.sp, color: Color(0xFFFFC627)),
+                //     SizedBox(width: 3.w),
+                //     Text(
+                //       review['rating']!,
+                //       style: TextStyle(
+                //         height: 0,
+                //         color: AppColors.textBlackColor,
+                //         fontSize: 13.sp,
+                //         fontWeight: FontWeight.w600,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                ///   ],
+                /// ),
+                SizedBox(height: 12.h),
+                Text(
+                  review['comment']!,
+                  style: TextStyle(
+                    color: AppColors.textBlackColor,
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w400,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -149,17 +717,14 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           bottom: -40.h,
           child: Container(
             width: 32.w,
-            height: 32.h,
+            height: 32.w,
+            padding: EdgeInsets.all(6.5.w),
             decoration: BoxDecoration(
               color: Color(0xFFF6F8F9),
               borderRadius: BorderRadius.circular(8.r),
               border: Border.all(color: Color(0xFFEEEFF3), width: 1),
             ),
-            child: Icon(
-              Icons.chat_bubble_outline,
-              size: 18.sp,
-              color: AppColors.textBlackColor,
-            ),
+            child: SvgPicture.asset(SvgAssets.message_1),
           ),
         ),
       ],
@@ -198,7 +763,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
               'Christopher Smith',
               style: TextStyle(
                 height: 0,
-                color: Color(0xFF1E1E1E),
+                color: AppColors.textBlackColor,
                 fontSize: 19.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -215,7 +780,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           children: [
             // Location
             Icon(
-              Icons.location_on,
+              Icons.mail_outline_rounded,
               size: 18.sp,
               color: AppColors.textGreyColor.withOpacity(0.6),
             ),
@@ -294,7 +859,6 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
               borderRadius: BorderRadius.circular(5.r),
             ),
             child: Text(
-              //widget.service.isActive ?
               'Active',
               style: TextStyle(
                 height: 0,
@@ -324,6 +888,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
             child: GestureDetector(
               onTap: () {
                 setState(() {
+                  debugPrint('Selected Tab: ${tabs[index]}');
                   selectedTabIndex = index;
                 });
               },
@@ -342,7 +907,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                     height: 0,
                     color: selectedTabIndex == index
                         ? AppColors.kPrimaryColor
-                        : Color(0xFF1E1E1E),
+                        : AppColors.textBlackColor,
                     fontSize: 12.sp,
                     fontWeight: selectedTabIndex == index
                         ? FontWeight.w500
@@ -354,33 +919,6 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildAboutSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'About Christopher',
-          style: TextStyle(
-            height: 0,
-            color: Color(0xFF1E1E1E),
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        SizedBox(height: 16.h),
-        Text(
-          'I believe a clean home is a happy home. Led by Christopher and backed by years of experience in the cleaning industry, we specialize in providing top-notch cleaning services tailored to meet the unique needs of each client. Whether you\'re looking for routine cleaning, a deep scrub, eco-friendly solutions, or post-construction cleanup, we\'ve got you covered.',
-          style: TextStyle(
-            color: Color(0xFF757273),
-            fontSize: 13.sp,
-            fontWeight: FontWeight.w400,
-            height: 1.62,
-          ),
-        ),
-      ],
     );
   }
 
@@ -423,7 +961,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                       text: '\$25',
                       style: TextStyle(
                         height: 0,
-                        color: Color(0xFF1E1E1E),
+                        color: AppColors.textBlackColor,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w600,
                       ),
@@ -432,7 +970,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                       text: '/hour',
                       style: TextStyle(
                         height: 0,
-                        color: Color(0xFF777777),
+                        color: AppColors.textGreyColor,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -446,7 +984,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           // Book Now Button
           GestureDetector(
             onTap: () {
-              // Handle book now
+              Navigator.pushNamed(context, serviceBookingScreen);
             },
             child: Container(
               width: 210.w,
