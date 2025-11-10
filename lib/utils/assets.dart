@@ -14,6 +14,7 @@ class PngAssets {
   static const String bike = '${_assets}bike.png';
   static const String car = '${_assets}car.png';
   static const String truck = '${_assets}truck.png';
+  static const String tickBadge = '${_assets}tick_badge.png';
 }
 
 class DummyAssets {

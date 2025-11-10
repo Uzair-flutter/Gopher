@@ -19,6 +19,7 @@ import 'package:gopher/screens/notification_screen.dart';
 import 'package:gopher/screens/privacy_policy_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
+import 'package:gopher/screens/ride_detail_screen.dart';
 import 'package:gopher/screens/search_for_rider_screen.dart';
 
 import 'package:gopher/screens/select_gopher_screen.dart';
@@ -63,6 +64,7 @@ const String chatScreen = '/chat_screen';
 const String notificationScreen = '/notification_screen';
 const String deliveryScreen = '/delivery_screen';
 const String searchForRider = '/search_for_rider';
+const String rideDetailScreen = '/ride_detail_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -213,6 +215,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: searchForRider),
           builder: (_) => const SearchForRider(),
+        );
+      case rideDetailScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: rideDetailScreen),
+          builder: (_) => RideDetailScreen(),
         );
       default:
         return _errorRoute();

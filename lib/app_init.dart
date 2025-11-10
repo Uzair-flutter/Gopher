@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/chat_list_screen.dart';
 import 'package:gopher/screens/delivery_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
+import 'package:gopher/screens/search_for_rider_screen.dart';
 import 'package:gopher/utils/screen_size.dart';
 import 'package:gopher/utils/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
@@ -20,10 +21,10 @@ class AppInit extends StatelessWidget {
     ScreenUtil.init(context);
     final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
     return ScreenUtilInit(
-        designSize: getDesignSize(context: context),
-        ensureScreenSize: true,
-        minTextAdapt: true,
-        splitScreenMode: true,
+      designSize: getDesignSize(context: context),
+      ensureScreenSize: true,
+      minTextAdapt: true,
+      splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -32,12 +33,12 @@ class AppInit extends StatelessWidget {
           onGenerateRoute: RouteGenerator.generateRoute,
           // initialRoute: '/',
           // onGenerateRoute: RouteGenerator.generateRoute,
-         // home: HomeScreen(),
+           home: SearchForRider(),
           themeMode: themeMode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.lightTheme,
         );
-      }
+      },
     );
   }
 }
