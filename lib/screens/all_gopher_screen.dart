@@ -18,31 +18,28 @@ class AllGopherScreen extends StatelessWidget {
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.w),
-          child: Column(
-            children: [
-              CustomSearchBar(),
-              SizedBox(height: 18.h),
-              SizedBox(
-                height: 500.h,
-                child: ListView.separated(
-                  padding: EdgeInsets.only(bottom: 10.h),
-                  itemCount: gophers.length,
-                  separatorBuilder: (context, index) => SizedBox(height: 15.h),
-                  itemBuilder: (context, index) {
-                    return GopherTile(
-                      gopher: gophers[index],
-                      onTap: () async {
-                        final filters = await FilterBottomSheet.show(context);
-                      },
-                    );
-                  },
-                ),
+      body: Padding(
+        padding: EdgeInsets.all(20.w),
+        child: Column(
+          children: [
+            CustomSearchBar(),
+            SizedBox(height: 18.h),
+            Expanded(
+              child: ListView.separated(
+                padding: EdgeInsets.only(bottom: 10.h),
+                itemCount: gophers.length,
+                separatorBuilder: (context, index) => SizedBox(height: 15.h),
+                itemBuilder: (context, index) {
+                  return GopherTile(
+                    gopher: gophers[index],
+                    onTap: () async {
+                      final filters = await FilterBottomSheet.show(context);
+                    },
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

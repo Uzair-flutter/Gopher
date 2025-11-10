@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gopher/utils/assets.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/color_constant.dart';
 import '../view_models/address_view provider.dart';
+import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
+import 'booking_review_screen.dart';
 import 'confirm_address_screen.dart';
 
 class YourAddressScreen extends StatelessWidget {
@@ -21,7 +25,7 @@ class YourAddressScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Current Password',
+              'Current Address',
               style: TextStyle(
                 height: 0,
                 color: AppColors.textBlackColor,
@@ -102,51 +106,15 @@ class YourAddressScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(24.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x3F000000),
-              blurRadius: 74,
-              offset: Offset(20, 0),
-            ),
-          ],
-        ),
-        child: GestureDetector(
-          onTap: () {
-            // Handle continue
-            debugPrint('Continue');
+      bottomNavigationBar: BottomShadowBar(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BookingReviewScreen()),
+            );
           },
-          child: Container(
-            width: double.infinity,
-            height: 50.h,
-            decoration: BoxDecoration(
-              color: AppColors.kPrimaryColor,
-              borderRadius: BorderRadius.circular(10.r),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.kPrimaryColor.withOpacity(0.16),
-                  blurRadius: 12,
-                  offset: Offset(0, 12),
-                  spreadRadius: -8,
-                ),
-              ],
-            ),
-            child: Center(
-              child: Text(
-                'Continue',
-                style: TextStyle(
-                  height: 0,
-                  color: Colors.white,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
+          child: Text('Continue'),
         ),
       ),
     );
@@ -162,6 +130,7 @@ class YourAddressScreen extends StatelessWidget {
         provider.selectAddress(address.id);
       },
       child: Container(
+        //  height: 105.h,
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
           color: AppColors.textFieldFillColor,
@@ -177,19 +146,21 @@ class YourAddressScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 40.w,
-              height: 40.h,
+              width: 48.w,
+              height: 48.h,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(24.r),
               ),
-              child: Icon(
-                Icons.home_outlined,
-                size: 24.sp,
-                color: AppColors.iconColor,
+              child: Padding(
+                padding: EdgeInsets.all(12.w),
+                child: SvgPicture.asset(
+                  SvgAssets.home,
+                  color: AppColors.blackColor,
+                ),
               ),
             ),
-            SizedBox(width: 12.w),
+            SizedBox(width: 10.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,23 +171,41 @@ class YourAddressScreen extends StatelessWidget {
                       height: 0,
                       color: AppColors.textBlackColor,
                       fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   SizedBox(height: 6.h),
                   Text(
                     address.fullAddress,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: TextStyle(
                       color: AppColors.textGreyColor,
                       fontSize: 12.sp,
+                      height: 0,
                       fontWeight: FontWeight.w400,
-                      height: 1.4,
                     ),
                   ),
+                  ...[
+                    SizedBox(height: 4.h),
+                    Text(
+                      address.landmark,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                        height: 0,
+                        color: AppColors.textGreyColor,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
                   if (address.floor != null) ...[
                     SizedBox(height: 4.h),
                     Text(
                       address.floor!,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                       style: TextStyle(
                         height: 0,
                         color: AppColors.textGreyColor,
@@ -255,6 +244,56 @@ class YourAddressScreen extends StatelessWidget {
                   : null,
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget bottomButton(String btnTitle) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(24.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x3F000000),
+            blurRadius: 74,
+            offset: Offset(20, 0),
+          ),
+        ],
+      ),
+      child: GestureDetector(
+        onTap: () {
+          // Handle continue
+          debugPrint('Continue');
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50.h,
+          decoration: BoxDecoration(
+            color: AppColors.kPrimaryColor,
+            borderRadius: BorderRadius.circular(10.r),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.kPrimaryColor.withOpacity(0.16),
+                blurRadius: 12,
+                offset: Offset(0, 12),
+                spreadRadius: -8,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              btnTitle,
+              style: TextStyle(
+                height: 0,
+                color: Colors.white,
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
         ),
       ),
     );

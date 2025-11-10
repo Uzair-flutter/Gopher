@@ -49,7 +49,7 @@ class AddressProvider extends ChangeNotifier {
       street: 'Elm Street',
       landmark: 'Near Central Park',
       floor: 'Floor 1',
-      isSelected: true,
+      isSelected: false,
     ),
   ];
 

@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import 'app_init.dart';
 import 'services/storage_service.dart';
-import 'utils/screen_size.dart';
 import 'view_models/bottom_nav_view_model.dart';
 import 'view_models/service_view_model.dart';
 import 'view_models/theme_view_model.dart';
@@ -19,11 +18,8 @@ Future<void> main() async {
   // Initialize StorageService before creating providers
   await StorageService().init();
   await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
-
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await ScreenUtil.ensureScreenSize();
-
-
   runApp(
     MultiProvider(
       providers: [
