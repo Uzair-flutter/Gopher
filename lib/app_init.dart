@@ -19,6 +19,7 @@ class AppInit extends StatelessWidget {
     final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
     return ScreenUtilInit(
         designSize: getDesignSize(context: context),
+        ensureScreenSize: true,
         minTextAdapt: true,
         splitScreenMode: true,
       builder: (_, child) {
