@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/home_screen.dart';
+import 'package:gopher/utils/screen_size.dart';
 import 'package:gopher/utils/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
 import 'package:provider/provider.dart';
@@ -16,17 +17,25 @@ class AppInit extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Gopher',
-      initialRoute: splashScreen,
-      onGenerateRoute: RouteGenerator.generateRoute,
-      // initialRoute: '/',
-      // onGenerateRoute: RouteGenerator.generateRoute,
-     // home: HomeScreen(),
-      themeMode: themeMode,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.lightTheme,
+    return ScreenUtilInit(
+        designSize: getDesignSize(context: context),
+        minTextAdapt: true,
+        ensureScreenSize: true,
+        splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Gopher',
+          initialRoute: splashScreen,
+          onGenerateRoute: RouteGenerator.generateRoute,
+          // initialRoute: '/',
+          // onGenerateRoute: RouteGenerator.generateRoute,
+         // home: HomeScreen(),
+          themeMode: themeMode,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.lightTheme,
+        );
+      }
     );
   }
 }
