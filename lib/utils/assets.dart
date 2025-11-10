@@ -64,6 +64,7 @@ class SvgAssets {
   static const String cleaning = '${_assets}cleaning.svg';
   static const String reviewShare = '${_assets}review_share.svg';
   static const String sendButton = '${_assets}sendButton.svg';
+  static const String messageBlue = '${_assets}message_blue.svg';
 }
 
 class LottieAssets {
