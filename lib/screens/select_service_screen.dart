@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/utils/string_utils.dart';
-import 'package:gopher/view_models/service_view_model.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
-import 'package:provider/provider.dart';
 
 import '../utils/enums.dart';
 
@@ -14,15 +12,13 @@ class SelectServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ServiceViewModel viewModel = context.watch();
-
     return Scaffold(
       appBar: CustomAppBar(title: 'Select Service'),
-      body: _buildBody(context, viewModel),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody(BuildContext context, ServiceViewModel viewModel) {
+  Widget _buildBody(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -30,21 +26,15 @@ class SelectServiceScreen extends StatelessWidget {
         children: [
           _buildTitle(),
           for (final type in ServiceType.values)
-            _buildServiceCard(context, type, viewModel),
+            _buildServiceCard(context, type),
         ],
       ),
     );
   }
 
-  InkWell _buildServiceCard(
-    BuildContext context,
-    ServiceType type,
-    ServiceViewModel viewModel,
-  ) {
-    final bool isSelected = viewModel.selectedServiceType == type;
+  InkWell _buildServiceCard(BuildContext context, ServiceType type) {
     return InkWell(
       onTap: () {
-        viewModel.setServiceType(type);
         if (type == ServiceType.gopher) {
           Navigator.pushNamed(context, selectGopherScreen);
         }
@@ -57,12 +47,6 @@ class SelectServiceScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.textFieldFillColor,
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: isSelected
-                ? AppColors.kSecondaryColor
-                : AppColors.textFieldFillColor,
-            width: 2.r,
-          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

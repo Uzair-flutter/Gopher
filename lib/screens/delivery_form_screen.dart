@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/utils/enums.dart';
@@ -19,7 +20,12 @@ class DeliveryFormScreen extends StatelessWidget {
       appBar: CustomAppBar(title: 'Delivery'),
       body: SafeArea(child: _buildBody(context)),
       bottomNavigationBar: BottomShadowBar(
-        child: ElevatedButton(onPressed: () {}, child: Text('Continue')),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, deliveryScreen);
+          },
+          child: Text('Continue'),
+        ),
       ),
     );
   }
