@@ -16,12 +16,13 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ScreenUtil.ensureScreenSize();
   // Initialize StorageService before creating providers
   await StorageService().init();
   await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await ScreenUtil.ensureScreenSize();
+
 
   runApp(
     MultiProvider(
@@ -33,13 +34,7 @@ Future<void> main() async {
       ],
       child: Builder(
         builder: (context) {
-          return ScreenUtilInit(
-            ensureScreenSize: true,
-            designSize: getDesignSize(context: context),
-            minTextAdapt: true,
-            splitScreenMode: true,
-            child: AppInit(),
-          );
+          return AppInit();
         },
       ),
     ),

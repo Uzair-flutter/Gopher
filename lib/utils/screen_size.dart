@@ -20,6 +20,6 @@ Size getDesignSize({required BuildContext context}) {
     return Size(600, 900); // Small tablets
   } else {
     log('DEFAULT: ${size.width } ${size.height }');
-    return const Size(1080, 2060);
+    return const Size(390, 844);
   }
 }
