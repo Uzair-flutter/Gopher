@@ -20,7 +20,6 @@ class AppInit extends StatelessWidget {
     return ScreenUtilInit(
         designSize: getDesignSize(context: context),
         minTextAdapt: true,
-        ensureScreenSize: true,
         splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
