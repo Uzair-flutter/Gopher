@@ -107,25 +107,30 @@ void showCancelBookingSheet(BuildContext context) {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 19.h,
-                            horizontal: 12.w,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
-                            border: Border.all(
-                              color: AppColors.textFieldFillColor,
-                              width: 2.w,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 19.h,
+                              horizontal: 12.w,
                             ),
-                            color: Colors.transparent,
-                          ),
-                          child: Center(
-                            child: Text(
-                              "No, Go back",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              border: Border.all(
+                                color: AppColors.textFieldFillColor,
+                                width: 2.w,
+                              ),
+                              color: Colors.transparent,
+                            ),
+                            child: Center(
+                              child: Text(
+                                "No, Go back",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
@@ -133,23 +138,28 @@ void showCancelBookingSheet(BuildContext context) {
                       ),
                       SizedBox(width: 16.w),
                       Expanded(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 19.h,
-                            horizontal: 12.w,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 19.h,
+                              horizontal: 12.w,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
 
-                            color: Color(0xffD72547),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Cancel Booking",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                              color: Color(0xffD72547),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Cancel Booking",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
