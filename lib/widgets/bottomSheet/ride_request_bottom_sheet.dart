@@ -55,44 +55,44 @@ void showRidesRequestSheet(BuildContext context) {
                       ),
                     ),
 
-                    SizedBox(height: 28.h),
+                    SizedBox(height: 20.h),
                     Divider(color: Colors.grey[200]!),
                     SizedBox(height: 24.h),
                     RideRequestTile(
-                      onAccept: (){
+                      onAccept: () {
                         Navigator.pushNamed(context, rideDetailScreen);
                       },
-                      onDecline: (){},
+                      onDecline: () {},
                       riderName: "Christopher Smith",
                       riderImage: DummyAssets.person,
                       rating: 4.4,
                       price: 13.99,
-                      time: "4 mins",
+                      time: "4",
                     ),
                     SizedBox(height: 20.h),
 
                     RideRequestTile(
-                       onAccept: (){
+                      onAccept: () {
                         Navigator.pushNamed(context, rideDetailScreen);
                       },
-                      onDecline: (){},
+                      onDecline: () {},
                       riderName: "Christopher Smith",
                       riderImage: DummyAssets.person,
                       rating: 4.4,
                       price: 13.99,
-                      time: "4 mins",
+                      time: "4",
                     ),
                     SizedBox(height: 20.h),
                     RideRequestTile(
-                       onAccept: (){
+                      onAccept: () {
                         Navigator.pushNamed(context, rideDetailScreen);
                       },
-                      onDecline: (){},
+                      onDecline: () {},
                       riderName: "Christopher Smith",
                       riderImage: DummyAssets.person,
                       rating: 4.4,
                       price: 13.99,
-                      time: "4 mins",
+                      time: "4",
                     ),
 
                     SizedBox(height: 30.h),
