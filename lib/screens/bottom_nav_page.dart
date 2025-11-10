@@ -18,7 +18,7 @@ class BottomNavPage extends StatelessWidget {
     HomeScreen(),
     JobsScreen(),
     ServiceScreen(),
-    JobsScreen(),
+
     SettingScreen(),
   ];
 
