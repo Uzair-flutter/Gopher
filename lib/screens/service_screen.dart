@@ -79,7 +79,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
               CustomSearchBar(),
