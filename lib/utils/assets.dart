@@ -11,6 +11,9 @@ class PngAssets {
   static const String gopher = '${_assets}gopher.png';
   static const String rider = '${_assets}rider.png';
   static const String delivery = '${_assets}delivery.png';
+  static const String upto5Kg = '${_assets}upto_5_kg.png';
+  static const String upto10Kg = '${_assets}upto_10_kg.png';
+  static const String upto15Kg = '${_assets}upto_15_kg.png';
   static const String bike = '${_assets}bike.png';
   static const String car = '${_assets}car.png';
   static const String truck = '${_assets}truck.png';
@@ -64,6 +67,7 @@ class SvgAssets {
   static const String cleaning = '${_assets}cleaning.svg';
   static const String reviewShare = '${_assets}review_share.svg';
   static const String sendButton = '${_assets}sendButton.svg';
+  static const String messageBlue = '${_assets}message_blue.svg';
   static const String stripe = '${_assets}stripe.svg';
   static const String tickMark = '${_assets}tickMark.svg';
 }

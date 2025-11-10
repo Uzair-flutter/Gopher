@@ -77,9 +77,9 @@ class _ServiceScreenState extends State<ServiceScreen> {
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
       ),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
               CustomSearchBar(),
@@ -93,69 +93,82 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     final service = services[index];
                     final icon = serviceIcons[index];
                     final isSelected = selectedService == service;
-                    return Padding(
-                      padding: EdgeInsets.only(right: 10.w),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedService = service;
-                          });
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 10.h,
-                          ),
-                          decoration: BoxDecoration(
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedService = service;
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10.w),
+                        child: Chip(
+                          avatar: icon != null ? SvgPicture.asset(icon) : null,
+                          backgroundColor: isSelected
+                              ? Color(0xFFE8F5E9)
+                              : Color(0xFFF6F8F9),
+                          label: Text(service),
+                          labelStyle: TextStyle(
+                            height: 0,
+                            fontSize: 12.sp,
                             color: isSelected
-                                ? Color(0xFFE8F5E9)
-                                : Color(0xFFF6F8F9),
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                if (icon != null) SvgPicture.asset(icon),
-                                //   icon,
-                                //   size: 15.sp,
-                                //   color: isSelected
-                                //       ? AppColors.kPrimaryColor
-                                //       : AppColors.textGreyColor,
-                                // ),
-                                if (icon != null) SizedBox(width: 4.w),
-                                Text(
-                                  service,
-                                  style: TextStyle(
-                                    height: 0,
-                                    fontSize: 12.sp,
-                                    color: isSelected
-                                        ? AppColors.kPrimaryColor
-                                        : AppColors.textGreyColor,
-                                    fontWeight: isSelected
-                                        ? FontWeight.w600
-                                        : FontWeight.normal,
-                                  ),
-                                ),
-                              ],
-                            ),
+                                ? AppColors.kPrimaryColor
+                                : AppColors.textGreyColor,
+                            fontWeight: isSelected
+                                ? FontWeight.w600
+                                : FontWeight.normal,
                           ),
                         ),
                       ),
                     );
+                    // return Padding(
+                    //   padding: EdgeInsets.only(right: 10.w),
+                    //   child: GestureDetector(
+                    //     child: Container(
+                    //       padding: EdgeInsets.symmetric(
+                    //         horizontal: 16.w,
+                    //         // vertical: 10.h,
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //         color: isSelected
+                    //             ? Color(0xFFE8F5E9)
+                    //             : Color(0xFFF6F8F9),
+                    //         borderRadius: BorderRadius.circular(20.r),
+                    //       ),
+                    //       child: Center(
+                    //         child: Row(
+                    //           mainAxisAlignment: MainAxisAlignment.center,
+                    //           crossAxisAlignment: CrossAxisAlignment.center,
+                    //           children: [
+                    //             if (icon != null) SvgPicture.asset(icon),
+                    //             if (icon != null) SizedBox(width: 4.w),
+                    //             Text(
+                    //               service,
+                    //               style: TextStyle(
+                    //                 height: 0,
+                    //                 fontSize: 12.sp,
+                    //                 color: isSelected
+                    //                     ? AppColors.kPrimaryColor
+                    //                     : AppColors.textGreyColor,
+                    //                 fontWeight: isSelected
+                    //                     ? FontWeight.w600
+                    //                     : FontWeight.normal,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // );
                   },
                 ),
               ),
               SizedBox(height: 18.h),
-              SizedBox(
-                height: 500.h,
+              Expanded(
                 child: ListView.builder(
-                  itemCount: servicesList.length + 1,
+                  padding: EdgeInsets.only(bottom: 30.h),
+                  itemCount: servicesList.length,
                   itemBuilder: (context, index) {
-                    if (index == servicesList.length) {
-                      return SizedBox(height: 30.h);
-                    }
                     return Padding(
                       padding: EdgeInsets.only(bottom: 12.h),
                       child: ServiceTileWidget(

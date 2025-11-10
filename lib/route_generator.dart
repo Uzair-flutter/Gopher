@@ -34,6 +34,7 @@ import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
 import 'screens/register_your_details_screen.dart';
+import 'screens/service_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -65,6 +66,7 @@ const String notificationScreen = '/notification_screen';
 const String deliveryScreen = '/delivery_screen';
 const String searchForRider = '/search_for_rider';
 const String rideDetailScreen = '/ride_detail_screen';
+const String allServicesScreen = '/all_services_screen';
 const String eReceiptScreen = '/e_receipt_screen';
 const String bookingReviewScreen = '/booking_review_screen';
 
@@ -232,6 +234,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: bookingReviewScreen),
           builder: (_) => const BookingReviewScreen(),
+        );
+      case allServicesScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allServicesScreen),
+          builder: (_) => ServiceScreen(),
         );
       default:
         return _errorRoute();

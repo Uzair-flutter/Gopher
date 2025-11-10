@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
+import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
 import '../route_generator.dart';
@@ -24,45 +25,36 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: 'Home Cleaning', isBackButtonVisible: true),
-      body: Column(
-        children: [
-          // Scrollable Content
-          Expanded(
-            child: SingleChildScrollView(
+      bottomNavigationBar: BottomShadowBar(child: _buildBottomBar()),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Banner Image with Profile
+            _buildBannerWithProfile(),
+
+            // Service Info Section
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Banner Image with Profile
-                  _buildBannerWithProfile(),
+                  SizedBox(height: 16.h),
+                  _buildServiceInfo(),
+                  SizedBox(height: 16.h),
+                  _buildServiceTypeCard(),
+                  SizedBox(height: 16.h),
+                  _buildTabBar(),
+                  SizedBox(height: 16.h),
 
-                  // Service Info Section
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 16.h),
-                        _buildServiceInfo(),
-                        SizedBox(height: 16.h),
-                        _buildServiceTypeCard(),
-                        SizedBox(height: 16.h),
-                        _buildTabBar(),
-                        SizedBox(height: 16.h),
-
-                        // Dynamic Content Based on Selected Tab
-                        _buildTabContent(),
-                        SizedBox(height: 10.h), // Space for bottom bar
-                      ],
-                    ),
-                  ),
+                  // Dynamic Content Based on Selected Tab
+                  _buildTabContent(),
+                  SizedBox(height: 10.h), // Space for bottom bar
                 ],
               ),
             ),
-          ),
-
-          // Bottom Book Now Bar
-          _buildBottomBar(),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -782,7 +774,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
             Icon(
               Icons.mail_outline_rounded,
               size: 18.sp,
-              color: AppColors.textGreyColor.withOpacity(0.6),
+              color: AppColors.textGreyColor.withValues(alpha: 0.6),
             ),
             SizedBox(width: 3.w),
             Text(
@@ -855,7 +847,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(5.r),
             ),
             child: Text(
@@ -923,104 +915,88 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
   }
 
   Widget _buildBottomBar() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 74,
-            offset: Offset(20, 0),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // Price Section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Price',
-                style: TextStyle(
-                  height: 0,
-                  color: Color(0xFF757273),
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
-                ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Price',
+              style: TextStyle(
+                height: 0,
+                color: Color(0xFF757273),
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
               ),
-              SizedBox(height: 8.h),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: '\$25',
-                      style: TextStyle(
-                        height: 0,
-                        color: AppColors.textBlackColor,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '/hour',
-                      style: TextStyle(
-                        height: 0,
-                        color: AppColors.textGreyColor,
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          // Book Now Button
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, serviceBookingScreen);
-            },
-            child: Container(
-              width: 210.w,
-              height: 50.h,
-              decoration: BoxDecoration(
-                color: AppColors.kPrimaryColor,
-                borderRadius: BorderRadius.circular(10.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.kPrimaryColor.withOpacity(0.16),
-                    blurRadius: 12,
-                    offset: Offset(0, 12),
-                    spreadRadius: -8,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            ),
+            SizedBox(height: 2.h),
+            RichText(
+              text: TextSpan(
                 children: [
-                  Icon(Icons.send, size: 20.sp, color: Colors.white),
-                  SizedBox(width: 10.w),
-                  Text(
-                    'Book Now',
+                  TextSpan(
+                    text: '\$25',
                     style: TextStyle(
                       height: 0,
-                      color: Colors.white,
-                      fontSize: 15.sp,
+                      color: AppColors.textBlackColor,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '/hour',
+                    style: TextStyle(
+                      height: 0,
+                      color: AppColors.textGreyColor,
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],
               ),
             ),
+          ],
+        ),
+
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, serviceBookingScreen);
+          },
+          child: Container(
+            width: 210.w,
+            height: 50.h,
+            decoration: BoxDecoration(
+              color: AppColors.kPrimaryColor,
+              borderRadius: BorderRadius.circular(10.r),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.kPrimaryColor.withValues(alpha: 0.16),
+                  blurRadius: 12,
+                  offset: Offset(0, 12),
+                  spreadRadius: -8,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.send, size: 20.sp, color: Colors.white),
+                SizedBox(width: 10.w),
+                Text(
+                  'Book Now',
+                  style: TextStyle(
+                    height: 0,
+                    color: Colors.white,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

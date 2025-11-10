@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
-import 'package:gopher/widgets/bottomSheet/cancel_booking.dart';
 import 'package:gopher/widgets/bottomSheet/ride_request_bottom_sheet.dart';
 
 class SearchForRider extends StatelessWidget {
@@ -28,7 +27,13 @@ class SearchForRider extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned.fill(child: Image.asset(DummyAssets.searchForRideMap)),
+            Positioned.fill(
+              child: Image.asset(
+                DummyAssets.searchForRideMap,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              ),
+            ),
             Image.asset(
               DummyAssets.blueCircle,
               height: 252.h,

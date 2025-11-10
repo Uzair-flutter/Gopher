@@ -67,6 +67,7 @@ class RideRequestTile extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8.h),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.amber, size: 16.sp),
@@ -132,7 +133,7 @@ class RideRequestTile extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.kSecondaryColor,
+                          color: AppColors.textBlackColor,
                         ),
                       ),
                     ),

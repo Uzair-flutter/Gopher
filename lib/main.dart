@@ -28,11 +28,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => ServiceViewModel()),
         ChangeNotifierProvider(create: (_) => AddressProvider()),
       ],
-      child: Builder(
-        builder: (context) {
-          return AppInit();
-        },
-      ),
+      child: AppInit(),
     ),
   );
 }
