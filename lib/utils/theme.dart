@@ -33,6 +33,12 @@ class AppTheme {
       ),
 
       iconTheme: const IconThemeData(color: Colors.black54),
+      chipTheme: ChipThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.r),
+        ),
+        side: BorderSide.none,
+      ),
       checkboxTheme: CheckboxThemeData(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         visualDensity: VisualDensity.compact,

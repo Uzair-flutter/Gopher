@@ -40,7 +40,7 @@ class ServiceTileWidget extends StatelessWidget {
           color: Color(0xFFEEEFF3),
         ),
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: Row(
             children: [
               Container(
@@ -52,7 +52,6 @@ class ServiceTileWidget extends StatelessWidget {
                 child: Image.asset(
                   service.imageUrl,
                   fit: BoxFit.fill,
-                  height: 71.h,
                   width: 81.w,
                 ),
               ),
@@ -68,10 +67,10 @@ class ServiceTileWidget extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 8.h),
+                  SizedBox(height: 3.h),
                   Row(
                     children: [
-                      Image.asset(DummyAssets.servicePerson),
+                      Image.asset(DummyAssets.servicePerson, height: 18.h),
                       SizedBox(width: 5.w),
                       Text(
                         service.providerName,

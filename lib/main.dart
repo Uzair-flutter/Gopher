@@ -18,10 +18,8 @@ Future<void> main() async {
   // Initialize StorageService before creating providers
   await StorageService().init();
   await GoogleFonts.pendingFonts([GoogleFonts.inter()]);
-
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await ScreenUtil.ensureScreenSize();
-
   runApp(
     MultiProvider(
       providers: [

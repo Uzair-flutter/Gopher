@@ -21,7 +21,6 @@ import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
 import 'package:gopher/screens/ride_detail_screen.dart';
 import 'package:gopher/screens/search_for_rider_screen.dart';
-
 import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/service_booking_screen.dart';
@@ -29,11 +28,11 @@ import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
+
 import 'screens/bottom_nav_page.dart';
-
 import 'screens/delivery_form_screen.dart';
-
 import 'screens/register_your_details_screen.dart';
+import 'screens/service_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -65,6 +64,7 @@ const String notificationScreen = '/notification_screen';
 const String deliveryScreen = '/delivery_screen';
 const String searchForRider = '/search_for_rider';
 const String rideDetailScreen = '/ride_detail_screen';
+const String allServicesScreen = '/all_services_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -209,7 +209,7 @@ class RouteGenerator {
       case deliveryScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: deliveryScreen),
-          builder: (_) =>DeliveryScreen(),
+          builder: (_) => DeliveryScreen(),
         );
       case searchForRider:
         return MaterialPageRoute(
@@ -220,6 +220,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: rideDetailScreen),
           builder: (_) => RideDetailScreen(),
+        );
+      case allServicesScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: allServicesScreen),
+          builder: (_) => ServiceScreen(),
         );
       default:
         return _errorRoute();

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
 import '../view_models/address_view provider.dart';
+import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
 
 class ConfirmAddressScreen extends StatefulWidget {
@@ -78,50 +79,12 @@ class _ConfirmAddressScreenState extends State<ConfirmAddressScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(24.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0x3F000000),
-              blurRadius: 74,
-              offset: Offset(20, 0),
-            ),
-          ],
-        ),
-        child: GestureDetector(
-          onTap: () {
+      bottomNavigationBar: BottomShadowBar(
+        child: ElevatedButton(
+          onPressed: () {
             _saveAddress();
           },
-          child: Container(
-            width: double.infinity,
-            height: 50.h,
-            decoration: BoxDecoration(
-              color: AppColors.kPrimaryColor,
-              borderRadius: BorderRadius.circular(10.r),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.kPrimaryColor.withOpacity(0.16),
-                  blurRadius: 12,
-                  offset: Offset(0, 12),
-                  spreadRadius: -8,
-                ),
-              ],
-            ),
-            child: Center(
-              child: Text(
-                'Save Address',
-                style: TextStyle(
-                  height: 0,
-                  color: Colors.white,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
+          child: Text('Save Address'),
         ),
       ),
     );

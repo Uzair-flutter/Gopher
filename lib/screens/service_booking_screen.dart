@@ -1,122 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/your_address_screen.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
+import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
-
-// class ServiceBookingScreen extends StatefulWidget {
-//   const ServiceBookingScreen({super.key});
-//
-//   @override
-//   State<ServiceBookingScreen> createState() => _ServiceBookingScreenState();
-// }
-//
-// class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: CustomAppBar(title: 'Home Cleaning', isBackButtonVisible: true),
-//       body: Column(
-//         children: [
-//           // Scrollable Content
-//
-//           // Bottom Book Now Bar
-//         ],
-//       ),
-//       bottomNavigationBar: _buildBottomBar(),
-//     );
-//   }
-//
-//   Widget _buildBottomBar() {
-//     return Container(
-//       width: double.infinity,
-//       padding: EdgeInsets.all(24.w),
-//       decoration: BoxDecoration(
-//         color: Colors.white,
-//         boxShadow: [
-//           BoxShadow(
-//             color: Color(0x3F000000),
-//             blurRadius: 74,
-//             offset: Offset(20, 0),
-//           ),
-//         ],
-//       ),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           // Price Section
-//           Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             mainAxisSize: MainAxisSize.min,
-//             children: [
-//               Text(
-//                 'Total Price',
-//                 style: TextStyle(
-//                   height: 0,
-//                   color: Color(0xFF757273),
-//                   fontSize: 13.sp,
-//                   fontWeight: FontWeight.w500,
-//                 ),
-//               ),
-//               SizedBox(height: 8.h),
-//               Text(
-//                 '\$75',
-//                 style: TextStyle(
-//                   height: 0,
-//                   color: AppColors.textBlackColor,
-//                   fontSize: 20.sp,
-//                   fontWeight: FontWeight.w600,
-//                 ),
-//               ),
-//             ],
-//           ),
-//
-//           // Book Now Button
-//           GestureDetector(
-//             onTap: () {
-//               // Handle book now
-//             },
-//
-//             child: Container(
-//               width: 210.w,
-//               height: 50.h,
-//               decoration: BoxDecoration(
-//                 color: AppColors.kPrimaryColor,
-//                 borderRadius: BorderRadius.circular(10.r),
-//                 boxShadow: [
-//                   BoxShadow(
-//                     color: AppColors.kPrimaryColor.withOpacity(0.16),
-//                     blurRadius: 12,
-//                     offset: Offset(0, 12),
-//                     spreadRadius: -8,
-//                   ),
-//                 ],
-//               ),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   Text(
-//                     'Continue',
-//                     style: TextStyle(
-//                       height: 0,
-//                       color: Colors.white,
-//                       fontSize: 15.sp,
-//                       fontWeight: FontWeight.w600,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-//
 
 class ServiceBookingScreen extends StatefulWidget {
   const ServiceBookingScreen({super.key});
@@ -148,11 +38,21 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
             _buildPhotoSection(),
             SizedBox(height: 20.h),
             _buildDescriptionField(),
-            SizedBox(height: 30.h), // Space for bottom bar
+            // SizedBox(height: 30.h), // Space for bottom bar
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomBar(),
+      bottomNavigationBar: BottomShadowBar(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => YourAddressScreen()),
+            );
+          },
+          child: Text('Continue'),
+        ),
+      ),
     );
   }
 
@@ -177,7 +77,19 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
               initialDate: selectedDate ?? DateTime.now(),
               firstDate: DateTime.now(),
               lastDate: DateTime.now().add(Duration(days: 365)),
+              builder: (BuildContext context, Widget? child) {
+                // Customizing the calendar theme color
+                return Theme(
+                  data: ThemeData.light().copyWith(
+                    dialogBackgroundColor: Color(
+                      0xFFEEEFF3,
+                    ), // Calendar background color
+                  ),
+                  child: child!,
+                );
+              },
             );
+
             if (picked != null) {
               setState(() {
                 selectedDate = picked;
@@ -210,7 +122,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
                   ),
                 ),
                 Icon(
-                  Icons.calendar_month,
+                  Iconsax.calendar,
                   size: 24.sp,
                   color: AppColors.textGreyColor,
                 ),
@@ -241,7 +153,20 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
             final TimeOfDay? picked = await showTimePicker(
               context: context,
               initialTime: selectedTime ?? TimeOfDay.now(),
+
+              builder: (BuildContext context, Widget? child) {
+                // Customizing the calendar theme color
+                return Theme(
+                  data: ThemeData.light().copyWith(
+                    dialogBackgroundColor: Color(
+                      0xFFEEEFF3,
+                    ), // Calendar background color
+                  ),
+                  child: child!,
+                );
+              },
             );
+
             if (picked != null) {
               setState(() {
                 selectedTime = picked;

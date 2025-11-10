@@ -37,6 +37,8 @@ class SelectServiceScreen extends StatelessWidget {
       onTap: () {
         if (type == ServiceType.gopher) {
           Navigator.pushNamed(context, selectGopherScreen);
+        } else {
+          Navigator.pushNamed(context, allServicesScreen);
         }
       },
       borderRadius: BorderRadius.circular(10.r),
