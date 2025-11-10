@@ -26,12 +26,13 @@ class LoginScreen extends StatelessWidget {
                 "Log in to access your account and explore our services",
                 style: TextStyle(
                   height: 0,
-                  fontSize: 14.sp, fontWeight: FontWeight.w400),
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               SizedBox(height: 32.h),
               Text(
                 "Email",
-
                 style: TextStyle(
                   height: 0,
                   fontSize: 14.sp,
@@ -66,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 18.h),
+              SizedBox(height: 10.h),
               TextField(
                 obscureText: true,
                 obscuringCharacter: "*",
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, bottomNavPage);
                   },
-                  child: Text("Log in",style: TextStyle(height: 0,),),
+                  child: Text("Log in",),
                 ),
               ),
               SizedBox(height: 25.h),
@@ -105,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                 type: "Continue with Facebook",
                 logo: SvgAssets.facebook,
               ),
-              SizedBox(height: 139.h.h),
+              SizedBox(height: 139.h),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,

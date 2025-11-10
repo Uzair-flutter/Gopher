@@ -14,6 +14,10 @@ class PngAssets {
   static const String upto5Kg = '${_assets}upto_5_kg.png';
   static const String upto10Kg = '${_assets}upto_10_kg.png';
   static const String upto15Kg = '${_assets}upto_15_kg.png';
+  static const String bike = '${_assets}bike.png';
+  static const String car = '${_assets}car.png';
+  static const String truck = '${_assets}truck.png';
+  static const String tickBadge = '${_assets}tick_badge.png';
 }
 
 class DummyAssets {
@@ -24,6 +28,10 @@ class DummyAssets {
   static const String job = '${_assets}job.png';
   static const String servicePerson = '${_assets}service_person.png';
   static const String serviceDetail = '${_assets}service_detail.png';
+  static const String deliveryMap = '${_assets}delivery_map.png';
+  static const String blueCircle = '${_assets}blue_circle.png';
+  static const String gopherOnMap = '${_assets}gopher_on_map.png';
+  static const String searchForRideMap = '${_assets}search_for_ride_map.png';
 }
 
 class SvgAssets {
@@ -58,6 +66,7 @@ class SvgAssets {
   static const String ac = '${_assets}ac.svg';
   static const String cleaning = '${_assets}cleaning.svg';
   static const String reviewShare = '${_assets}review_share.svg';
+  static const String sendButton = '${_assets}sendButton.svg';
 }
 
 class LottieAssets {
