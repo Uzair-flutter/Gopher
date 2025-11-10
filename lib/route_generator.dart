@@ -19,19 +19,10 @@ import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'screens/bottom_nav_page.dart';
-import 'screens/change_password_screen.dart';
-import 'screens/create_new_account_screen.dart';
-import 'screens/create_password_screen.dart';
+
 import 'screens/delivery_form_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/lanuch_screen.dart';
-import 'screens/login_screen.dart';
+
 import 'screens/register_your_details_screen.dart';
-import 'screens/select_gopher_screen.dart';
-import 'screens/select_service_screen.dart';
-import 'screens/splash_screen.dart';
-import 'screens/successfully_created_screen.dart';
-import 'screens/verify_your_email_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -137,7 +128,6 @@ class RouteGenerator {
           builder: (_) => DeliveryFormScreen(),
           settings: RouteSettings(name: deliveryFormScreen),
         );
-      case changePasswordScreen:
       case changePasswordScreen:
         return MaterialPageRoute(
           builder: (_) => ChangePasswordScreen(),
