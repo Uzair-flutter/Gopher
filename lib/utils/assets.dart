@@ -18,7 +18,7 @@ class PngAssets {
   static const String car = '${_assets}car.png';
   static const String truck = '${_assets}truck.png';
   static const String tickBadge = '${_assets}tick_badge.png';
-  
+
   static const String walletCardBackground =
       '${_assets}walletCardBackground.png';
 }
@@ -76,7 +76,8 @@ class SvgAssets {
   static const String wallet = '${_assets}wallet.svg';
   static const String debit = '${_assets}debit.svg';
   static const String credit = '${_assets}credit.svg';
- }
+  static const String creditCard = '${_assets}credit_card.svg';
+}
 
 class LottieAssets {
   // static const String _assets = 'assets/Lottie/';

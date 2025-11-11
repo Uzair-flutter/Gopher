@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottomSheet/select_payment_method_bottomsheet.dart';
 
 void showAddFundsBottomSheet(BuildContext context) {
   List<int> amount = [50, 75, 100, 125, 150];
@@ -42,21 +43,24 @@ void showAddFundsBottomSheet(BuildContext context) {
                   SizedBox(height: 18.h),
                   Divider(color: AppColors.textFieldFillColor, thickness: 2.h),
                   SizedBox(height: 22.h),
-                  Row(
-                    children: List.generate(5, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                        child: amountChip(
-                          amount,
-                          index,
-                          selectedIndex == index,
-                        ),
-                      );
-                    }),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(5, (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: amountChip(
+                            amount,
+                            index,
+                            selectedIndex == index,
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                   SizedBox(height: 20),
 
@@ -147,7 +151,10 @@ void showAddFundsBottomSheet(BuildContext context) {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                              selectPaymentMethodBottomSheet(context);
+                            },
                             child: Text("Choose Payment Method"),
                           ),
                         ),
