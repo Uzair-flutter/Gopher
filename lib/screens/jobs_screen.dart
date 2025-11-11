@@ -19,7 +19,11 @@ class _JobsScreenState extends State<JobsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Jobs", showSearchIcon: true),
+      appBar: CustomAppBar(
+        isBackButtonVisible: false,
+        title: "Jobs",
+        showSearchIcon: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.only(bottom: 30.h),

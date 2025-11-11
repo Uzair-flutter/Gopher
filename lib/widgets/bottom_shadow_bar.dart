@@ -8,7 +8,7 @@ class BottomShadowBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 98.h,
+      height: 102.h,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

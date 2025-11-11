@@ -190,7 +190,7 @@ class JobDetailScreen extends StatelessWidget {
           },
           child: Container(
             width: double.infinity,
-            // padding: EdgeInsets.symmetric(vertical: 19.h),
+            padding: EdgeInsets.symmetric(vertical: 19.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
               color: Color(0xffD72547).withValues(alpha: 0.2),
@@ -199,7 +199,8 @@ class JobDetailScreen extends StatelessWidget {
               child: Text(
                 "Cancel Booking",
                 style: TextStyle(
-                  fontSize: 15,
+                  height: 0,
+                  fontSize: 15.sp,
                   fontWeight: FontWeight.w600,
                   color: Color(0xffD72547),
                 ),

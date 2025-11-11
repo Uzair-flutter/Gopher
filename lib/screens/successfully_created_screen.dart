@@ -39,7 +39,11 @@ class SuccessfullyCreatedScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, bottomNavPage);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    bottomNavPage,
+                    (route) => false,
+                  );
                 },
                 child: Text("Continue"),
               ),

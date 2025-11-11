@@ -15,7 +15,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Settings"),
+      appBar: CustomAppBar(isBackButtonVisible: false, title: "Settings"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: SingleChildScrollView(
@@ -111,6 +111,15 @@ class SettingScreen extends StatelessWidget {
                 svgIcon: SvgAssets.termsAndConditions,
                 onTap: () {
                   Navigator.pushNamed(context, termsAndConditionsScreen);
+                },
+              ),
+              SizedBox(height: 20.h),
+              profileTitle(
+                context: context,
+                title: "Wallet",
+                svgIcon: SvgAssets.wallet,
+                onTap: () {
+                  Navigator.pushNamed(context, walletScreen);
                 },
               ),
               SizedBox(height: 20.h),

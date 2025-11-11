@@ -18,6 +18,9 @@ class PngAssets {
   static const String car = '${_assets}car.png';
   static const String truck = '${_assets}truck.png';
   static const String tickBadge = '${_assets}tick_badge.png';
+  
+  static const String walletCardBackground =
+      '${_assets}walletCardBackground.png';
 }
 
 class DummyAssets {
@@ -70,7 +73,10 @@ class SvgAssets {
   static const String messageBlue = '${_assets}message_blue.svg';
   static const String stripe = '${_assets}stripe.svg';
   static const String tickMark = '${_assets}tickMark.svg';
-}
+  static const String wallet = '${_assets}wallet.svg';
+  static const String debit = '${_assets}debit.svg';
+  static const String credit = '${_assets}credit.svg';
+ }
 
 class LottieAssets {
   // static const String _assets = 'assets/Lottie/';

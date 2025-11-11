@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
@@ -89,24 +90,28 @@ class RatingScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 14.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: List.generate(
-                  5,
-                  (index) => GestureDetector(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.w),
-                      child: Icon(
-                        index < 2 ? Iconsax.star_15 : Iconsax.star4,
-                        color: index < 2
-                            ? Colors.amber
-                            : AppColors.textBlackColor,
-                        size: 32.sp,
-                      ),
-                    ),
+              RatingBar(
+                glow: false,
+                initialRating: 0,
+                minRating: 0,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 4.w),
+                ratingWidget: RatingWidget(
+                  full: const Icon(Icons.star_rounded, color: Colors.amber),
+                  half: const Icon(
+                    Icons.star_half_rounded,
+                    color: Colors.amber,
+                  ),
+                  empty: const Icon(
+                    Icons.star_outline_rounded,
+                    color: AppColors.textBlackColor,
                   ),
                 ),
+                onRatingUpdate: (double value) {},
               ),
+
               SizedBox(height: 30.h),
               Text(
                 "Leave your thought",
@@ -139,10 +144,10 @@ class RatingScreen extends StatelessWidget {
               child: InkWell(
                 onTap: () {},
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 15.w),
+                  padding: EdgeInsets.symmetric(vertical: 15.h),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: AppColors.kPrimaryColor,
+                      color: AppColors.textFieldFillColor,
                       width: 2.w,
                     ),
                     borderRadius: BorderRadius.circular(10.r),

@@ -44,6 +44,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       maxChildSize: 0.8,
       builder: (context, scrollController) {
         return Container(
+          
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
