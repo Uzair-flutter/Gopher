@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gopher/utils/assets.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
@@ -30,10 +32,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   String selectedRating = 'All';
 
   final List<Map<String, dynamic>> services = [
-    {'icon': Icons.grid_view, 'label': 'All'},
-    {'icon': Icons.format_paint, 'label': 'Painting'},
-    {'icon': Icons.local_shipping, 'label': 'Shifting'},
-    {'icon': Icons.cleaning_services, 'label': 'Cleaning'},
+    {'icon': SvgAssets.all, 'label': 'All'},
+    {'icon': SvgAssets.appliance, 'label': 'Appliance'},
+    {'icon': SvgAssets.shifting, 'label': 'Shifting'},
+    {'icon': SvgAssets.cleaning, 'label': 'Cleaning'},
   ];
 
   final List<String> ratings = ['All', '5', '4', '3', '2', '1'];
@@ -165,18 +167,19 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                                 Container(
                                   width: 52.w,
                                   height: 52.h,
+                                  padding: EdgeInsets.all(14.w),
                                   decoration: BoxDecoration(
                                     color: isSelected
                                         ? AppColors.kPrimaryColor
                                         : Color(0xFFF6F8F9),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
+                                  child: SvgPicture.asset(
                                     service['icon'],
                                     color: isSelected
                                         ? Colors.white
                                         : AppColors.kPrimaryColor,
-                                    size: 24.sp,
+                                    //  height: 24.sp,
                                   ),
                                 ),
                                 SizedBox(height: 6.h),
@@ -285,7 +288,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                       _buildSectionTitle('Ratings'),
                       SizedBox(height: 10.h),
                       SizedBox(
-                        height: 30.h,
+                        height: 35.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: ratings.length,

@@ -6,6 +6,10 @@ import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/ride_tile.dart';
+import 'package:provider/provider.dart';
+
+import '../utils/enums.dart';
+import '../view_models/service_view_model.dart';
 
 class DeliveryScreen extends StatefulWidget {
   DeliveryScreen({super.key});
@@ -22,7 +26,13 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Delivery"),
+      appBar: CustomAppBar(
+        title:
+            context.read<ServiceViewModel>().selectedGopherType !=
+                GopherType.rider
+            ? 'Delivery'
+            : 'Rider',
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -92,49 +102,54 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                       label: "Dropoff Address",
                       address: "Lorem ipsum dolor sit amet, consectetur",
                     ),
-                    SizedBox(height: 20.h),
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppColors.textFieldFillColor,
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Request Delivery",
-                                style: TextStyle(
-                                  height: 0,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
+
+                    if (context.read<ServiceViewModel>().selectedGopherType !=
+                        GopherType.rider)
+                      SizedBox(height: 20.h),
+                    if (context.read<ServiceViewModel>().selectedGopherType !=
+                        GopherType.rider)
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: AppColors.textFieldFillColor,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "Request Delivery",
+                                  style: TextStyle(
+                                    height: 0,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "upto 5 kg",
-                                style: TextStyle(
-                                  height: 0,
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.kSecondaryColor,
+                                Spacer(),
+                                Text(
+                                  "upto 5 kg",
+                                  style: TextStyle(
+                                    height: 0,
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.kSecondaryColor,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 10.h),
-                          Row(
-                            children: [
-                              deliveryTypeTile(type: "Food"),
-                              SizedBox(width: 10.w),
-                              deliveryTypeTile(type: "Pharmacy"),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                            SizedBox(height: 10.h),
+                            Row(
+                              children: [
+                                deliveryTypeTile(type: "Food"),
+                                SizedBox(width: 10.w),
+                                deliveryTypeTile(type: "Pharmacy"),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                     SizedBox(height: 24.h),
                     Text(
                       "Comments for Gopher",

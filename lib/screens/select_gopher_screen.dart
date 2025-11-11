@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/string_utils.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/color_constant.dart';
 import '../utils/enums.dart';
+import '../view_models/service_view_model.dart';
 
 class SelectGopherScreen extends StatelessWidget {
   const SelectGopherScreen({super.key});
@@ -62,6 +64,10 @@ class SelectGopherScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (type == GopherType.delivery) {
+          context.read<ServiceViewModel>().setGopherType(type);
+          Navigator.pushNamed(context, deliveryFormScreen);
+        } else if (type == GopherType.rider) {
+          context.read<ServiceViewModel>().setGopherType(type);
           Navigator.pushNamed(context, deliveryFormScreen);
         }
       },

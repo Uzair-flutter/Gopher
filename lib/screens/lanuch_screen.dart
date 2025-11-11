@@ -24,19 +24,16 @@ class _LaunchScreenState extends State<LaunchScreen> {
       description:
           'Find trusted workers for any task painting, delivery, and more.',
       buttonText: 'Next',
-     
     ),
     OnboardingPage(
       title: 'Find the Right Worker',
       description: 'View profiles, ratings, and select the best fit.',
       buttonText: 'Next',
-      
     ),
     OnboardingPage(
       title: 'Book & Track',
       description: 'Set your time and track progress easily.',
       buttonText: 'Get Started',
-    
     ),
   ];
 
@@ -59,12 +56,10 @@ class _LaunchScreenState extends State<LaunchScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-        Navigator.pushReplacementNamed(context, createNewAccountScreen);
+      Navigator.pushReplacementNamed(context, loginScreen);
     }
   }
 
- 
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,23 +70,21 @@ class _LaunchScreenState extends State<LaunchScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          if(_currentPage< 2)
-          Padding(
-            padding: EdgeInsets.only(top: 24.h, right: 24.0.w),
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  createNewAccountScreen,
-                  (route) => false,
-                );
-              },
-              child:
-              
-               _buildSkipButton(),
+          if (_currentPage < 2)
+            Padding(
+              padding: EdgeInsets.only(top: 24.h, right: 24.0.w),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    loginScreen,
+                    (route) => false,
+                  );
+                },
+                child: _buildSkipButton(),
+              ),
             ),
-          ),
         ],
       ),
       // Dark gray background
@@ -249,14 +242,10 @@ class OnboardingPage {
   final String title;
   final String description;
   final String buttonText;
-  
 
   OnboardingPage({
     required this.title,
     required this.description,
     required this.buttonText,
-    
   });
 }
-
-

@@ -67,6 +67,14 @@ class _ServiceScreenState extends State<ServiceScreen> {
       distance: "2.3 mile",
       imageUrl: DummyAssets.job,
     ),
+    ServiceCard(
+      serviceName: "Painter",
+      providerName: "Emma Wilson",
+      price: "28",
+      rating: "4.5",
+      distance: "2.3 mile",
+      imageUrl: DummyAssets.job,
+    ),
   ];
 
   @override
@@ -166,7 +174,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
               SizedBox(height: 18.h),
               Expanded(
                 child: ListView.builder(
-                  padding: EdgeInsets.only(bottom: 30.h),
+                  padding: EdgeInsets.only(bottom: 15.h),
                   itemCount: servicesList.length,
                   itemBuilder: (context, index) {
                     return Padding(

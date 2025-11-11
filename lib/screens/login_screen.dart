@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Log in"),
+      appBar: CustomAppBar(title: "Log in", isBackButtonVisible: false),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0.w),
         child: SingleChildScrollView(
@@ -83,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, bottomNavPage);
                   },
-                  child: Text("Log in",),
+                  child: Text("Log in"),
                 ),
               ),
               SizedBox(height: 25.h),
@@ -106,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                 type: "Continue with Facebook",
                 logo: SvgAssets.facebook,
               ),
-              SizedBox(height: 139.h),
+              SizedBox(height: 100.h),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(width: 8.w),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, loginScreen);
+                      Navigator.pushNamed(context, createNewAccountScreen);
                     },
                     child: Text(
                       "Sign Up",

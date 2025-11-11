@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/route_generator.dart';
-
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
@@ -45,16 +44,21 @@ class SettingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     bookingService(
+                      onTap: () {},
                       title: "Upcoming",
                       icon: Iconsax.export,
                       notificationCount: "2",
                     ),
                     bookingService(
+                      onTap: () {},
                       title: "Completed",
                       icon: Iconsax.truck,
                       notificationCount: "4",
                     ),
                     bookingService(
+                      onTap: () {
+                        Navigator.pushNamed(context, notificationScreen);
+                      },
                       showBadge: false,
                       title: "Notifications",
                       icon: Iconsax.notification,
@@ -173,7 +177,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 80.h),
+              SizedBox(height: 100.h),
             ],
           ),
         ),
@@ -288,54 +292,57 @@ bookingService({
   required String title,
   required IconData icon,
   required String notificationCount,
+  required VoidCallback onTap,
   bool showBadge = true,
 }) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Stack(
-        children: [
-          SizedBox(
-            width: 96.w,
-            height: 28.h,
-
-            child: Icon(icon, size: 24.sp, color: Colors.white),
-          ),
-          showBadge
-              ? Positioned(
-                  right: 29.w,
-                  child: Container(
-                    height: 16.h,
-                    width: 16.w,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red,
-                    ),
-                    child: Center(
-                      child: Text(
-                        notificationCount,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.w600,
+  return GestureDetector(
+    onTap: onTap,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Stack(
+          children: [
+            SizedBox(
+              width: 96.w,
+              height: 28.h,
+              child: Icon(icon, size: 24.sp, color: Colors.white),
+            ),
+            showBadge
+                ? Positioned(
+                    right: 29.w,
+                    child: Container(
+                      height: 16.h,
+                      width: 16.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.red,
+                      ),
+                      child: Center(
+                        child: Text(
+                          notificationCount,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                )
-              : SizedBox.shrink(),
-        ],
-      ),
-      SizedBox(height: 9.h),
-      Text(
-        title,
-        style: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
+                  )
+                : SizedBox.shrink(),
+          ],
         ),
-      ),
-    ],
+        SizedBox(height: 9.h),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 13.sp,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    ),
   );
 }

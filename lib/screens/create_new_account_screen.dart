@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
-
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
@@ -16,7 +14,7 @@ class CreateNewAccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Create New Account',
-        isBackButtonVisible: false,
+        isBackButtonVisible: true,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 17.3.w),

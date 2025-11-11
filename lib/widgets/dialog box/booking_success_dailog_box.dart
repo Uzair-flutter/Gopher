@@ -89,6 +89,7 @@ class CustomDialog extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onPrimaryPressed,
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
                     backgroundColor:
                         primaryButtonColor ?? AppColors.kPrimaryColor,
                     shape: RoundedRectangleBorder(
@@ -99,6 +100,7 @@ class CustomDialog extends StatelessWidget {
                   child: Text(
                     primaryButtonText,
                     style: TextStyle(
+                      height: 0,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,

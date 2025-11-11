@@ -75,7 +75,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, allServicesScreen);
+                    },
                     child: Text(
                       'View All',
                       style: TextStyle(

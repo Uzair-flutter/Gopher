@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../route_generator.dart';
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
 
@@ -103,7 +104,9 @@ class CustomAppBarHome extends StatelessWidget implements PreferredSizeWidget {
         // ),
         SizedBox(width: 10.w),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, notificationScreen);
+          },
           child: Container(
             height: 32.h,
             width: 35.w,

@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
-import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/chat_list_tile.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
@@ -14,7 +11,11 @@ class ChatListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Chats", showSearchIcon: true),
+      appBar: CustomAppBar(
+        title: "Chats",
+        showSearchIcon: true,
+        isBackButtonVisible: false,
+      ),
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
         child: Column(

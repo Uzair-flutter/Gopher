@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/color_constant.dart';
-
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:pinput/pinput.dart';
 
@@ -82,7 +81,11 @@ class VerifyYourEmailScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, createPasswordScreen);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    createPasswordScreen,
+                    ModalRoute.withName(addYourEmailScreen),
+                  );
                 },
                 child: Text("Verify email"),
               ),

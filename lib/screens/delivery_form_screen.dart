@@ -17,7 +17,13 @@ class DeliveryFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Delivery'),
+      appBar: CustomAppBar(
+        title:
+            context.read<ServiceViewModel>().selectedGopherType !=
+                GopherType.rider
+            ? 'Delivery'
+            : 'Rider',
+      ),
       body: SafeArea(child: _buildBody(context)),
       bottomNavigationBar: BottomShadowBar(
         child: ElevatedButton(
@@ -41,8 +47,12 @@ class DeliveryFormScreen extends StatelessWidget {
             SizedBox(height: 10.h),
             AddressField(heading: 'Pickup Details'),
             AddressField(heading: 'Dropoff Details'),
-            _buildWhatToDeliver(context),
-            _buildCategories(context),
+            if (context.read<ServiceViewModel>().selectedGopherType !=
+                GopherType.rider)
+              _buildWhatToDeliver(context),
+            if (context.read<ServiceViewModel>().selectedGopherType !=
+                GopherType.rider)
+              _buildCategories(context),
             _buildCommentsForGophet(context),
             SizedBox(height: 10.h),
           ],

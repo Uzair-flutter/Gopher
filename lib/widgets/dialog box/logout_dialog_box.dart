@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -27,7 +28,7 @@ void showLogoutDialog({
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 50.h),
+                SizedBox(height: 40.h),
                 Transform.flip(
                   flipX: true,
                   flipY: true,
@@ -37,7 +38,7 @@ void showLogoutDialog({
                     color: Color(0xffD72547),
                   ),
                 ),
-                SizedBox(height: 40.h),
+                SizedBox(height: 30.h),
                 // Outer circle with red color and alpha 0.2
                 Text(
                   "Logout?",
@@ -58,11 +59,17 @@ void showLogoutDialog({
                     color: AppColors.textBlackColor,
                   ),
                 ),
-                SizedBox(height: 40.h),
+                SizedBox(height: 30.h),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        loginScreen,
+                        (route) => false,
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffD72547),
 
@@ -81,21 +88,26 @@ void showLogoutDialog({
                   ),
                 ),
                 SizedBox(height: 20.h),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 19.5.h),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: AppColors.textFieldFillColor,
-                    borderRadius: BorderRadius.circular(10.r),
-                    border: Border.all(width: 1.w, color: Colors.grey[200]!),
-                  ),
-                  child: Text(
-                    "Cancel",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textBlackColor,
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 19.5.h),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColors.textFieldFillColor,
+                      borderRadius: BorderRadius.circular(10.r),
+                      border: Border.all(width: 1.w, color: Colors.grey[200]!),
+                    ),
+                    child: Text(
+                      "Cancel",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textBlackColor,
+                      ),
                     ),
                   ),
                 ),

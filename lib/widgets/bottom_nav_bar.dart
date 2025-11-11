@@ -23,9 +23,9 @@ class BottomNavBar extends StatelessWidget {
       unselectedIcon: SvgAssets.jobs,
     ),
     BottomNavItem(
-      label: 'Services',
-      selectedIcon: SvgAssets.services,
-      unselectedIcon: SvgAssets.services,
+      label: 'Chat',
+      selectedIcon: SvgAssets.chatFilled,
+      unselectedIcon: SvgAssets.chat,
     ),
     BottomNavItem(
       label: 'Profile',
