@@ -102,6 +102,7 @@ class AppTheme {
       ),
       bottomSheetTheme: BottomSheetThemeData(
         dragHandleColor: Color(0xffCDCFD0),
+        backgroundColor: Colors.white,
         dragHandleSize: Size(48.w, 5.h),
       ),
     );

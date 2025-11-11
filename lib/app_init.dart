@@ -2,7 +2,7 @@
 //
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/route_generator.dart';
+import 'package:gopher/screens/wallet_ransaction_screen.dart';
 import 'package:gopher/utils/screen_size.dart';
 import 'package:gopher/utils/theme.dart';
 import 'package:gopher/view_models/theme_view_model.dart';
@@ -24,9 +24,9 @@ class AppInit extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Gopher',
-          initialRoute: splashScreen,
-          onGenerateRoute: RouteGenerator.generateRoute,
-          //  home: RiderOnTheWayScreen(),
+          // initialRoute: splashScreen,
+          // onGenerateRoute: RouteGenerator.generateRoute,
+          home: WalletTransactionScreen(),
           themeMode: themeMode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.lightTheme,
