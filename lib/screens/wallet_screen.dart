@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottomSheet/add_funds_bottom_sheet.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
 class WalletScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class WalletScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            walletCard(),
+            walletCard(context: context),
             SizedBox(height: 24.h),
             Text(
               "Recent activity",
@@ -73,7 +74,7 @@ class WalletScreen extends StatelessWidget {
     );
   }
 
-  Container walletCard() {
+  Container walletCard({required BuildContext context}) {
     return Container(
       width: double.infinity,
       height: 199.h,
@@ -131,7 +132,9 @@ class WalletScreen extends StatelessWidget {
               ),
               child: Icon(Icons.add, color: Colors.white, size: 16.w),
             ),
-            onDeleted: () {},
+            onDeleted: () {
+              showAddFundsBottomSheet(context);
+            },
           ),
         ],
       ),
