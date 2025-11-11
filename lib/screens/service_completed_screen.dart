@@ -12,6 +12,7 @@ class ServiceCompletedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text(
@@ -78,9 +79,12 @@ class ServiceCompletedScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomShadowBar(
-        child: ElevatedButton(onPressed: () {
-          Navigator.pushNamed(context, ratingScreen);
-        }, child: Text("Give Rating")),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, ratingScreen);
+          },
+          child: Text("Give Rating"),
+        ),
       ),
     );
   }

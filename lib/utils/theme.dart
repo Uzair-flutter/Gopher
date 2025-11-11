@@ -62,7 +62,7 @@ class AppTheme {
           ),
           backgroundColor: AppColors.kPrimaryColor,
           foregroundColor: Colors.white,
-          padding: EdgeInsets.symmetric(vertical: 15.h),
+          padding: EdgeInsets.symmetric(vertical: 19.5.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),
@@ -99,6 +99,10 @@ class AppTheme {
           borderRadius: BorderRadius.circular(14.r),
           borderSide: BorderSide(color: AppColors.textFieldFillColor),
         ),
+      ),
+      bottomSheetTheme: BottomSheetThemeData(
+        dragHandleColor: Color(0xffCDCFD0),
+        dragHandleSize: Size(48.w, 5.h),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:gopher/widgets/ride_request_tile.dart';
 
 void showRidesRequestSheet(BuildContext context) {
   showModalBottomSheet(
+    
     backgroundColor: Colors.white,
     context: context,
     isScrollControlled: true,

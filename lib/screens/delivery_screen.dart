@@ -7,9 +7,18 @@ import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/ride_tile.dart';
 
-class DeliveryScreen extends StatelessWidget {
+class DeliveryScreen extends StatefulWidget {
   DeliveryScreen({super.key});
+
+  @override
+  State<DeliveryScreen> createState() => _DeliveryScreenState();
+}
+
+class _DeliveryScreenState extends State<DeliveryScreen> {
   List<String> deliveryTypes = ["Food", "Pharmacy"];
+  bool carSelected = false;
+  bool bikeSelected = true;
+  bool truckSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,23 +41,44 @@ class DeliveryScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RideTile(
-                          imageUrl: PngAssets.bike,
-                          title: "Bike",
-                          price: "\$45",
-                          isSelected: false,
+                        GestureDetector(
+                          onTap: () => setState(() {
+                            bikeSelected = true;
+                            truckSelected = false;
+                            carSelected = false;
+                          }),
+                          child: RideTile(
+                            imageUrl: PngAssets.bike,
+                            title: "Bike",
+                            price: "\$45",
+                            isSelected: bikeSelected,
+                          ),
                         ),
-                        RideTile(
-                          imageUrl: PngAssets.car,
-                          title: "Car",
-                          price: "\$60",
-                          isSelected: true,
+                        GestureDetector(
+                          onTap: () => setState(() {
+                            carSelected = true;
+                            bikeSelected = false;
+                            truckSelected = false;
+                          }),
+                          child: RideTile(
+                            imageUrl: PngAssets.car,
+                            title: "Car",
+                            price: "\$60",
+                            isSelected: carSelected,
+                          ),
                         ),
-                        RideTile(
-                          imageUrl: PngAssets.truck,
-                          title: "Truck",
-                          price: "\$90",
-                          isSelected: false,
+                        GestureDetector(
+                          onTap: () => setState(() {
+                            truckSelected = true;
+                            carSelected = false;
+                            bikeSelected = false;
+                          }),
+                          child: RideTile(
+                            imageUrl: PngAssets.truck,
+                            title: "Truck",
+                            price: "\$90",
+                            isSelected: truckSelected,
+                          ),
                         ),
                       ],
                     ),

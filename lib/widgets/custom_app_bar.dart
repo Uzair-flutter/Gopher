@@ -47,7 +47,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             child: actionIcon != null
                 ? SvgPicture.asset(actionIcon!, height: 18.w, width: 18.w)
-                : Icon(Icons.search_sharp, color: AppColors.textBlackColor),
+                : Icon(
+                  Icons.search_sharp,
+                  color: AppColors.textBlackColor,
+                ),
           ),
       ],
       leading: isBackButtonVisible

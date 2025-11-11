@@ -32,6 +32,7 @@ import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
+import 'package:gopher/screens/wallet_screen.dart';
 
 import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
@@ -73,6 +74,7 @@ const String eReceiptScreen = '/e_receipt_screen';
 const String bookingReviewScreen = '/booking_review_screen';
 const String serviceCompletedScreen = '/service_completed_screen';
 const String ratingScreen = '/rating_screen';
+const String walletScreen = '/wallet_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -253,6 +255,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: ratingScreen),
           builder: (_) => const RatingScreen(),
+        );
+        case walletScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: walletScreen),
+          builder: (_) => const WalletScreen(),
         ); 
       default:
         return _errorRoute();

@@ -24,38 +24,47 @@ void showCancelBookingSheet(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Drag handle
-              // Center(
-              //   child: Container(
-              //     height: 5.h,
-              //     width: 48.w,
-              //     margin: EdgeInsets.only(bottom: 30.h),
-              //     decoration: BoxDecoration(
-              //       color: Color(0xffCDCFD0),
-              //       borderRadius: BorderRadius.circular(100.r),
-              //     ),
-              //   ),
-              // ),
-
-              // Review text
-              Center(
-                child: Text(
-                  "Cancel Booking",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20.sp,
-                    color: AppColors.textBlackColor,
+             
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Add Funds",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.sp,
+                        color: AppColors.textBlackColor,
+                      ),
+                    ),
                   ),
-                ),
+                   InkWell(
+                      onTap: () => Navigator.pop(context),
+                      // padding: EdgeInsets.zero,
+                      // constraints: BoxConstraints(),
+                      child: Container(
+                        height: 32.h,
+                        width: 32.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24.r),
+                          color: AppColors.appbarBackColor,
+                        ),
+                        child: Icon(
+                          Icons.close,
+                          size: 18.sp,
+                          color: AppColors.textBlackColor,
+                        ),
+                      ),
+                    ),
+                ],
               ),
 
               SizedBox(height: 18.h),
               Divider(),
               SizedBox(height: 22.h),
-              Text(
-                textAlign: TextAlign.center,
-                "Are you sure you want to cancel your booking? This action cannot be undone.",
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+              Row(
+                children: [
+                  
+                ],
               ),
               SizedBox(height: 20),
               Text(
