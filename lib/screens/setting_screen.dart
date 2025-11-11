@@ -6,7 +6,7 @@ import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
-import 'package:gopher/widgets/dialog%20box/success_dialog_box.dart';
+import 'package:gopher/widgets/dialog%20box/logout_dialog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -116,7 +116,7 @@ class SettingScreen extends StatelessWidget {
               SizedBox(height: 20.h),
               InkWell(
                 onTap: () {
-                  showSuccessDialog(
+                  showLogoutDialog(
                     screenContext: context,
                     desc: "Logout successful",
                     onSuccess: () {

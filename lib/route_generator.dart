@@ -19,6 +19,7 @@ import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/notification_screen.dart';
 import 'package:gopher/screens/privacy_policy_screen.dart';
+import 'package:gopher/screens/rating_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
 import 'package:gopher/screens/ride_detail_screen.dart';
@@ -26,6 +27,7 @@ import 'package:gopher/screens/search_for_rider_screen.dart';
 import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/service_booking_screen.dart';
+import 'package:gopher/screens/service_completed_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/terms_and_condition_screen.dart';
@@ -69,6 +71,8 @@ const String rideDetailScreen = '/ride_detail_screen';
 const String allServicesScreen = '/all_services_screen';
 const String eReceiptScreen = '/e_receipt_screen';
 const String bookingReviewScreen = '/booking_review_screen';
+const String serviceCompletedScreen = '/service_completed_screen';
+const String ratingScreen = '/rating_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -240,6 +244,16 @@ class RouteGenerator {
           settings: RouteSettings(name: allServicesScreen),
           builder: (_) => ServiceScreen(),
         );
+      case serviceCompletedScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: serviceCompletedScreen),
+          builder: (_) => const ServiceCompletedScreen(),
+        ); 
+        case ratingScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: ratingScreen),
+          builder: (_) => const RatingScreen(),
+        ); 
       default:
         return _errorRoute();
     }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:iconsax/iconsax.dart';
 
-void showSuccessDialog({
+void showLogoutDialog({
   required BuildContext screenContext,
   required String desc,
   required Function onSuccess,

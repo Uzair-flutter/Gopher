@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/bottomSheet/cancel_booking.dart';
+import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -182,26 +183,26 @@ class JobDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(24.0),
+      bottomNavigationBar: BottomShadowBar(
         child: GestureDetector(
           onTap: () {
             showCancelBookingSheet(context);
           },
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 19.h),
+            // padding: EdgeInsets.symmetric(vertical: 19.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
               color: Color(0xffD72547).withValues(alpha: 0.2),
             ),
-            child: Text(
-              textAlign: TextAlign.center,
-              "Cancel Booking",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Color(0xffD72547),
+            child: Center(
+              child: Text(
+                "Cancel Booking",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffD72547),
+                ),
               ),
             ),
           ),

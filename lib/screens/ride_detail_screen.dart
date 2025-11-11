@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/dialog%20box/ride_complete_dailog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../widgets/bottomSheet/cancel_booking.dart';
@@ -19,7 +21,7 @@ class RideDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 63.h),
-            buildRiderInfo(),
+            buildRiderInfo(context: context),
             SizedBox(height: 20.h),
             Container(
               padding: EdgeInsets.all(16.0),
@@ -27,60 +29,65 @@ class RideDetailScreen extends StatelessWidget {
                 color: AppColors.textFieldFillColor,
                 borderRadius: BorderRadius.circular(10.0.r),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 35.h,
-                        width: 35.w,
-                        padding: EdgeInsets.all(6.w),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.kPrimaryColor,
-                          //borderRadius: BorderRadius.circular(10.0.r),
-                        ),
-                        child: Icon(
-                          Iconsax.location,
-                          color: Colors.white,
-                          size: 18.w,
-                        ),
-                      ),
-                      SizedBox(width: 8.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Pickup',
-                            style: TextStyle(
-                              color: AppColors.textBlackColor,
-                              fontSize: 13.sp,
-                              height: 0,
-                            ),
+              child: InkWell(
+                onTap: () {
+                  showRideCompleteDialog(screenContext: context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 35.h,
+                          width: 35.w,
+                          padding: EdgeInsets.all(6.w),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.kPrimaryColor,
+                            //borderRadius: BorderRadius.circular(10.0.r),
                           ),
-                          SizedBox(height: 2.h),
-                          Text(
-                            '02:12 pm',
-                            style: TextStyle(
-                              height: 0,
-                              color: AppColors.textGreyColor,
-                              fontSize: 13.sp,
-                            ),
+                          child: Icon(
+                            Iconsax.location,
+                            color: Colors.white,
+                            size: 18.w,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-
-                  Text(
-                    'Ongoing',
-                    style: TextStyle(
-                      color: AppColors.kSecondaryColor,
-                      fontSize: 13.sp,
+                        ),
+                        SizedBox(width: 8.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Pickup',
+                              style: TextStyle(
+                                color: AppColors.textBlackColor,
+                                fontSize: 13.sp,
+                                height: 0,
+                              ),
+                            ),
+                            SizedBox(height: 2.h),
+                            Text(
+                              '02:12 pm',
+                              style: TextStyle(
+                                height: 0,
+                                color: AppColors.textGreyColor,
+                                fontSize: 13.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+
+                    Text(
+                      'Ongoing',
+                      style: TextStyle(
+                        color: AppColors.kSecondaryColor,
+                        fontSize: 13.sp,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 20.h),
@@ -152,7 +159,7 @@ class RideDetailScreen extends StatelessWidget {
     );
   }
 
-  buildRiderInfo() {
+  Container buildRiderInfo({required BuildContext context}) {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -213,10 +220,15 @@ class RideDetailScreen extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              SvgPicture.asset(
-                SvgAssets.messageBlue,
-                height: 38.h,
-                width: 38.w,
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, chatScreen);
+                },
+                child: SvgPicture.asset(
+                  SvgAssets.messageBlue,
+                  height: 38.h,
+                  width: 38.w,
+                ),
               ),
             ],
           ),

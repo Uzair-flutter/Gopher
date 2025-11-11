@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/received_message_tile.dart';
@@ -15,7 +15,9 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         toolbarHeight: 70.h,
         title: Row(
           children: [
@@ -69,96 +71,115 @@ class ChatScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Divider(color: Colors.grey[200]!),
-            SizedBox(height: 12.h),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      "TODAY",
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.textGreyColor,
+      body: Column(
+        children: [
+          Divider(color: Colors.grey[200]!),
+         
+          Expanded(
+            child: SingleChildScrollView(
+             
+              padding: EdgeInsets.only(top: 12.h),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        "TODAY",
+                        style: TextStyle(
+                          height: 0,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textGreyColor,
+                        ),
                       ),
                     ),
+                    SizedBox(height: 30),
+                    ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 20.h),
+                      shrinkWrap: true,
+                      physics:
+                          NeverScrollableScrollPhysics(), // Disable inner scroll
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return index % 2 == 0
+                            ? ReceivedMessageTile(
+                                imageUrl: DummyAssets.person,
+                                message:
+                                    "Hi, this is Christopher, your plumber. How can I help?",
+                                time: "16.04",
+                              )
+                            : SendMessageTile(
+                                message:
+                                    "Hi, this is Christopher, your plumber. How can I help?",
+                                time: "16.04",
+                              );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10.h),
+          // Input field at the bottom
+          SafeArea(
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 12.h),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, -1),
+                    color: Colors.grey[200]!,
+                    blurRadius: 1,
                   ),
-                  SizedBox(height: 30),
-                  ListView.separated(
-                    separatorBuilder: (context, index) =>
-                        SizedBox(height: 20.h),
-                    shrinkWrap: true,
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return index % 2 == 0
-                          ? ReceivedMessageTile(
-                              imageUrl: DummyAssets.person,
-                              message:
-                                  "Hi, this is Christopher, your plumber. How can I help?",
-                              time: "16.04",
-                            )
-                          : SendMessageTile(
-                              message:
-                                  "Hi, this is Christopher, your plumber. How can I help?",
-                              time: "16.04",
-                            );
-                    },
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(height: 12.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                    child: Row(
+                      children: [
+                        Transform.rotate(
+                          angle: pi / 4,
+                          child: Icon(
+                            Icons.attach_file,
+                            size: 24.sp,
+                            color: AppColors.textGreyColor,
+                          ),
+                        ),
+                        SizedBox(width: 20.w),
+                        Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.emoji_emotions_outlined,
+                                color: AppColors.textGreyColor,
+                                size: 24.sp,
+                              ),
+                              hintText: "Type a message",
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20.w),
+                        SvgPicture.asset(
+                          SvgAssets.sendButton,
+                          height: 48.h,
+                          width: 48.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Divider(color: Colors.grey[200]!),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  Transform.rotate(
-                    angle: pi / 4,
-                    child: Icon(
-                      Icons.attach_file,
-                      size: 24.sp,
-                      color: AppColors.textGreyColor,
-                    ),
-                  ),
-                  SizedBox(width: 20.w),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.emoji_emotions_outlined,
-                          color: AppColors.textGreyColor,
-                          size: 24.sp,
-                        ),
-                        hintText: "Type a message",
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 20.w),
-                  SvgPicture.asset(
-                    SvgAssets.sendButton,
-                    height: 48.h,
-                    width: 48.h,
-                  ),
-                ],
-              ),
-            ],
           ),
-        ),
+        ],
       ),
     );
   }
