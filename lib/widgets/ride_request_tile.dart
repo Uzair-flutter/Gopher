@@ -131,6 +131,7 @@ class RideRequestTile extends StatelessWidget {
                       child: Text(
                         "Decline",
                         style: TextStyle(
+                          height: 0,
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
                           color: AppColors.textBlackColor,
@@ -155,6 +156,7 @@ class RideRequestTile extends StatelessWidget {
                       child: Text(
                         "Accept",
                         style: TextStyle(
+                          height: 0,
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
 
