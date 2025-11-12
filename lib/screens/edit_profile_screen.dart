@@ -1,14 +1,29 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gopher/utils/assets.dart';
-import 'package:gopher/utils/color_constant.dart';
-import 'package:gopher/widgets/bottom_shadow_bar.dart';
-import 'package:gopher/widgets/custom_app_bar.dart';
-import 'package:gopher/widgets/phone_widget.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+
+import '../utils/assets.dart';
+import '../utils/color_constant.dart';
+import '../view_models/profile_view_model.dart';
+import '../widgets/bottom_shadow_bar.dart';
+import '../widgets/bottom_sheets/image_selection_bottom_sheet.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/phone_widget.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
+
+  Future<void> _onChangeProfile(BuildContext context) async {
+    final path = await ImageSelectionBottomSheet.show(context: context);
+    if (path != null) {
+      if (context.mounted) {
+        context.read<ProfileViewModel>().setProfilePath(path);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +39,26 @@ class EditProfileScreen extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  ClipOval(
-                    child: Center(
-                      child: Image.asset(
-                        DummyAssets.person,
-                        fit: BoxFit.cover,
-                        height: 75.w,
-                        width: 75.w,
+                  Center(
+                    child: ClipOval(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Consumer<ProfileViewModel>(
+                        builder: (_, viewModel, child) {
+                          if (viewModel.profilePath != null) {
+                            return Image.file(
+                              File(viewModel.profilePath!),
+                              fit: BoxFit.cover,
+                              height: 75.w,
+                              width: 75.w,
+                            );
+                          }
+                          return Image.asset(
+                            DummyAssets.person,
+                            fit: BoxFit.cover,
+                            height: 75.w,
+                            width: 75.w,
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -44,10 +72,13 @@ class EditProfileScreen extends StatelessWidget {
                         color: AppColors.kPrimaryColor,
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(
-                        Iconsax.camera,
-                        color: Colors.white,
-                        size: 21.w,
+                      child: IconButton(
+                        onPressed: () => _onChangeProfile(context),
+                        icon: Icon(
+                          Iconsax.camera,
+                          color: Colors.white,
+                          size: 21.w,
+                        ),
                       ),
                     ),
                   ),
@@ -104,7 +135,6 @@ class EditProfileScreen extends StatelessWidget {
               SizedBox(height: 10.h),
               PhoneWidget(controller: TextEditingController(), filled: true),
               SizedBox(height: 20.h),
-              // Add more widgets here for editing profile details
             ],
           ),
         ),

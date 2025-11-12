@@ -98,7 +98,7 @@ class SelectGopherScreen extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              transform: Matrix4.translationValues(0, 15, 0),
+              transform: Matrix4.translationValues(0, 10.h, 0),
               child: Image.asset(type.asset, height: 138.h, fit: BoxFit.cover),
             ),
           ],

@@ -35,6 +35,8 @@ import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'package:gopher/screens/wallet_screen.dart';
 import 'package:gopher/screens/wallet_transaction_screen.dart';
+import 'package:gopher/view_models/profile_view_model.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
@@ -151,7 +153,10 @@ class RouteGenerator {
         );
       case editProfileScreen:
         return MaterialPageRoute(
-          builder: (_) => EditProfileScreen(),
+          builder: (_) => ChangeNotifierProvider(
+            create: (_) => ProfileViewModel(),
+            child: EditProfileScreen(),
+          ),
           settings: RouteSettings(name: editProfileScreen),
         );
       case deliveryFormScreen:
@@ -254,23 +259,23 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: serviceCompletedScreen),
           builder: (_) => const ServiceCompletedScreen(),
-        ); 
-        case ratingScreen:
+        );
+      case ratingScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: ratingScreen),
           builder: (_) => const RatingScreen(),
         );
-        case walletScreen:
+      case walletScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: walletScreen),
           builder: (_) => const WalletScreen(),
-        ); 
-        case walletTransactionScreen:
+        );
+      case walletTransactionScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: walletTransactionScreen),
           builder: (_) => const WalletTransactionScreen(),
         );
-        case riderOnTheWayScreen:
+      case riderOnTheWayScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: riderOnTheWayScreen),
           builder: (_) => const RiderOnTheWayScreen(),
