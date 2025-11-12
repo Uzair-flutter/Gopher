@@ -68,6 +68,22 @@ class AppTheme {
           ),
         ),
       ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: 15.h),
+          side: BorderSide(color: AppColors.kPrimaryColor, width: 1.sp),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          foregroundColor: AppColors.kPrimaryColor,
+          textStyle: TextStyle(
+            height: 0,
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.kPrimaryColor,
+          ),
+        ),
+      ),
       cardTheme: CardThemeData(
         color: AppColors.textFieldFillColor,
         shape: RoundedRectangleBorder(

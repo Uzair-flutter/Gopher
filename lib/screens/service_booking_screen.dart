@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/screens/your_address_screen.dart';
+import 'package:gopher/widgets/bottom_sheets/image_selection_bottom_sheet.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 
-import '../utils/assets.dart';
 import '../utils/color_constant.dart';
+import '../view_models/service_view_model.dart';
 import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
 
@@ -229,9 +233,13 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
           children: [
             // Upload Button
             GestureDetector(
-              onTap: () {
-                // Handle image picker
-                debugPrint('Pick image');
+              onTap: () async {
+                final path = await ImageSelectionBottomSheet.show(
+                  context: context,
+                );
+                if (path != null) {
+                  context.read<ServiceViewModel>().addImage(path);
+                }
               },
               child: Container(
                 width: 65.w,
@@ -272,11 +280,47 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
               ),
             ),
             SizedBox(width: 10.w),
-
+            _buildImagesList(),
             // Uploaded Images
-            ...List.generate(
-              3,
-              (index) => Padding(
+            // ...List.generate(
+            //   3,
+            //   (index) => Padding(
+            //     padding: EdgeInsets.only(right: 10.w),
+            //     child: Container(
+            //       width: 65.w,
+            //       height: 63.h,
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(4.r),
+            //         image: DecorationImage(
+            //           image: AssetImage(DummyAssets.serviceDetail),
+            //           fit: BoxFit.cover,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildImagesList() {
+    return Consumer<ServiceViewModel>(
+      builder: (context, viewModel, child) {
+        return Wrap(
+          children: List.generate(viewModel.bookingSharePics.length, (index) {
+            return Badge(
+              label: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  context.read<ServiceViewModel>().removeImage(index);
+                },
+                child: Icon(Iconsax.close_square5, color: Colors.red),
+              ),
+              offset: Offset(-25, 5),
+              backgroundColor: Colors.transparent,
+              child: Padding(
                 padding: EdgeInsets.only(right: 10.w),
                 child: Container(
                   width: 65.w,
@@ -284,16 +328,16 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.r),
                     image: DecorationImage(
-                      image: AssetImage(DummyAssets.serviceDetail),
+                      image: FileImage(File(viewModel.bookingSharePics[index])),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            );
+          }),
+        );
+      },
     );
   }
 

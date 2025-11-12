@@ -66,7 +66,7 @@ class _ImageSelectionBottomSheetContentState
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(20.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -79,7 +79,7 @@ class _ImageSelectionBottomSheetContentState
                 color: AppColors.textBlackColor,
               ),
             ),
-            SizedBox(height: 30.h),
+            SizedBox(height: 15.h),
 
             // Options
             Row(
@@ -107,28 +107,13 @@ class _ImageSelectionBottomSheetContentState
               ],
             ),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 15.h),
 
-            // Cancel button
             SizedBox(
               width: double.infinity,
-              child: TextButton(
+              child: OutlinedButton(
                 onPressed: () => Navigator.of(context).pop(),
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.r),
-                    side: BorderSide(color: AppColors.textFieldFillColor),
-                  ),
-                ),
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.textGreyColor,
-                  ),
-                ),
+                child: Text('Cancel'),
               ),
             ),
 
@@ -148,11 +133,10 @@ class _ImageSelectionBottomSheetContentState
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(20.w),
+        padding: EdgeInsets.symmetric(vertical: 10.h),
         decoration: BoxDecoration(
-          color: Colors.grey.shade50,
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: AppColors.textFieldFillColor),
+          border: Border.all(color: AppColors.kPrimaryColor, width: 1.sp),
         ),
         child: Column(
           children: [
@@ -160,7 +144,7 @@ class _ImageSelectionBottomSheetContentState
               width: 60.w,
               height: 60.h,
               decoration: BoxDecoration(
-                color: AppColors.kPrimaryColor.withOpacity(0.1),
+                color: AppColors.primaryAccent,
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: AppColors.kPrimaryColor, size: 28.sp),
@@ -171,7 +155,7 @@ class _ImageSelectionBottomSheetContentState
               style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
-                color: AppColors.textFieldFillColor,
+                color: AppColors.kPrimaryColor,
               ),
             ),
             SizedBox(height: 4.h),
@@ -180,7 +164,7 @@ class _ImageSelectionBottomSheetContentState
               style: TextStyle(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColors.textGreyColor,
+                color: AppColors.kPrimaryColor,
               ),
               textAlign: TextAlign.center,
             ),

@@ -7,6 +7,7 @@ class ServiceViewModel extends ChangeNotifier {
   GopherType? selectedGopherType;
   int? selectedDeliveryWeight;
   final List<DeliveryCategory> categories = [];
+  final List<String> bookingSharePics = [];
 
   void setServiceType(ServiceType newServiceType) {
     selectedServiceType = newServiceType;
@@ -30,5 +31,19 @@ class ServiceViewModel extends ChangeNotifier {
       categories.add(newCategory);
     }
     notifyListeners();
+  }
+
+  void addImage(String newImagePath) {
+    if (!bookingSharePics.contains(newImagePath)) {
+      bookingSharePics.add(newImagePath);
+    }
+    notifyListeners();
+  }
+
+  void removeImage(int index) {
+    if (index >= 0 && index < bookingSharePics.length) {
+      bookingSharePics.removeAt(index);
+      notifyListeners();
+    }
   }
 }

@@ -141,49 +141,48 @@ class _LaunchScreenState extends State<LaunchScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0.w),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      // Title
-                      Text(
-                        page.title,
-                        style: GoogleFonts.inter(
-                          fontSize: 28.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textBlackColor,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 12.h),
-                      // Description
-                      Text(
-                        page.description,
-                        style: GoogleFonts.inter(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textBlackColor,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 24.h),
-                      // Pagination indicators
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          _pages.length,
-                          (index) => _buildDot(index == _currentPage),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    page.title,
+                    style: GoogleFonts.inter(
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textBlackColor,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
+                  SizedBox(height: 12.h),
+                  // Description
+                  Text(
+                    page.description,
+                    style: GoogleFonts.inter(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textBlackColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 24.h),
+                  // Pagination indicators
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      _pages.length,
+                      (index) => _buildDot(index == _currentPage),
+                    ),
+                  ),
+                  Spacer(),
                   // CTA Button
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _nextPage,
+                  SafeArea(
+                    top: false,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: _nextPage,
 
-                      child: Text(page.buttonText),
+                        child: Text(page.buttonText),
+                      ),
                     ),
                   ),
                 ],
@@ -249,4 +248,3 @@ class OnboardingPage {
     required this.buttonText,
   });
 }
-
