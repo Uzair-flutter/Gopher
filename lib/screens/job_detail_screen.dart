@@ -21,171 +21,174 @@ class JobDetailScreen extends StatelessWidget {
         child: Stack(
           children: [
             SizedBox(height: 24.h),
-
-            Positioned.fill(
-              top: 66.h,
-
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 26.h, horizontal: 16.w),
-                //   height: 556.h,
-                decoration: BoxDecoration(
-                  color: AppColors.textFieldFillColor,
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      profilebar(),
-                      SizedBox(height: 18.h),
-                      Divider(color: Colors.grey[200]!),
-                      SizedBox(height: 18.h),
-                      Row(
-                        children: [
-                          Text(
-                            "Status",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textGreyColor,
-                            ),
-                          ),
-                          Spacer(),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 13.w,
-                              vertical: 9.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color(0xffFAECCE),
-
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            child: Text(
-                              "Upcoming",
+            Column(
+              children: [
+                SizedBox(height: 66.h),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 26.h,
+                    horizontal: 16.w,
+                  ),
+                  //   height: 556.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.textFieldFillColor,
+                    borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        profilebar(),
+                        SizedBox(height: 20.h),
+                        Divider(color: Colors.grey[200]!, height: 0),
+                        SizedBox(height: 20.h),
+                        Row(
+                          children: [
+                            Text(
+                              "Status",
                               style: TextStyle(
-                                height: 0,
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xff8C6227),
+                                color: AppColors.textGreyColor,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16.h),
-                      Row(
-                        children: [
-                          Text(
-                            "Date ",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textGreyColor,
-                            ),
-                          ),
-                          Spacer(),
-                          Text(
-                            "14 Oct 2025",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textBlackColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16.h),
-                      Row(
-                        children: [
-                          Text(
-                            "Time",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textGreyColor,
-                            ),
-                          ),
-                          Spacer(),
-                          Text(
-                            "14 Oct 2025 |11:00 AM",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textBlackColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 16.h),
-                      Row(
-                        children: [
-                          Text(
-                            "Worker",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textGreyColor,
-                            ),
-                          ),
-                          Spacer(),
-                          Row(
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  DummyAssets.person,
-                                  height: 22.h,
-                                  width: 22.w,
-                                  fit: BoxFit.cover,
-                                ),
+                            Spacer(),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 13.w,
+                                vertical: 9.h,
                               ),
-                              SizedBox(width: 7.w),
-                              Text(
-                                "Jan McCafferty",
+                              decoration: BoxDecoration(
+                                color: Color(0xffFAECCE),
+
+                                borderRadius: BorderRadius.circular(20.r),
+                              ),
+                              child: Text(
+                                "Upcoming",
                                 style: TextStyle(
+                                  height: 0,
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppColors.textBlackColor,
+                                  color: Color(0xff8C6227),
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 28.h),
-                      Divider(color: Colors.grey[200]!),
-                      SizedBox(height: 18.h),
-                      Row(
-                        children: [
-                          Text(
-                            "Total Amount",
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.textBlackColor,
                             ),
-                          ),
-                          Spacer(),
-                          Text(
-                            "\$74",
-                            style: TextStyle(
-                              fontSize: 17.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textBlackColor,
+                          ],
+                        ),
+                        SizedBox(height: 16.h),
+                        Row(
+                          children: [
+                            Text(
+                              "Date ",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textGreyColor,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 21.h),
-                      Image.asset(
-                        DummyAssets.map,
-                        height: 208.h,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
+                            Spacer(),
+                            Text(
+                              "14 Oct 2025",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16.h),
+                        Row(
+                          children: [
+                            Text(
+                              "Time",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textGreyColor,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "14 Oct 2025 |11:00 AM",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16.h),
+                        Row(
+                          children: [
+                            Text(
+                              "Worker",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textGreyColor,
+                              ),
+                            ),
+                            Spacer(),
+                            Row(
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    DummyAssets.person,
+                                    height: 22.h,
+                                    width: 22.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(width: 7.w),
+                                Text(
+                                  "Jan McCafferty",
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.textBlackColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20.h),
+                        Divider(color: Colors.grey[200]!, height: 0),
+                        SizedBox(height: 20.h),
+                        Row(
+                          children: [
+                            Text(
+                              "Total Amount",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.textBlackColor,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "\$74",
+                              style: TextStyle(
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20.h),
+                        Image.asset(
+                          DummyAssets.map,
+                          // height: 208.h,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
             Positioned(
               top: 24,
