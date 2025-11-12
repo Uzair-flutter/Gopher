@@ -165,23 +165,21 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15.h),
-            SizedBox(
-              height: 300.h,
-              child: ListView.separated(
-                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 80.h),
-                itemCount: gophers.length,
-                separatorBuilder: (context, index) => SizedBox(height: 10.h),
-                itemBuilder: (context, index) {
-                  return GopherTile(
-                    gopher: gophers[index],
-                    onTap: () {
-                      // Navigate to detail page
-                    },
-                  );
-                },
-              ),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 80.h),
+              itemCount: 4,
+              separatorBuilder: (context, index) => SizedBox(height: 10.h),
+              itemBuilder: (context, index) {
+                return GopherTile(
+                  gopher: gophers[index],
+                  onTap: () {
+                    // Navigate to detail page
+                  },
+                );
+              },
             ),
-            SizedBox(height: 30.h),
           ],
         ),
       ),

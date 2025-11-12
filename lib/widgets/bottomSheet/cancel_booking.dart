@@ -14,7 +14,10 @@ void showCancelBookingSheet(BuildContext context) {
     ),
     builder: (context) {
       return Padding(
-        padding: EdgeInsets.only(top: 10.h),
+        padding: EdgeInsets.only(
+          top: 10.h,
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
+        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

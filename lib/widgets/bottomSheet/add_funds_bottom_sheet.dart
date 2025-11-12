@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/bottomSheet/select_payment_method_bottomsheet.dart';
+import 'package:iconsax/iconsax.dart';
 
 void showAddFundsBottomSheet(BuildContext context) {
   List<int> amount = [50, 75, 100, 125, 150];
@@ -153,9 +154,19 @@ void showAddFundsBottomSheet(BuildContext context) {
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.pop(context);
-                              selectPaymentMethodBottomSheet(context);
+                              //  selectPaymentMethodBottomSheet(context);
                             },
-                            child: Text("Choose Payment Method"),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Stripe",
+                                  style: TextStyle(fontSize: 16.sp),
+                                ),
+                                SizedBox(width: 3.w),
+                                Icon(Icons.chevron_right),
+                              ],
+                            ),
                           ),
                         ),
                       ],
