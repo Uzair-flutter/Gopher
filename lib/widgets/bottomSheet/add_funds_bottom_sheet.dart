@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
-import 'package:gopher/widgets/bottomSheet/select_payment_method_bottomsheet.dart';
-import 'package:iconsax/iconsax.dart';
 
 void showAddFundsBottomSheet(BuildContext context) {
   List<int> amount = [50, 75, 100, 125, 150];
@@ -16,169 +14,174 @@ void showAddFundsBottomSheet(BuildContext context) {
       borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
     ),
     builder: (context) {
-      return StatefulBuilder(
-        builder: (context, setState) {
-          return Padding(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-              left: 20.w,
-              right: 20.w,
-              top: 10.h,
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text(
-                      "Add Funds",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.sp,
-                        color: AppColors.textBlackColor,
+      return SafeArea(
+        child: StatefulBuilder(
+          builder: (context, setState) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 20.w,
+                right: 20.w,
+                top: 10.h,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        "Add Funds",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.sp,
+                          color: AppColors.textBlackColor,
+                        ),
                       ),
                     ),
-                  ),
 
-                  SizedBox(height: 16.h),
-                  Divider(color: AppColors.textFieldFillColor, thickness: 2.h),
-                  SizedBox(height: 20.h),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(5, (index) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                          child: amountChip(
-                            amount,
-                            index,
-                            selectedIndex == index,
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 16.h,
-                    ),
-                    decoration: BoxDecoration(
+                    SizedBox(height: 16.h),
+                    Divider(
                       color: AppColors.textFieldFillColor,
-                      borderRadius: BorderRadius.circular(10.r),
+                      thickness: 2.h,
                     ),
-                    child: Column(
-                      children: [
-                        Center(
-                          child: Text(
-                            "Enter Custom Amount",
-                            style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textBlackColor,
+                    SizedBox(height: 20.h),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(5, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                            child: amountChip(
+                              amount,
+                              index,
+                              selectedIndex == index,
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 20.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "\$",
+                          );
+                        }),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 16.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.textFieldFillColor,
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      child: Column(
+                        children: [
+                          Center(
+                            child: Text(
+                              "Enter Custom Amount",
                               style: TextStyle(
-                                fontSize: 40.sp,
-                                color: Color(0xff757273),
-                                letterSpacing: 2,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textBlackColor,
                               ),
                             ),
-                            IntrinsicWidth(
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  minWidth: 10,
-                                  maxWidth: 310.w,
+                          ),
+                          SizedBox(height: 20.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "\$",
+                                style: TextStyle(
+                                  fontSize: 40.sp,
+                                  color: Color(0xff757273),
+                                  letterSpacing: 2,
                                 ),
-                                child: Stack(
-                                  alignment: Alignment.centerLeft,
-                                  children: [
-                                    // Display field with the value + .00
-                                    //   _buildFieldWith00(),
-                                    TextFormField(
-                                      maxLines: null,
-                                      minLines: 1,
+                              ),
+                              IntrinsicWidth(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minWidth: 10,
+                                    maxWidth: 310.w,
+                                  ),
+                                  child: Stack(
+                                    alignment: Alignment.centerLeft,
+                                    children: [
+                                      // Display field with the value + .00
+                                      //   _buildFieldWith00(),
+                                      TextFormField(
+                                        maxLines: null,
+                                        minLines: 1,
 
-                                      // inputFormatters: [
-                                      //   FilteringTextInputFormatter.digitsOnly,
-                                      //   LengthLimitingTextInputFormatter(6),
-                                      // ],
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontSize: 40.sp,
-                                        color: Color(0xff757273),
-                                        letterSpacing: 0,
-                                      ),
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.zero,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        border: InputBorder.none,
-                                        filled: true,
-                                        fillColor: Colors.transparent,
-                                        hintText: '0',
-                                        hintStyle: TextStyle(
+                                        // inputFormatters: [
+                                        //   FilteringTextInputFormatter.digitsOnly,
+                                        //   LengthLimitingTextInputFormatter(6),
+                                        // ],
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
                                           fontSize: 40.sp,
                                           color: Color(0xff757273),
                                           letterSpacing: 0,
                                         ),
-                                      ),
-                                      keyboardType:
-                                          const TextInputType.numberWithOptions(
-                                            decimal: false,
+                                        decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.zero,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          border: InputBorder.none,
+                                          filled: true,
+                                          fillColor: Colors.transparent,
+                                          hintText: '0',
+                                          hintStyle: TextStyle(
+                                            fontSize: 40.sp,
+                                            color: Color(0xff757273),
+                                            letterSpacing: 0,
                                           ),
-                                    ),
-                                  ],
+                                        ),
+                                        keyboardType:
+                                            const TextInputType.numberWithOptions(
+                                              decimal: false,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20.h),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              //  selectPaymentMethodBottomSheet(context);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Stripe",
-                                  style: TextStyle(fontSize: 16.sp),
-                                ),
-                                SizedBox(width: 3.w),
-                                Icon(Icons.chevron_right),
-                              ],
+                            ],
+                          ),
+                          SizedBox(height: 20.h),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                //  selectPaymentMethodBottomSheet(context);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Stripe",
+                                    style: TextStyle(fontSize: 16.sp),
+                                  ),
+                                  SizedBox(width: 3.w),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
 
-                  SizedBox(height: 20.h),
-                ],
+                    SizedBox(height: 20.h),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       );
     },
   );
