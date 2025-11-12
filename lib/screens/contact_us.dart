@@ -41,6 +41,8 @@ class ContactUs extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             PhoneWidget(controller: TextEditingController(), filled: true),
+
+            SizedBox(height: 10.h),
             Text(
               "Message",
               style: TextStyle(

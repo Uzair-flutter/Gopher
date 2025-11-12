@@ -26,7 +26,7 @@ class ChangePasswordScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
-            TextField(decoration: InputDecoration(hintText: "Enter password")),
+            TextField(decoration: InputDecoration(hintText: "Enter Current password")),
             SizedBox(height: 10.h),
             Text(
               "New Password",
@@ -37,7 +37,7 @@ class ChangePasswordScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
-            TextField(decoration: InputDecoration(hintText: "Enter password")),
+            TextField(decoration: InputDecoration(hintText: "Enter New password")),
             SizedBox(height: 10.h),
             Text(
               "Confirm Password",
@@ -48,7 +48,7 @@ class ChangePasswordScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
-            TextField(decoration: InputDecoration(hintText: "Enter password")),
+            TextField(decoration: InputDecoration(hintText: "Enter Confirm password")),
           ],
         ),
       ),
