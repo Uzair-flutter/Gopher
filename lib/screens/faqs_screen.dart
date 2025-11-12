@@ -11,7 +11,7 @@ class FaqsScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: "FAQ's"),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
