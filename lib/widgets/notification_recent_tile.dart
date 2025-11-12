@@ -112,8 +112,7 @@ class NotificationRequestTile extends StatelessWidget {
               SizedBox(width: 10.w),
               Container(
                 width: 120.w,
-
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 13.h),
+                padding: EdgeInsets.symmetric(vertical: 13.h),
                 decoration: BoxDecoration(
                   color: AppColors.kPrimaryColor,
                   borderRadius: BorderRadius.circular(10.r),
