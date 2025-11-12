@@ -6,6 +6,7 @@ import 'package:gopher/utils/assets.dart';
 import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
+import '../models/ui/image_view.dart';
 import '../route_generator.dart';
 import '../utils/color_constant.dart';
 
@@ -435,8 +436,11 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
   Widget _buildPhotoTile(String imagePath) {
     return GestureDetector(
       onTap: () {
-        debugPrint('Tapped on image');
-        // You can add full-screen image viewer here
+        Navigator.pushNamed(
+          context,
+          imageViewer,
+          arguments: ImageView(file: imagePath, type: ImageType.asset),
+        );
       },
       child: Container(
         decoration: BoxDecoration(

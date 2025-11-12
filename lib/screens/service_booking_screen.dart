@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/screens/your_address_screen.dart';
 import 'package:gopher/widgets/bottom_sheets/image_selection_bottom_sheet.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 
+import '../models/ui/image_view.dart';
 import '../utils/color_constant.dart';
 import '../view_models/service_view_model.dart';
 import '../widgets/bottom_shadow_bar.dart';
@@ -310,34 +312,52 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
       builder: (context, viewModel, child) {
         return Wrap(
           children: List.generate(viewModel.bookingSharePics.length, (index) {
-            return Badge(
-              label: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  context.read<ServiceViewModel>().removeImage(index);
-                },
-                child: Icon(Iconsax.close_square5, color: Colors.red),
-              ),
-              offset: Offset(-25, 5),
-              backgroundColor: Colors.transparent,
-              child: Padding(
-                padding: EdgeInsets.only(right: 10.w),
-                child: Container(
-                  width: 65.w,
-                  height: 63.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4.r),
-                    image: DecorationImage(
-                      image: FileImage(File(viewModel.bookingSharePics[index])),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            );
+            return _buildImageItem(context, index, viewModel);
           }),
         );
       },
+    );
+  }
+
+  Badge _buildImageItem(
+    BuildContext context,
+    int index,
+    ServiceViewModel viewModel,
+  ) {
+    return Badge(
+      label: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          context.read<ServiceViewModel>().removeImage(index);
+        },
+        child: Icon(Iconsax.close_square5, color: Colors.red),
+      ),
+      offset: Offset(-25, 5),
+      backgroundColor: Colors.transparent,
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(
+          context,
+          imageViewer,
+          arguments: ImageView(
+            file: viewModel.bookingSharePics[index],
+            type: ImageType.file,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(right: 10.w),
+          child: Container(
+            width: 65.w,
+            height: 63.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.r),
+              image: DecorationImage(
+                image: FileImage(File(viewModel.bookingSharePics[index])),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 

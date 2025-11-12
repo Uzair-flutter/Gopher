@@ -5,7 +5,6 @@ import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/notification_recent_tile.dart';
 import 'package:gopher/widgets/notification_tile.dart';
-import 'package:iconsax/iconsax.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -14,89 +13,91 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Notifications"),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
 
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 24.h),
-              Row(
-                children: [
-                  Text(
-                    "Recent",
-                    style: TextStyle(
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textBlackColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 24.h),
+                Row(
+                  children: [
+                    Text(
+                      "Recent",
+                      style: TextStyle(
+                        fontSize: 19.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textBlackColor,
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  Text(
-                    "Mark all as read",
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.kSecondaryColor,
+                    Spacer(),
+                    Text(
+                      "Mark all as read",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.kSecondaryColor,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16.h),
-              NotificationRequestTile(
-                imageUrl: DummyAssets.person,
-                title: 'Work Complete',
-                time: '2h ago',
-                description: 'You got money rating to your Gopher',
-                withButtonText: 'View Details',
-                greenButtonText: 'Rate Gopher',
-              ),
-              SizedBox(height: 20.h),
-              NotificationRequestTile(
-                imageUrl: DummyAssets.person,
-                title: 'New job request',
-                time: '2h ago',
-                description: 'You got money rating to your Gopher',
-                withButtonText: 'Decline',
-                greenButtonText: 'Accept',
-              ),
-              SizedBox(height: 20.h),
-              NotificationTile(
-                title: 'Bank details update successfully',
-                time: '2h ago',
-                description: 'You got money rating to your Gopher',
-              ),
-
-              SizedBox(height: 30.h),
-              Text(
-                "Yesterday",
-                style: TextStyle(
-                  fontSize: 19.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textBlackColor,
+                  ],
                 ),
-              ),
-              SizedBox(height: 16.h),
-              NotificationTile(
-                title: 'Your password has changed',
-                time: '1d ago',
-                description: 'You got money rating to your Gopher',
-              ),
-              SizedBox(height: 16.h),
-              NotificationTile(
-                title: 'Your password has changed',
-                time: '1d ago',
-                description: 'You got money rating to your Gopher',
-              ),
-              SizedBox(height: 16.h),
-              NotificationTile(
-                title: 'Your password has changed',
-                time: '1d ago',
-                description: 'You got money rating to your Gopher',
-              ),
-              SizedBox(height: 16.h),
-            ],
+                SizedBox(height: 16.h),
+                NotificationRequestTile(
+                  imageUrl: DummyAssets.person,
+                  title: 'Work Complete',
+                  time: '2h ago',
+                  description: 'You got money rating to your Gopher',
+                  withButtonText: 'View Details',
+                  greenButtonText: 'Rate Gopher',
+                ),
+                SizedBox(height: 20.h),
+                NotificationRequestTile(
+                  imageUrl: DummyAssets.person,
+                  title: 'New job request',
+                  time: '2h ago',
+                  description: 'You got money rating to your Gopher',
+                  withButtonText: 'Decline',
+                  greenButtonText: 'Accept',
+                ),
+                SizedBox(height: 20.h),
+                NotificationTile(
+                  title: 'Bank details update successfully',
+                  time: '2h ago',
+                  description: 'You got money rating to your Gopher',
+                ),
+
+                SizedBox(height: 30.h),
+                Text(
+                  "Yesterday",
+                  style: TextStyle(
+                    fontSize: 19.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textBlackColor,
+                  ),
+                ),
+                SizedBox(height: 16.h),
+                NotificationTile(
+                  title: 'Your password has changed',
+                  time: '1d ago',
+                  description: 'You got money rating to your Gopher',
+                ),
+                SizedBox(height: 16.h),
+                NotificationTile(
+                  title: 'Your password has changed',
+                  time: '1d ago',
+                  description: 'You got money rating to your Gopher',
+                ),
+                SizedBox(height: 16.h),
+                NotificationTile(
+                  title: 'Your password has changed',
+                  time: '1d ago',
+                  description: 'You got money rating to your Gopher',
+                ),
+                SizedBox(height: 16.h),
+              ],
+            ),
           ),
         ),
       ),

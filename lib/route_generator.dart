@@ -39,8 +39,10 @@ import 'package:gopher/screens/wallet_transaction_screen.dart';
 import 'package:gopher/view_models/profile_view_model.dart';
 import 'package:provider/provider.dart';
 
+import 'models/ui/image_view.dart';
 import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
+import 'screens/image_viewer.dart';
 import 'screens/register_your_details_screen.dart';
 import 'screens/service_screen.dart';
 
@@ -83,6 +85,7 @@ const String walletScreen = '/wallet_screen';
 const String walletTransactionScreen = '/wallet_transaction_screen';
 const String riderOnTheWayScreen = '/rider_on_the_way_screen';
 const String serviceDetailScreen = '/service_detail_screen';
+const String imageViewer = '/image_viewer';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -287,6 +290,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: serviceDetailScreen),
           builder: (_) => const ServiceDetailScreen(),
+        );
+      case imageViewer:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: imageViewer),
+          builder: (_) =>
+              ImageViewer(imageView: settings.arguments as ImageView),
         );
       default:
         return _errorRoute();
