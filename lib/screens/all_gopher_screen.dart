@@ -9,7 +9,7 @@ import '../widgets/gopher_tile_widget.dart';
 
 class AllGopherScreen extends StatelessWidget {
   final String title;
-  const AllGopherScreen({super.key,  this.title = 'All Gopher',});
+  const AllGopherScreen({super.key, this.title = 'All Gopher'});
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +30,13 @@ class AllGopherScreen extends StatelessWidget {
             SizedBox(height: 18.h),
             Expanded(
               child: ListView.separated(
-                padding: EdgeInsets.only(bottom: 10.h),
+                padding: EdgeInsets.only(
+                  bottom: 10.h + MediaQuery.paddingOf(context).bottom,
+                ),
                 itemCount: gophers.length,
                 separatorBuilder: (context, index) => SizedBox(height: 15.h),
                 itemBuilder: (context, index) {
-                  return GopherTile(
-                    gopher: gophers[index],
-                    onTap: () async {
-                      // final filters = await FilterBottomSheet.show(context);
-                    },
-                  );
+                  return GopherTile(gopher: gophers[index]);
                 },
               ),
             ),

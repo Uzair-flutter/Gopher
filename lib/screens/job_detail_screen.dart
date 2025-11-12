@@ -209,28 +209,14 @@ class JobDetailScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomShadowBar(
-        child: GestureDetector(
-          onTap: () {
-            showCancelBookingSheet(context);
-          },
-          child: Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 19.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.r),
-              color: Color(0xffD72547).withValues(alpha: 0.2),
-            ),
-            child: Center(
-              child: Text(
-                "Cancel Booking",
-                style: TextStyle(
-                  height: 0,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xffD72547),
-                ),
-              ),
-            ),
+        child: SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            onPressed: () {
+              showCancelBookingSheet(context);
+            },
+            child: Text('Cancel Booking'),
           ),
         ),
       ),

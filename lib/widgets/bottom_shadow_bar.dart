@@ -7,21 +7,24 @@ class BottomShadowBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        height: 102.h,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(20, 0),
-              blurRadius: 74,
-              spreadRadius: 0,
-              color: Colors.black.withValues(alpha: 0.15),
-            ),
-          ],
-          color: Colors.white,
+    return Container(
+      height: 90.h + MediaQuery.paddingOf(context).bottom,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(20, 0),
+            blurRadius: 74,
+            spreadRadius: 0,
+            color: Colors.black.withValues(alpha: 0.15),
+          ),
+        ],
+        color: Colors.white,
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      child: SafeArea(
+        child: Center(
+          child: SizedBox(height: 56.h, width: double.infinity, child: child),
         ),
-        child: Padding(padding: EdgeInsets.all(24.h), child: child),
       ),
     );
   }
