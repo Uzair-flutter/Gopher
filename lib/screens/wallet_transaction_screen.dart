@@ -3,15 +3,59 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:intl/intl.dart';
 
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
 
-class WalletTransactionScreen extends StatelessWidget {
+class WalletTransactionScreen extends StatefulWidget {
   const WalletTransactionScreen({super.key});
 
   @override
+  State<WalletTransactionScreen> createState() =>
+      _WalletTransactionScreenState();
+}
+
+class _WalletTransactionScreenState extends State<WalletTransactionScreen> {
+  DateTime? selectedDate;
+
+  String _formatDate(DateTime date) {
+    return DateFormat('MMMM yyyy').format(date);
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      initialDatePickerMode: DatePickerMode.day,
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppColors.kPrimaryColor,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: AppColors.textBlackColor,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final displayDate = selectedDate ?? DateTime.now();
+
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Wallet Transactions',
@@ -22,35 +66,45 @@ class WalletTransactionScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.r),
-                color: AppColors.textFieldFillColor,
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.0.w,
+            GestureDetector(
+              onTap: () => _selectDate(context),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.r),
+                  color: AppColors.textFieldFillColor,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Iconsax.calendar, color: AppColors.kPrimaryColor),
-                        SizedBox(width: 8.w),
-                        Text(
-                          'February 2025',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.textGreyColor,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 12.0.w,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Iconsax.calendar,
+                            color: AppColors.kPrimaryColor,
                           ),
-                        ),
-                      ],
-                    ),
-                    Icon(Iconsax.arrow_down_1, color: AppColors.iconColor),
-                  ],
+                          SizedBox(width: 8.w),
+                          Text(
+                            _formatDate(displayDate),
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.textGreyColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Iconsax.arrow_down_1,
+                        size: 24.sp,
+                        color: AppColors.iconColor,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

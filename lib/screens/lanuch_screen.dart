@@ -249,3 +249,4 @@ class OnboardingPage {
     required this.buttonText,
   });
 }
+

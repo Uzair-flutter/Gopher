@@ -86,8 +86,8 @@ class PhoneWidget extends StatelessWidget {
                   padding: EdgeInsets.only(
                     top: 15.h,
                     bottom: 27.h,
-                    left: 27.w,
-                    right: 27.w,
+                    left: 20.w,
+                    right: 20.w,
                   ),
                 ),
                 context: context,
@@ -122,7 +122,6 @@ class PhoneWidget extends StatelessWidget {
                       color: AppColors.textGreyColor,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'General Sans',
                     ),
                   ),
                 ),
