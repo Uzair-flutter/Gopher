@@ -13,7 +13,6 @@ class ImageSelectionBottomSheet {
   }) async {
     return await showModalBottomSheet<String>(
       context: context,
-
       isScrollControlled: true,
       showDragHandle: true,
       builder: (BuildContext context) {
@@ -57,68 +56,70 @@ class _ImageSelectionBottomSheetContentState
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.r),
-          topRight: Radius.circular(20.r),
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.r),
+            topRight: Radius.circular(20.r),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Title
-            Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textBlackColor,
-              ),
-            ),
-            SizedBox(height: 15.h),
-
-            // Options
-            Row(
-              children: [
-                // Camera option
-                Expanded(
-                  child: _buildOption(
-                    icon: Icons.camera_alt,
-                    title: 'Camera',
-                    subtitle: 'Take a photo',
-                    onTap: () => _pickImage(ImageSource.camera),
-                  ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Title
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textBlackColor,
                 ),
-                SizedBox(width: 16.w),
-
-                // Gallery option
-                Expanded(
-                  child: _buildOption(
-                    icon: Icons.photo_library,
-                    title: 'Gallery',
-                    subtitle: 'Choose from gallery',
-                    onTap: () => _pickImage(ImageSource.gallery),
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 15.h),
-
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text('Cancel'),
               ),
-            ),
+              SizedBox(height: 15.h),
 
-            SizedBox(height: 20.h),
-          ],
+              // Options
+              Row(
+                children: [
+                  // Camera option
+                  Expanded(
+                    child: _buildOption(
+                      icon: Icons.camera_alt,
+                      title: 'Camera',
+                      subtitle: 'Take a photo',
+                      onTap: () => _pickImage(ImageSource.camera),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+
+                  // Gallery option
+                  Expanded(
+                    child: _buildOption(
+                      icon: Icons.photo_library,
+                      title: 'Gallery',
+                      subtitle: 'Choose from gallery',
+                      onTap: () => _pickImage(ImageSource.gallery),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 15.h),
+
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text('Cancel'),
+                ),
+              ),
+
+              SizedBox(height: 20.h),
+            ],
+          ),
         ),
       ),
     );
