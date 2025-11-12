@@ -30,157 +30,160 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBarHome(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: CustomSearchBar(),
-            ),
-            // SizedBox(height: 8.h),
-            HomeCarouselWidget(),
-            SizedBox(height: 10.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Container(
-                // height: 158.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r),
-                  //    color: Colors.red,
-                  // image: DecorationImage(
-                  //   image: AssetImage(DummyAssets.map),
-                  //   fit: BoxFit.cover,
-                  // ),
-                ),
-                child: Image.asset(
-                  DummyAssets.map,
-                  fit: BoxFit.cover,
-                  // height: 185.h,
+      body: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: CustomSearchBar(),
+              ),
+              // SizedBox(height: 8.h),
+              HomeCarouselWidget(),
+              SizedBox(height: 10.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Container(
+                  // height: 158.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.r),
+                    //    color: Colors.red,
+                    // image: DecorationImage(
+                    //   image: AssetImage(DummyAssets.map),
+                    //   fit: BoxFit.cover,
+                    // ),
+                  ),
+                  child: Image.asset(
+                    DummyAssets.map,
+                    fit: BoxFit.cover,
+                    // height: 185.h,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 25.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text(
-                    'Our Services',
-                    style: TextStyle(
-                      height: 0,
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, allServicesScreen);
-                    },
-                    child: Text(
-                      'View All',
+              SizedBox(height: 25.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Text(
+                      'Our Services',
                       style: TextStyle(
                         height: 0,
-                        fontSize: 14.sp,
-                        color: AppColors.textBlackColor,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 19.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 15.h),
-            // ServicesSection(
-            //   services: [
-            //     ServiceItem(icon: Icons.kitchen, label: 'Appliance'),
-            //     ServiceItem(icon: Icons.format_paint, label: 'Painting'),
-            //     ServiceItem(icon: Icons.local_shipping, label: 'Shifting'),
-            //     ServiceItem(icon: Icons.cleaning_services, label: 'Cleaning'),
-            //     ServiceItem(icon: Icons.ac_unit, label: 'AC Clean'),
-            //     ServiceItem(icon: Icons.spa, label: 'Massage'),
-            //     ServiceItem(
-            //       icon: Icons.local_laundry_service,
-            //       label: 'Laundry',
-            //     ),
-            //     ServiceItem(icon: Icons.face, label: 'Beauty'),
-            //   ],
-            //   onViewAll: () {
-            //     // Navigate to all services page
-            //     print('View All tapped');
-            //   },
-            // ),
-            _buildServicesSection(context),
-            SizedBox(height: 30.h),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-            //   child: GopherTile(
-            //     gopher: GopherModel(
-            //       name: 'Christopher Smith',
-            //       imageUrl: DummyAssets.person,
-            //       profession: 'Electrician',
-            //       rating: 4.9,
-            //       services: ['Electric', 'Plumbing', 'Repair'],
-            //       additionalServicesCount: 3,
-            //       pricePerHour: 25,
-            //       isAvailable: true,
-            //       isVerified: true,
-            //     ),
-            //     onTap: () {
-            //       // Navigate to gopher detail page
-            //       print('Gopher tile tapped');
-            //     },
-            //   ),
-            // ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text(
-                    'Top Gopher',
-                    style: TextStyle(
-                      height: 0,
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, allServicesScreen);
+                      },
+                      child: Text(
+                        'View All',
+                        style: TextStyle(
+                          height: 0,
+                          fontSize: 14.sp,
+                          color: AppColors.textBlackColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, allGopherScreen);
-                    },
-                    child: Text(
-                      'View All',
+                  ],
+                ),
+              ),
+              SizedBox(height: 15.h),
+              // ServicesSection(
+              //   services: [
+              //     ServiceItem(icon: Icons.kitchen, label: 'Appliance'),
+              //     ServiceItem(icon: Icons.format_paint, label: 'Painting'),
+              //     ServiceItem(icon: Icons.local_shipping, label: 'Shifting'),
+              //     ServiceItem(icon: Icons.cleaning_services, label: 'Cleaning'),
+              //     ServiceItem(icon: Icons.ac_unit, label: 'AC Clean'),
+              //     ServiceItem(icon: Icons.spa, label: 'Massage'),
+              //     ServiceItem(
+              //       icon: Icons.local_laundry_service,
+              //       label: 'Laundry',
+              //     ),
+              //     ServiceItem(icon: Icons.face, label: 'Beauty'),
+              //   ],
+              //   onViewAll: () {
+              //     // Navigate to all services page
+              //     print('View All tapped');
+              //   },
+              // ),
+              _buildServicesSection(context),
+              SizedBox(height: 30.h),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //   child: GopherTile(
+              //     gopher: GopherModel(
+              //       name: 'Christopher Smith',
+              //       imageUrl: DummyAssets.person,
+              //       profession: 'Electrician',
+              //       rating: 4.9,
+              //       services: ['Electric', 'Plumbing', 'Repair'],
+              //       additionalServicesCount: 3,
+              //       pricePerHour: 25,
+              //       isAvailable: true,
+              //       isVerified: true,
+              //     ),
+              //     onTap: () {
+              //       // Navigate to gopher detail page
+              //       print('Gopher tile tapped');
+              //     },
+              //   ),
+              // ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Text(
+                      'Top Gopher',
                       style: TextStyle(
                         height: 0,
-                        fontSize: 14.sp,
-                        color: AppColors.textBlackColor,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 19.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
                     ),
-                  ),
-                ],
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, allGopherScreen);
+                      },
+                      child: Text(
+                        'View All',
+                        style: TextStyle(
+                          height: 0,
+                          fontSize: 14.sp,
+                          color: AppColors.textBlackColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 15.h),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 80.h),
-              itemCount: 4,
-              separatorBuilder: (context, index) => SizedBox(height: 10.h),
-              itemBuilder: (context, index) {
-                return GopherTile(
-                  gopher: gophers[index],
-                  onTap: () {
-                    Navigator.pushNamed(context, serviceDetailScreen);
-                  },
-                );
-              },
-            ),
-          ],
+              SizedBox(height: 15.h),
+              ListView.separated(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
+                itemCount: 4,
+                separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                itemBuilder: (context, index) {
+                  return GopherTile(
+                    gopher: gophers[index],
+                    onTap: () {
+                      Navigator.pushNamed(context, serviceDetailScreen);
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
