@@ -29,6 +29,7 @@ import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
 import 'package:gopher/screens/service_booking_screen.dart';
 import 'package:gopher/screens/service_completed_screen.dart';
+import 'package:gopher/screens/service_detail_screen.dart';
 import 'package:gopher/screens/splash_screen.dart';
 import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/terms_and_condition_screen.dart';
@@ -81,6 +82,7 @@ const String ratingScreen = '/rating_screen';
 const String walletScreen = '/wallet_screen';
 const String walletTransactionScreen = '/wallet_transaction_screen';
 const String riderOnTheWayScreen = '/rider_on_the_way_screen';
+const String serviceDetailScreen = '/service_detail_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -176,9 +178,10 @@ class RouteGenerator {
         );
 
       case allGopherScreen:
+        final String title = settings.arguments as String? ?? 'All Gopher';
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
-          builder: (_) => const AllGopherScreen(),
+          builder: (_) => AllGopherScreen(title: title),
         );
       case allReviewsScreen:
         return MaterialPageRoute(
@@ -279,6 +282,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: RouteSettings(name: riderOnTheWayScreen),
           builder: (_) => const RiderOnTheWayScreen(),
+        );
+      case serviceDetailScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: serviceDetailScreen),
+          builder: (_) => const ServiceDetailScreen(),
         );
       default:
         return _errorRoute();

@@ -80,8 +80,8 @@ class PhoneWidget extends StatelessWidget {
                 countryListTheme: CountryListThemeData(
                   bottomSheetWidth: MediaQuery.sizeOf(context).width,
                   bottomSheetHeight: 560.h,
-                  textStyle: TextStyle(fontSize: 16.sp),
-                  searchTextStyle: TextStyle(fontSize: 16.sp),
+                  textStyle: TextStyle(fontSize: 14.sp),
+                  searchTextStyle: TextStyle(fontSize: 14.sp),
                   margin: EdgeInsets.zero,
                   padding: EdgeInsets.only(
                     top: 15.h,

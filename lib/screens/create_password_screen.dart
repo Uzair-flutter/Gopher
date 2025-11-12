@@ -44,7 +44,7 @@ class CreatePasswordScreen extends StatelessWidget {
               obscureText: true,
               obscuringCharacter: "*",
               decoration: InputDecoration(
-                hintText: "Enter Password",
+                hintText: "Password",
                 suffixIcon: Icon(Iconsax.eye, color: Colors.grey),
               ),
             ),
@@ -66,6 +66,25 @@ class CreatePasswordScreen extends StatelessWidget {
             passwordValidation(text: "a number"),
             SizedBox(height: 9.h),
             passwordValidation(text: "a symbol"),
+
+            SizedBox(height: 20.h),
+            Text(
+              "Confirm Password",
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textBlackColor,
+              ),
+            ),
+            SizedBox(height: 10.h),
+            TextField(
+              obscureText: true,
+              obscuringCharacter: "*",
+              decoration: InputDecoration(
+                hintText: "Confirm Password",
+                suffixIcon: Icon(Iconsax.eye, color: Colors.grey),
+              ),
+            ),
             SizedBox(height: 20.h),
             SizedBox(
               width: double.infinity,
