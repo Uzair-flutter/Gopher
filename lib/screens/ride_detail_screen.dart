@@ -78,7 +78,7 @@ class RideDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-
+      
                     Text(
                       'Ongoing',
                       style: TextStyle(

@@ -16,107 +16,109 @@ class CreateNewAccountScreen extends StatelessWidget {
         title: 'Create New Account',
         isBackButtonVisible: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 17.3.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 24.h),
-            Text(
-              textAlign: TextAlign.center,
-              "Begin with creating new free account. This helps you keep your learning way easier.",
-              style: TextStyle(
-                color: AppColors.textBlackColor,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            SizedBox(height: 32.h),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, addYourEmailScreen);
-                },
-                child: Text("Continue with email"),
-              ),
-            ),
-            // SizedBox(height: 12.h),
-            // SizedBox(
-            //   width: double.infinity,
-            //   child: OutlinedButton(
-            //     style: OutlinedButton.styleFrom(
-            //       side: BorderSide(
-            //         color: AppColors.kSecondaryColor,
-            //         width: 2.w,
-            //       ),
-            //       padding: EdgeInsets.symmetric(vertical: 19.h),
-
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(10.r),
-            //       ),
-            //     ),
-            //     onPressed: () {},
-            //     child: Text(
-            //       "Continue with Phone number",
-            //       style: TextStyle(
-            //         fontSize: 15.sp,
-            //         fontWeight: FontWeight.w600,
-            //         color: AppColors.kSecondaryColor,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            SizedBox(height: 25.h),
-            Text(
-              "or",
-              style: TextStyle(
-                height: 0,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(height: 25.h),
-            socialLogin(type: "Continue with Apple", logo: SvgAssets.apple),
-            SizedBox(height: 12.h),
-            socialLogin(type: "Continue with Google", logo: SvgAssets.google),
-            SizedBox(height: 12.h),
-            socialLogin(
-              type: "Continue with Facebook",
-              logo: SvgAssets.facebook,
-            ),
-            Spacer(),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Already have an account?",
-                  style: TextStyle(
-                    height: 0,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 17.3.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 24.h),
+              Text(
+                textAlign: TextAlign.center,
+                "Begin with creating new free account. This helps you keep your learning way easier.",
+                style: TextStyle(
+                  color: AppColors.textBlackColor,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
                 ),
-                SizedBox(width: 8.w),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, loginScreen);
+              ),
+              SizedBox(height: 32.h),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, addYourEmailScreen);
                   },
-                  child: Text(
-                    "Log in",
+                  child: Text("Continue with email"),
+                ),
+              ),
+              // SizedBox(height: 12.h),
+              // SizedBox(
+              //   width: double.infinity,
+              //   child: OutlinedButton(
+              //     style: OutlinedButton.styleFrom(
+              //       side: BorderSide(
+              //         color: AppColors.kSecondaryColor,
+              //         width: 2.w,
+              //       ),
+              //       padding: EdgeInsets.symmetric(vertical: 19.h),
+
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(10.r),
+              //       ),
+              //     ),
+              //     onPressed: () {},
+              //     child: Text(
+              //       "Continue with Phone number",
+              //       style: TextStyle(
+              //         fontSize: 15.sp,
+              //         fontWeight: FontWeight.w600,
+              //         color: AppColors.kSecondaryColor,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              SizedBox(height: 25.h),
+              Text(
+                "or",
+                style: TextStyle(
+                  height: 0,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: 25.h),
+              socialLogin(type: "Continue with Apple", logo: SvgAssets.apple),
+              SizedBox(height: 12.h),
+              socialLogin(type: "Continue with Google", logo: SvgAssets.google),
+              SizedBox(height: 12.h),
+              socialLogin(
+                type: "Continue with Facebook",
+                logo: SvgAssets.facebook,
+              ),
+              Spacer(),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
                     style: TextStyle(
                       height: 0,
                       fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.kSecondaryColor,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 40.h),
-          ],
+                  SizedBox(width: 8.w),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, loginScreen);
+                    },
+                    child: Text(
+                      "Log in",
+                      style: TextStyle(
+                        height: 0,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.kSecondaryColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 40.h),
+            ],
+          ),
         ),
       ),
     );

@@ -14,128 +14,133 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: "Log in", isBackButtonVisible: false),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 24.h),
-              Text(
-                textAlign: TextAlign.center,
-                "Log in to access your account and explore our services",
-                style: TextStyle(
-                  height: 0,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              SizedBox(height: 32.h),
-              Text(
-                "Email",
-                style: TextStyle(
-                  height: 0,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: 10.h),
-              TextField(
-                decoration: InputDecoration(hintText: "Enter your email"),
-              ),
-
-              SizedBox(height: 18.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Enter Password",
-                    style: TextStyle(
-                      height: 0,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      height: 0,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.kPrimaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10.h),
-              TextField(
-                obscureText: true,
-                obscuringCharacter: "*",
-                decoration: InputDecoration(
-                  hintText: "Enter your password",
-                  suffixIcon: Icon(Iconsax.eye, color: Colors.grey),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, bottomNavPage);
-                  },
-                  child: Text("Log in"),
-                ),
-              ),
-              SizedBox(height: 25.h),
-              Center(
-                child: Text(
-                  "or",
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 24.h),
+                Text(
+                  textAlign: TextAlign.center,
+                  "Log in to access your account and explore our services",
                   style: TextStyle(
                     height: 0,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-              ),
-              SizedBox(height: 25.h),
-              socialLogin(type: "Continue with Apple", logo: SvgAssets.apple),
-              SizedBox(height: 12.h),
-              socialLogin(type: "Continue with Google", logo: SvgAssets.google),
-              SizedBox(height: 12.h),
-              socialLogin(
-                type: "Continue with Facebook",
-                logo: SvgAssets.facebook,
-              ),
-              SizedBox(height: 100.h),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don’t have an account?",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
+                SizedBox(height: 32.h),
+                Text(
+                  "Email",
+                  style: TextStyle(
+                    height: 0,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
                   ),
-                  SizedBox(width: 8.w),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, createNewAccountScreen);
-                    },
-                    child: Text(
-                      "Sign Up",
+                ),
+                SizedBox(height: 10.h),
+                TextField(
+                  decoration: InputDecoration(hintText: "Enter your email"),
+                ),
+
+                SizedBox(height: 18.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Enter Password",
                       style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.kSecondaryColor,
+                        height: 0,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
+                    Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        height: 0,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.kPrimaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10.h),
+                TextField(
+                  obscureText: true,
+                  obscuringCharacter: "*",
+                  decoration: InputDecoration(
+                    hintText: "Enter your password",
+                    suffixIcon: Icon(Iconsax.eye, color: Colors.grey),
                   ),
-                ],
-              ),
-              SizedBox(height: 40.h),
-            ],
+                ),
+                SizedBox(height: 20.h),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, bottomNavPage);
+                    },
+                    child: Text("Log in"),
+                  ),
+                ),
+                SizedBox(height: 25.h),
+                Center(
+                  child: Text(
+                    "or",
+                    style: TextStyle(
+                      height: 0,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 25.h),
+                socialLogin(type: "Continue with Apple", logo: SvgAssets.apple),
+                SizedBox(height: 12.h),
+                socialLogin(
+                  type: "Continue with Google",
+                  logo: SvgAssets.google,
+                ),
+                SizedBox(height: 12.h),
+                socialLogin(
+                  type: "Continue with Facebook",
+                  logo: SvgAssets.facebook,
+                ),
+                SizedBox(height: 100.h),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don’t have an account?",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, createNewAccountScreen);
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.kSecondaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40.h),
+              ],
+            ),
           ),
         ),
       ),
