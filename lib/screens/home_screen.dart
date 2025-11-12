@@ -175,7 +175,7 @@ class HomeScreen extends StatelessWidget {
                 return GopherTile(
                   gopher: gophers[index],
                   onTap: () {
-                    // Navigate to detail page
+                    Navigator.pushNamed(context, serviceDetailScreen);
                   },
                 );
               },
@@ -194,7 +194,16 @@ class HomeScreen extends StatelessWidget {
         for (var service in ServicesData.services)
           SizedBox(
             width: (MediaQuery.of(context).size.width - 32.w - 36.w) / 4,
-            child: ServiceItemWidget(service: service),
+            child: ServiceItemWidget(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  allGopherScreen,
+                  arguments: service.label,
+                );
+              },
+              service: service,
+            ),
           ),
       ],
     );

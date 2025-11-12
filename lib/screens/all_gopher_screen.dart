@@ -8,13 +8,14 @@ import '../widgets/custom_search_bar.dart';
 import '../widgets/gopher_tile_widget.dart';
 
 class AllGopherScreen extends StatelessWidget {
-  const AllGopherScreen({super.key});
+  final String title;
+  const AllGopherScreen({super.key,  this.title = 'All Gopher',});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'All Gopher',
+        title: title,
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
         onActionIconTap: () {
