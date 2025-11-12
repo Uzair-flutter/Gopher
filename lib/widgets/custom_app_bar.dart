@@ -10,6 +10,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBackButtonVisible;
   final bool showSearchIcon;
   final String? actionIcon;
+  final VoidCallback? onSearchTap;
+  final VoidCallback? onActionIconTap;
 
   const CustomAppBar({
     super.key,
@@ -17,6 +19,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actionIcon,
     this.isBackButtonVisible = true,
     this.showSearchIcon = false,
+    this.onSearchTap,
+    this.onActionIconTap,
   });
 
   @override
@@ -36,21 +40,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: isBackButtonVisible ? 60.w : 0,
       actions: [
         if (showSearchIcon)
-          Container(
-            padding: EdgeInsets.all(7.w),
-            margin: EdgeInsets.only(right: 18.w),
-            height: 32.h,
-            width: 32.w,
-            decoration: BoxDecoration(
-              color: AppColors.textFieldFillColor,
-              shape: BoxShape.circle,
+          InkWell(
+            onTap: actionIcon != null
+                ? onActionIconTap ?? () {}
+                : onSearchTap ?? () {},
+            child: Container(
+              padding: EdgeInsets.all(7.w),
+              margin: EdgeInsets.only(right: 18.w),
+              height: 32.h,
+              width: 32.w,
+              decoration: BoxDecoration(
+                color: AppColors.textFieldFillColor,
+                shape: BoxShape.circle,
+              ),
+              child: actionIcon != null
+                  ? SvgPicture.asset(actionIcon!, height: 18.w, width: 18.w)
+                  : Icon(Icons.search_sharp, color: AppColors.textBlackColor),
             ),
-            child: actionIcon != null
-                ? SvgPicture.asset(actionIcon!, height: 18.w, width: 18.w)
-                : Icon(
-                  Icons.search_sharp,
-                  color: AppColors.textBlackColor,
-                ),
           ),
       ],
       leading: isBackButtonVisible

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/view_models/ride_request_view_model.dart';
+import 'package:provider/provider.dart';
 
-class RideRequestTile extends StatelessWidget {
+class RideRequestTile extends StatefulWidget {
   final String riderName;
   final String riderImage;
   final double rating;
@@ -11,6 +13,7 @@ class RideRequestTile extends StatelessWidget {
   final String time;
   final VoidCallback onAccept;
   final VoidCallback onDecline;
+  final int index;
 
   const RideRequestTile({
     super.key,
@@ -21,7 +24,44 @@ class RideRequestTile extends StatelessWidget {
     required this.time,
     required this.onAccept,
     required this.onDecline,
+    required this.index,
   });
+
+  @override
+  State<RideRequestTile> createState() => _RideRequestTileState();
+}
+
+class _RideRequestTileState extends State<RideRequestTile>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+
+  
+    _controller.forward();
+
+  
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+       widget.onDecline();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +78,7 @@ class RideRequestTile extends StatelessWidget {
               ClipOval(
                 child: Center(
                   child: Image.asset(
-                    riderImage,
+                    widget.riderImage,
                     fit: BoxFit.cover,
                     height: 42.w,
                     width: 42.w,
@@ -52,7 +92,7 @@ class RideRequestTile extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        riderName,
+                        widget.riderName,
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
@@ -73,7 +113,7 @@ class RideRequestTile extends StatelessWidget {
                       Icon(Icons.star, color: Colors.amber, size: 16.sp),
                       SizedBox(width: 4.w),
                       Text(
-                        "${rating}",
+                        "${widget.rating}",
                         style: TextStyle(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w500,
@@ -88,7 +128,7 @@ class RideRequestTile extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    "\$${price}",
+                    "\$${widget.price}",
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
@@ -96,7 +136,7 @@ class RideRequestTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${time} mins",
+                    "${widget.time} mins",
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
@@ -108,18 +148,27 @@ class RideRequestTile extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20.h),
-          LinearProgressIndicator(
-            value: 0.7,
-            backgroundColor: Colors.grey[300],
-            color: AppColors.kPrimaryColor,
-            borderRadius: BorderRadius.circular(10.r),
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return LinearProgressIndicator(
+                value: _animation.value,
+                backgroundColor: Colors.grey[300],
+                color: AppColors.kPrimaryColor,
+                borderRadius: BorderRadius.circular(10.r),
+              
+              );
+            },
           ),
           SizedBox(height: 20.h),
           Row(
             children: [
               Expanded(
                 child: InkWell(
-                  onTap: onDecline,
+                  onTap: () {
+                    _controller.stop(); 
+                    widget.onDecline();
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 16.w),
                     decoration: BoxDecoration(
@@ -144,7 +193,10 @@ class RideRequestTile extends StatelessWidget {
               SizedBox(width: 16.w),
               Expanded(
                 child: InkWell(
-                  onTap: onAccept,
+                  onTap: () {
+                    _controller.stop();
+                    widget.onAccept();
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 16.w),
                     decoration: BoxDecoration(
@@ -159,7 +211,6 @@ class RideRequestTile extends StatelessWidget {
                           height: 0,
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-
                           color: Colors.white,
                         ),
                       ),

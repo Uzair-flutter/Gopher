@@ -17,6 +17,9 @@ class AllGopherScreen extends StatelessWidget {
         title: 'All Gopher',
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
+        onActionIconTap: () {
+          FilterBottomSheet.show(context);
+        },
       ),
       body: Padding(
         padding: EdgeInsets.all(20.w),
@@ -33,7 +36,7 @@ class AllGopherScreen extends StatelessWidget {
                   return GopherTile(
                     gopher: gophers[index],
                     onTap: () async {
-                      final filters = await FilterBottomSheet.show(context);
+                      // final filters = await FilterBottomSheet.show(context);
                     },
                   );
                 },
