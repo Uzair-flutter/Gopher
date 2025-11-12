@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/bottom_shadow_bar.dart';
@@ -142,7 +143,13 @@ class RatingScreen extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    bottomNavPage,
+                    (route) => false,
+                  );
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 15.h),
                   decoration: BoxDecoration(
@@ -167,7 +174,16 @@ class RatingScreen extends StatelessWidget {
             ),
             SizedBox(width: 16.w),
             Expanded(
-              child: ElevatedButton(onPressed: () {}, child: Text("Submit")),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    bottomNavPage,
+                    (route) => false,
+                  );
+                },
+                child: Text("Submit"),
+              ),
             ),
           ],
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -30,9 +32,10 @@ class NotificationTile extends StatelessWidget {
               shape: BoxShape.circle,
               color: AppColors.kSecondaryColor.withValues(alpha: 0.2),
             ),
-            child: Icon(
-              Iconsax.lock4,
-              size: 24.sp,
+            child: SvgPicture.asset(
+              SvgAssets.lock,
+              height: 24.h,
+              width: 24.w,
               color: AppColors.kSecondaryColor,
             ),
           ),
