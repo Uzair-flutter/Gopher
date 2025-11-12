@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/view_models/ride_request_view_model.dart';
 import 'package:gopher/widgets/bottomSheet/ride_request_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class SearchForRider extends StatelessWidget {
   const SearchForRider({super.key});
@@ -42,6 +44,7 @@ class SearchForRider extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
+                context.read<RideRequestViewModel>().setRideList();
                 showRidesRequestSheet(context);
               },
               child: Image.asset(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/screens/service_detail_screen.dart';
+import 'package:gopher/widgets/bottom_sheets/filter_bottom_sheet.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 
 import '../utils/assets.dart';
@@ -84,6 +85,9 @@ class _ServiceScreenState extends State<ServiceScreen> {
         title: 'All Services',
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
+        onActionIconTap: () {
+          FilterBottomSheet.show(context);
+        },
       ),
       body: SafeArea(
         child: Padding(

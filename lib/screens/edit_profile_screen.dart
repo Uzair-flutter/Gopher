@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/phone_widget.dart';
 import 'package:iconsax/iconsax.dart';
@@ -28,13 +29,13 @@ class EditProfileScreen extends StatelessWidget {
                       child: Image.asset(
                         DummyAssets.person,
                         fit: BoxFit.cover,
-                        height: 64.w,
-                        width: 64.w,
+                        height: 75.w,
+                        width: 75.w,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 40.h,
+                    top: 50.h,
                     right: 130.w,
                     child: Container(
                       height: 35.w,
@@ -108,8 +109,7 @@ class EditProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(20.0.w),
+      bottomNavigationBar: BottomShadowBar(
         child: ElevatedButton(onPressed: () {}, child: Text("Update Changes")),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/phone_widget.dart';
 
@@ -72,8 +73,7 @@ class ContactUs extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(20.0.w),
+      bottomNavigationBar: BottomShadowBar(
         child: ElevatedButton(onPressed: () {}, child: Text("Submit")),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
+import 'package:gopher/screens/rider_on_the_way_screen.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/view_models/ride_request_view_model.dart';
@@ -72,7 +73,6 @@ void showRidesRequestSheet(BuildContext context) {
                     return ListView.separated(
                       shrinkWrap: false, // Keep false for better performance
                       itemBuilder: (context, index) {
-                       
                         final rideId =
                             rideViewModel.rides[index]["id"] ?? "ride_$index";
                         return RideRequestTile(
@@ -80,7 +80,7 @@ void showRidesRequestSheet(BuildContext context) {
                           onAccept: () {
                             Navigator.pushReplacementNamed(
                               context,
-                              rideDetailScreen,
+                              riderOnTheWayScreen,
                             );
                           },
                           onDecline: () {

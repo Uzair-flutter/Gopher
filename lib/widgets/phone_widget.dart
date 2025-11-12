@@ -119,7 +119,7 @@ class PhoneWidget extends StatelessWidget {
                     "+ 1",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.black,
+                      color: AppColors.textGreyColor,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'General Sans',

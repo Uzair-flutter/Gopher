@@ -28,10 +28,26 @@ class SuccessfullyCreatedScreen extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
             Center(
-              child: Text(
-                textAlign: TextAlign.center,
-                "Only one click to explore Gopher.",
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Only one click to explore ",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Gopher.",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20.h),

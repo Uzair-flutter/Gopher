@@ -23,6 +23,7 @@ import 'package:gopher/screens/rating_screen.dart';
 import 'package:gopher/screens/register_your_details_screen.dart'
     show RegisterYourDetailsScreen;
 import 'package:gopher/screens/ride_detail_screen.dart';
+import 'package:gopher/screens/rider_on_the_way_screen.dart';
 import 'package:gopher/screens/search_for_rider_screen.dart';
 import 'package:gopher/screens/select_gopher_screen.dart';
 import 'package:gopher/screens/select_service_screen.dart';
@@ -33,6 +34,7 @@ import 'package:gopher/screens/successfully_created_screen.dart';
 import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'package:gopher/screens/wallet_screen.dart';
+import 'package:gopher/screens/wallet_transaction_screen.dart';
 
 import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
@@ -75,6 +77,8 @@ const String bookingReviewScreen = '/booking_review_screen';
 const String serviceCompletedScreen = '/service_completed_screen';
 const String ratingScreen = '/rating_screen';
 const String walletScreen = '/wallet_screen';
+const String walletTransactionScreen = '/wallet_transaction_screen';
+const String riderOnTheWayScreen = '/rider_on_the_way_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -261,6 +265,16 @@ class RouteGenerator {
           settings: RouteSettings(name: walletScreen),
           builder: (_) => const WalletScreen(),
         ); 
+        case walletTransactionScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: walletTransactionScreen),
+          builder: (_) => const WalletTransactionScreen(),
+        );
+        case riderOnTheWayScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: riderOnTheWayScreen),
+          builder: (_) => const RiderOnTheWayScreen(),
+        );
       default:
         return _errorRoute();
     }

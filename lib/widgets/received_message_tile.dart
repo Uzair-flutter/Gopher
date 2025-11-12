@@ -27,8 +27,8 @@ class ReceivedMessageTile extends StatelessWidget {
                 child: Image.asset(
                   imageUrl,
                   fit: BoxFit.cover,
-                  height: 40.w,
-                  width: 40.w,
+                  height: 30.w,
+                  width: 30.w,
                 ),
               ),
             ),

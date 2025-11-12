@@ -40,9 +40,9 @@ void showAddFundsBottomSheet(BuildContext context) {
                     ),
                   ),
 
-                  SizedBox(height: 18.h),
+                  SizedBox(height: 16.h),
                   Divider(color: AppColors.textFieldFillColor, thickness: 2.h),
-                  SizedBox(height: 22.h),
+                  SizedBox(height: 20.h),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(

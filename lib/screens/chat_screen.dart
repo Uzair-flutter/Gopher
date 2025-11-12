@@ -74,10 +74,9 @@ class ChatScreen extends StatelessWidget {
       body: Column(
         children: [
           Divider(color: Colors.grey[200]!),
-         
+
           Expanded(
             child: SingleChildScrollView(
-             
               padding: EdgeInsets.only(top: 12.h),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -140,7 +139,6 @@ class ChatScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(height: 12.h),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                     child: Row(

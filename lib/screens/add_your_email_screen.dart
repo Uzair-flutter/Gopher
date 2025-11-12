@@ -38,7 +38,7 @@ class AddEmailYourScreen extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             TextField(
-              decoration: InputDecoration(hintText: "sarah.jansen@gmail.com"),
+              decoration: InputDecoration(hintText: "Enter your email"),
             ),
             SizedBox(height: 20.h),
             SizedBox(

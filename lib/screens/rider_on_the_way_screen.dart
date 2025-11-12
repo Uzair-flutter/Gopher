@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/dialog%20box/ride_complete_dailog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RiderOnTheWayScreen extends StatefulWidget {
@@ -26,17 +27,79 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
               SizedBox(height: 63.h),
               buildRiderInfo(),
               SizedBox(height: 20.h),
-              Container(
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: AppColors.textFieldFillColor,
-                  borderRadius: BorderRadius.circular(10.0.r),
-                ),
-                child: Column(
-                  children: [
-                    Opacity(
-                      opacity: 0.6,
-                      child: Row(
+              GestureDetector(
+                onTap: () {
+                  showRideCompleteDialog(screenContext: context);
+                },
+                child: Container(
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: AppColors.textFieldFillColor,
+                    borderRadius: BorderRadius.circular(10.0.r),
+                  ),
+                  child: Column(
+                    children: [
+                      Opacity(
+                        opacity: 0.6,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 35.h,
+                                  width: 35.w,
+                                  padding: EdgeInsets.all(6.w),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.kPrimaryColor,
+                                    //borderRadius: BorderRadius.circular(10.0.r),
+                                  ),
+                                  child: Icon(
+                                    Iconsax.location,
+                                    color: Colors.white,
+                                    size: 18.w,
+                                  ),
+                                ),
+                                SizedBox(width: 8.w),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Pickup',
+                                      style: TextStyle(
+                                        color: AppColors.textBlackColor,
+                                        fontSize: 13.sp,
+                                        height: 0,
+                                      ),
+                                    ),
+                                    SizedBox(height: 2.h),
+                                    Text(
+                                      '02:12 pm',
+                                      style: TextStyle(
+                                        height: 0,
+                                        color: AppColors.textGreyColor,
+                                        fontSize: 13.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+
+                            Text(
+                              'Completed',
+                              style: TextStyle(
+                                height: 0,
+                                color: AppColors.kPrimaryColor,
+                                fontSize: 13.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.h),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
@@ -47,7 +110,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                                 padding: EdgeInsets.all(6.w),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: AppColors.kPrimaryColor,
+                                  color: AppColors.kSecondaryColor,
                                   //borderRadius: BorderRadius.circular(10.0.r),
                                 ),
                                 child: Icon(
@@ -61,7 +124,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Pickup',
+                                    'DropOff',
                                     style: TextStyle(
                                       color: AppColors.textBlackColor,
                                       fontSize: 13.sp,
@@ -70,7 +133,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                                   ),
                                   SizedBox(height: 2.h),
                                   Text(
-                                    '02:12 pm',
+                                    'Estd. Time • 02:46 pm',
                                     style: TextStyle(
                                       height: 0,
                                       color: AppColors.textGreyColor,
@@ -83,73 +146,16 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                           ),
 
                           Text(
-                            'Completed',
+                            'Ongoing',
                             style: TextStyle(
-                              height: 0,
-                              color: AppColors.kPrimaryColor,
+                              color: AppColors.kSecondaryColor,
                               fontSize: 13.sp,
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: 20.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 35.h,
-                              width: 35.w,
-                              padding: EdgeInsets.all(6.w),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.kSecondaryColor,
-                                //borderRadius: BorderRadius.circular(10.0.r),
-                              ),
-                              child: Icon(
-                                Iconsax.location,
-                                color: Colors.white,
-                                size: 18.w,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'DropOff',
-                                  style: TextStyle(
-                                    color: AppColors.textBlackColor,
-                                    fontSize: 13.sp,
-                                    height: 0,
-                                  ),
-                                ),
-                                SizedBox(height: 2.h),
-                                Text(
-                                  'Estd. Time • 02:46 pm',
-                                  style: TextStyle(
-                                    height: 0,
-                                    color: AppColors.textGreyColor,
-                                    fontSize: 13.sp,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-
-                        Text(
-                          'Ongoing',
-                          style: TextStyle(
-                            color: AppColors.kSecondaryColor,
-                            fontSize: 13.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 20.h),

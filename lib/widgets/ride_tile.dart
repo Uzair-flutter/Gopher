@@ -12,7 +12,7 @@ class RideTile extends StatelessWidget {
     required this.imageUrl,
     required this.title,
     required this.price,
-    required this.isSelected ,
+    required this.isSelected,
   });
 
   @override
@@ -20,6 +20,7 @@ class RideTile extends StatelessWidget {
     return Column(
       children: [
         Container(
+          padding: EdgeInsets.all(4.w),
           width: 99.w,
           height: 99.h,
           decoration: BoxDecoration(

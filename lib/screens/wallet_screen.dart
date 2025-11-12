@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/bottomSheet/add_funds_bottom_sheet.dart';
@@ -20,15 +21,36 @@ class WalletScreen extends StatelessWidget {
           children: [
             walletCard(context: context),
             SizedBox(height: 24.h),
-            Text(
-              "Recent activity",
-              style: TextStyle(fontSize: 19.sp, fontWeight: FontWeight.w600),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Recent activity",
+                  style: TextStyle(
+                    fontSize: 19.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, walletTransactionScreen);
+                  },
+                  child: Text(
+                    "View All",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.textBlackColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 24.h),
             Expanded(
               child: ListView.separated(
                 separatorBuilder: (context, index) =>
-                    Divider(color: AppColors.textFieldFillColor, height: 2.h),
+                    Divider(color: AppColors.textFieldFillColor, height: 4.h),
                 itemCount: 5,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {

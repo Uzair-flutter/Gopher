@@ -187,7 +187,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
           onPressed: () {
             Navigator.pushNamed(context, searchForRider);
           },
-          child: Text("Continue"),
+          child: Text("Find Gopher"),
         ),
       ),
     );

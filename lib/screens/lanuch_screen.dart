@@ -65,14 +65,14 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: 65.h,
+        toolbarHeight: 80.h,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           if (_currentPage < 2)
             Padding(
-              padding: EdgeInsets.only(top: 24.h, right: 24.0.w),
+              padding: EdgeInsets.only(top: 43.h, right: 24.0.w),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {
@@ -211,7 +211,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withOpacity(0.7),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(

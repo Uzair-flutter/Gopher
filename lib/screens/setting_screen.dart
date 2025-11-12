@@ -35,7 +35,7 @@ class SettingScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
                   gradient: LinearGradient(
-                    colors: [Color(0xff053F7C), Color(0xff28609B)],
+                    colors: [Color(0xff28609B), Color(0xff053F7C)],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -266,7 +266,7 @@ Widget profileTitle({
       ),
       child: Row(
         children: [
-          SvgPicture.asset(svgIcon, height: 20.h),
+          SvgPicture.asset(svgIcon, height: 19.h, width: 19.w),
           SizedBox(width: 8.w),
           Text(
             title,

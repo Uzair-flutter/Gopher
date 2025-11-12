@@ -71,8 +71,8 @@ class NotificationTile extends StatelessWidget {
                   description,
                   style: TextStyle(
                     height: 0,
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w500,
                     color: AppColors.textGreyColor,
                   ),
                 ),

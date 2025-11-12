@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: isBackButtonVisible ? 60.w : 0,
       actions: [
         if (showSearchIcon)
-          InkWell(
+          GestureDetector(
             onTap: actionIcon != null
                 ? onActionIconTap ?? () {}
                 : onSearchTap ?? () {},

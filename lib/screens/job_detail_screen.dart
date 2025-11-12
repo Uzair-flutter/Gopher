@@ -36,9 +36,9 @@ class JobDetailScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       profilebar(),
-                      SizedBox(height: 20.h),
-                      Divider(),
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 18.h),
+                      Divider(color: Colors.grey[200]!),
+                      SizedBox(height: 18.h),
                       Row(
                         children: [
                           Text(
@@ -52,8 +52,8 @@ class JobDetailScreen extends StatelessWidget {
                           Spacer(),
                           Container(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 10.w,
-                              vertical: 6.h,
+                              horizontal: 13.w,
+                              vertical: 9.h,
                             ),
                             decoration: BoxDecoration(
                               color: Color(0xffFAECCE),
@@ -64,10 +64,32 @@ class JobDetailScreen extends StatelessWidget {
                               "Upcoming",
                               style: TextStyle(
                                 height: 0,
-                                fontSize: 12.sp,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xff8C6227),
                               ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16.h),
+                      Row(
+                        children: [
+                          Text(
+                            "Date ",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.textGreyColor,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            "14 Oct 2025",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.textBlackColor,
                             ),
                           ),
                         ],
@@ -129,9 +151,9 @@ class JobDetailScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 30.h),
-                      Divider(),
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 28.h),
+                      Divider(color: Colors.grey[200]!),
+                      SizedBox(height: 18.h),
                       Row(
                         children: [
                           Text(
@@ -146,9 +168,9 @@ class JobDetailScreen extends StatelessWidget {
                           Text(
                             "\$74",
                             style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.kPrimaryColor,
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textBlackColor,
                             ),
                           ),
                         ],
@@ -240,7 +262,7 @@ profilebar() {
               "Home Cleaner",
               style: TextStyle(
                 height: 0,
-                fontSize: 13.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -298,7 +320,7 @@ profilebar() {
                   "3.2 mile",
                   style: TextStyle(
                     height: 0,
-                    fontSize: 13.sp,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textBlackColor,
                   ),

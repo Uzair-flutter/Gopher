@@ -44,7 +44,7 @@ class _RideRequestTileState extends State<RideRequestTile>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _animation = Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
 
   
     _controller.forward();
