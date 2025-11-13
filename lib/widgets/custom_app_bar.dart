@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      toolbarHeight: kBottomNavigationBarHeight.h,
       automaticallyImplyLeading: false,
       title: Text(
         title,
@@ -91,5 +92,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>  Size.fromHeight(kBottomNavigationBarHeight.h);
 }
