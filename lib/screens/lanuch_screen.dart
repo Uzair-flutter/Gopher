@@ -105,88 +105,66 @@ class _LaunchScreenState extends State<LaunchScreen> {
     return Column(
       children: [
         // Image area - takes most of the screen
-        Expanded(
-          flex: 3,
-          child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30.r),
-                bottomRight: Radius.circular(30.r),
-              ),
-
-              // You can add your actual images here
-              // image: DecorationImage(
-              //   image: AssetImage('path_to_image'),
-              //   fit: BoxFit.cover,
-              // ),
-            ),
-            child: Image.asset(
-              index == 0
-                  ? PngAssets.launch1
-                  : index == 1
-                  ? PngAssets.launch2
-                  : PngAssets.launch3,
-              fit: BoxFit.fill,
-            ),
-          ),
+        Image.asset(
+          height: 567.h,
+          index == 0
+              ? PngAssets.launch1
+              : index == 1
+              ? PngAssets.launch2
+              : PngAssets.launch3,
+          fit: BoxFit.fill,
         ),
         // White content card
-        Expanded(
-          flex: 2,
-          child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(color: Colors.white),
-            padding: EdgeInsets.only(bottom: 24.w, top: 58.h),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    page.title,
-                    style: GoogleFonts.inter(
-                      fontSize: 28.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textBlackColor,
-                    ),
-                    textAlign: TextAlign.center,
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(color: Colors.white),
+          padding: EdgeInsets.only( top: 58.h),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  page.title,
+                  style: GoogleFonts.inter(
+                    fontSize: 28.sp,
+                    height: 0,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textBlackColor,
                   ),
-                  SizedBox(height: 12.h),
-                  // Description
-                  Text(
-                    page.description,
-                    style: GoogleFonts.inter(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textBlackColor,
-                    ),
-                    textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 12.h),
+                // Description
+                Text(
+                  page.description,
+                  style: GoogleFonts.inter(
+                    fontSize: 15.sp,
+                    height: 0,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textBlackColor,
                   ),
-                  SizedBox(height: 24.h),
-                  // Pagination indicators
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      _pages.length,
-                      (index) => _buildDot(index == _currentPage),
-                    ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 24.h),
+                // Pagination indicators
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    _pages.length,
+                    (index) => _buildDot(index == _currentPage),
                   ),
-                  Spacer(),
-                  // CTA Button
-                  SafeArea(
-                    top: false,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: _nextPage,
-
-                        child: Text(page.buttonText),
-                      ),
-                    ),
+                ),
+                SizedBox(height: 24.h),
+                // CTA Button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _nextPage,
+                    child: Text(page.buttonText),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
