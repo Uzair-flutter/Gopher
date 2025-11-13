@@ -21,10 +21,8 @@ class BottomShadowBar extends StatelessWidget {
         color: Colors.white,
       ),
       padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: SafeArea(
-        child: Center(
-          child: SizedBox(height: 56.h, width: double.infinity, child: child),
-        ),
+      child: Center(
+        child: SizedBox(height: 56.h, width: double.infinity, child: child),
       ),
     );
   }
