@@ -63,7 +63,6 @@ class AppTheme {
           ),
           backgroundColor: AppColors.kPrimaryColor,
           foregroundColor: Colors.white,
-         // padding: EdgeInsets.symmetric(vertical: 19.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),

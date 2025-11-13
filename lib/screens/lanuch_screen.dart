@@ -17,6 +17,7 @@ class LaunchScreen extends StatefulWidget {
 class _LaunchScreenState extends State<LaunchScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
+  late double bottomNotchHeight = MediaQuery.of(context).viewPadding.bottom;
 
   final List<OnboardingPage> _pages = [
     OnboardingPage(
@@ -64,33 +65,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        toolbarHeight: 80.h,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          if (_currentPage < 2)
-            Padding(
-              padding: EdgeInsets.only(top: 43.h, right: 24.0.w),
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    loginScreen,
-                    (route) => false,
-                  );
-                },
-                child: _buildSkipButton(),
-              ),
-            ),
-        ],
-      ),
-      // Dark gray background
       body: PageView.builder(
         physics: NeverScrollableScrollPhysics(),
-
         controller: _pageController,
         onPageChanged: _onPageChanged,
         itemCount: _pages.length,
@@ -102,73 +78,118 @@ class _LaunchScreenState extends State<LaunchScreen> {
   }
 
   Widget _buildPage(OnboardingPage page, int index) {
-    return Column(
-      children: [
-        // Image area - takes most of the screen
-        Image.asset(
-          height: 567.h,
-          index == 0
-              ? PngAssets.launch1
-              : index == 1
-              ? PngAssets.launch2
-              : PngAssets.launch3,
-          fit: BoxFit.fill,
-        ),
-        // White content card
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(color: Colors.white),
-          padding: EdgeInsets.only( top: 58.h),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final safeAreaPadding = MediaQuery.of(context).viewPadding;
+
+    return SafeArea(
+      top: false,
+      child: Column(
+        children: [
+          // Image area - takes most of the screen
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+                image: AssetImage(
+                  index == 0
+                      ? PngAssets.launch1
+                      : index == 1
+                      ? PngAssets.launch2
+                      : PngAssets.launch3,
+                ),
+              ),
+              color: Colors.amber,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20.r),
+                bottomRight: Radius.circular(20.r),
+              ),
+            ),
+            height: 567.h - safeAreaPadding.bottom,
+            child: Stack(
               children: [
-                Text(
-                  page.title,
-                  style: GoogleFonts.inter(
-                    fontSize: 28.sp,
-                    height: 0,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textBlackColor,
+                // Image.asset(
+                //   width: double.infinity,
+                //   index == 0
+                //       ? PngAssets.launch1
+                //       : index == 1
+                //       ? PngAssets.launch2
+                //       : PngAssets.launch3,
+                //   fit: BoxFit.fitWidth,
+                // ),
+                if (_currentPage < 2)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 74.h, right: 24.0.w),
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            loginScreen,
+                            (route) => false,
+                          );
+                        },
+                        child: _buildSkipButton(),
+                      ),
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 12.h),
-                // Description
-                Text(
-                  page.description,
-                  style: GoogleFonts.inter(
-                    fontSize: 15.sp,
-                    height: 0,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textBlackColor,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 24.h),
-                // Pagination indicators
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    _pages.length,
-                    (index) => _buildDot(index == _currentPage),
-                  ),
-                ),
-                SizedBox(height: 24.h),
-                // CTA Button
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _nextPage,
-                    child: Text(page.buttonText),
-                  ),
-                ),
               ],
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(
+                top: 58.h,
+                bottom: 20.h,
+                left: 20.w,
+                right: 20.w,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    page.title,
+                    style: GoogleFonts.inter(
+                      fontSize: 28.sp,
+                      height: 0,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textBlackColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12.h),
+                  Text(
+                    page.description,
+                    style: GoogleFonts.inter(
+                      fontSize: 15.sp,
+                      height: 0,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textBlackColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 24.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      _pages.length,
+                      (index) => _buildDot(index == _currentPage),
+                    ),
+                  ),
+                  Spacer(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: _nextPage,
+                      child: Text(page.buttonText),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -186,13 +207,13 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   Widget _buildSkipButton() {
     return Container(
+      width: 80.w,
       padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 8.w),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
+        color: Colors.white.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             'Skip',
