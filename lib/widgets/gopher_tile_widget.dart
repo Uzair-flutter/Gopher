@@ -139,34 +139,34 @@ class GopherTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16.h),
-                      // Services Tags
-                      Row(
-                        children: [
-                          ServiceChip(label: gopher.services[0]),
-                          SizedBox(width: 8.w),
-                          ServiceChip(label: gopher.services[1]),
-                          SizedBox(width: 8.w),
-                          ServiceChip(label: gopher.services[2]),
-                          SizedBox(width: 5.w),
-                          Text(
-                            '+${gopher.additionalServicesCount}',
-                            style: TextStyle(
-                              color: AppColors.kSecondaryColor,
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                      // SizedBox(height: 16.h),
+                      // // Services Tags
+                      // Row(
+                      //   children: [
+                      //     ServiceChip(label: gopher.services[0]),
+                      //     SizedBox(width: 8.w),
+                      //     ServiceChip(label: gopher.services[1]),
+                      //     SizedBox(width: 8.w),
+                      //     ServiceChip(label: gopher.services[2]),
+                      //     SizedBox(width: 5.w),
+                      //     Text(
+                      //       '+${gopher.additionalServicesCount}',
+                      //       style: TextStyle(
+                      //         color: AppColors.kSecondaryColor,
+                      //         fontSize: 13.sp,
+                      //         fontWeight: FontWeight.w400,
+                      //       ),
+                      //     ),
 
-                          // if (gopher.additionalServicesCount > 0) ...[
-                          //   SizedBox(width: 8.w),
-                          //   ServiceChip(
-                          //     label: '+${gopher.additionalServicesCount}',
-                          //     isCounter: true,
-                          //   ),
-                          // ],
-                        ],
-                      ),
+                      //     // if (gopher.additionalServicesCount > 0) ...[
+                      //     //   SizedBox(width: 8.w),
+                      //     //   ServiceChip(
+                      //     //     label: '+${gopher.additionalServicesCount}',
+                      //     //     isCounter: true,
+                      //     //   ),
+                      //     // ],
+                      //   ],
+                      // ),
                       // Wrap(
                       //   spacing: 8.w,
                       //   runSpacing: 8.h,

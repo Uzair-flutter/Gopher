@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'app_init.dart';
 import 'services/storage_service.dart';
 import 'view_models/bottom_nav_view_model.dart';
+import 'view_models/filter_view_model.dart';
 import 'view_models/service_view_model.dart';
 import 'view_models/theme_view_model.dart';
 
@@ -29,6 +30,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => ServiceViewModel()),
         ChangeNotifierProvider(create: (_) => AddressProvider()),
         ChangeNotifierProvider(create: (_) => RideRequestViewModel()),
+        ChangeNotifierProvider(create: (_) => FilterViewModel(services: FilterViewModel.professionalServices)),
       ],
       child: AppInit(),
     ),

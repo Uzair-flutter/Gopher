@@ -36,6 +36,7 @@ import 'package:gopher/screens/terms_and_condition_screen.dart';
 import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'package:gopher/screens/wallet_screen.dart';
 import 'package:gopher/screens/wallet_transaction_screen.dart';
+import 'package:gopher/screens/your_address_screen.dart';
 import 'package:gopher/view_models/profile_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -86,6 +87,7 @@ const String walletTransactionScreen = '/wallet_transaction_screen';
 const String riderOnTheWayScreen = '/rider_on_the_way_screen';
 const String serviceDetailScreen = '/service_detail_screen';
 const String imageViewer = '/image_viewer';
+const String yourAddressScreen = '/your_address_screen';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -181,10 +183,9 @@ class RouteGenerator {
         );
 
       case allGopherScreen:
-        final String title = settings.arguments as String? ?? 'All Gopher';
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
-          builder: (_) => AllGopherScreen(title: title),
+          builder: (_) => AllGopherScreen(),
         );
       case allReviewsScreen:
         return MaterialPageRoute(
@@ -296,6 +297,11 @@ class RouteGenerator {
           settings: RouteSettings(name: imageViewer),
           builder: (_) =>
               ImageViewer(imageView: settings.arguments as ImageView),
+        );
+        case yourAddressScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: yourAddressScreen),
+          builder: (_) => const YourAddressScreen(),
         );
       default:
         return _errorRoute();

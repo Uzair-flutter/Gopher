@@ -10,9 +10,15 @@ import '../widgets/bottom_shadow_bar.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/dialog box/booking_success_dailog_box.dart';
 
-class BookingReviewScreen extends StatelessWidget {
+class BookingReviewScreen extends StatefulWidget {
   const BookingReviewScreen({super.key});
 
+  @override
+  State<BookingReviewScreen> createState() => _BookingReviewScreenState();
+}
+
+class _BookingReviewScreenState extends State<BookingReviewScreen> {
+  bool deductFromWallet = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,12 +158,10 @@ class BookingReviewScreen extends StatelessWidget {
                     Column(
                       spacing: 15.h,
                       children: [
-                        _bookingDetailRow('Service', 'Home Cleaning'),
-                        _bookingDetailRow(
-                          'Date & Time',
-                          '14 Oct 2025 |11:00 AM',
-                        ),
-                        _bookingDetailRow('Working Hours', '2 Hours'),
+                        _bookingDetailRow('Date ', '14 Oct 2025'),
+                        _bookingDetailRow('Time', '11:00 AM'),
+
+                        // _bookingDetailRow('Working Hours', '2 Hours'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -187,6 +191,53 @@ class BookingReviewScreen extends StatelessWidget {
                             ),
                           ],
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Visiting Charges",
+                              style: TextStyle(
+                                height: 0,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textGreyColor,
+                              ),
+                            ),
+                            Text(
+                              "\$23",
+                              style: TextStyle(
+                                height: 0,
+                                fontSize: 17.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        if (deductFromWallet)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Wallet deduction",
+                                style: TextStyle(
+                                  height: 0,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.kSecondaryColor,
+                                ),
+                              ),
+                              Text(
+                                "\$23",
+                                style: TextStyle(
+                                  height: 0,
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.kSecondaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                     SizedBox(height: 30.h),
@@ -206,12 +257,12 @@ class BookingReviewScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '\$75',
+                          '\$23',
                           style: TextStyle(
                             height: 0,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.kPrimaryColor,
+                            color: AppColors.textBlackColor,
                           ),
                         ),
                       ],
@@ -233,7 +284,7 @@ class BookingReviewScreen extends StatelessWidget {
                 children: [
                   SvgPicture.asset(SvgAssets.stripe),
                   Text(
-                    '\$75',
+                    '\$23',
                     style: TextStyle(
                       height: 0,
                       fontSize: 16.sp,
@@ -244,6 +295,53 @@ class BookingReviewScreen extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 18.5.h),
+            deductFromWallet
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        deductFromWallet = false;
+                      });
+                    },
+                    child: Align(
+                      alignment: AlignmentGeometry.centerRight,
+                      child: Text(
+                        "Clear wallet Deduction",
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xffD72547),
+                        ),
+                      ),
+                    ),
+                  )
+                : GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        deductFromWallet = true;
+                      });
+                    },
+                    child: Align(
+                      alignment: AlignmentGeometry.centerRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SvgPicture.asset(
+                            SvgAssets.wallet,
+                            color: AppColors.kSecondaryColor,
+                          ),
+                          Text(
+                            "Deduct from wallet",
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.kSecondaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),
