@@ -29,7 +29,12 @@ class ServicesSection extends StatelessWidget {
             ),
             itemCount: services.length,
             itemBuilder: (context, index) {
-              return ServiceItemWidget(service: services[index]);
+              return ServiceItemWidget(
+                onTap: () {
+                  // Handle service item tap
+                },
+                service: services[index],
+              );
             },
           ),
         ],

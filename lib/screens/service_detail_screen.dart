@@ -927,7 +927,7 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Price',
+              'Visiting Charges',
               style: TextStyle(
                 height: 0,
                 color: Color(0xFF757273),
@@ -948,15 +948,15 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  TextSpan(
-                    text: '/hour',
-                    style: TextStyle(
-                      height: 0,
-                      color: AppColors.textGreyColor,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  // TextSpan(
+                  //   text: '/hour',
+                  //   style: TextStyle(
+                  //     height: 0,
+                  //     color: AppColors.textGreyColor,
+                  //     fontSize: 13.sp,
+                  //     fontWeight: FontWeight.w400,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

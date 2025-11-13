@@ -12,19 +12,42 @@ import '../widgets/service_item_widget.dart';
 
 class ServicesData {
   static final List<ServiceItem> services = [
-    ServiceItem(icon: SvgAssets.appliance, label: 'Appliance'),
-    ServiceItem(icon: SvgAssets.repairing, label: 'Painting'),
-    ServiceItem(icon: SvgAssets.shifting, label: 'Shifting'),
-    ServiceItem(icon: SvgAssets.cleaning, label: 'Cleaning'),
-    ServiceItem(icon: SvgAssets.ac, label: 'AC Clean'),
-    ServiceItem(icon: SvgAssets.massage, label: 'Massage'),
-    ServiceItem(icon: SvgAssets.laundry, label: 'Laundry'),
-    ServiceItem(icon: SvgAssets.beauty, label: 'Beauty'),
+    ServiceItem(
+      icon: SvgAssets.appliance,
+      label: 'Appliance',
+      isSelected: true,
+    ),
+    ServiceItem(
+      icon: SvgAssets.repairing,
+      label: 'Painting',
+      isSelected: false,
+    ),
+    ServiceItem(icon: SvgAssets.shifting, label: 'Shifting', isSelected: false),
+    ServiceItem(icon: SvgAssets.cleaning, label: 'Cleaning', isSelected: false),
+    ServiceItem(icon: SvgAssets.ac, label: 'AC Clean', isSelected: false),
+    ServiceItem(icon: SvgAssets.massage, label: 'Massage', isSelected: false),
+    ServiceItem(icon: SvgAssets.laundry, label: 'Laundry', isSelected: false),
+    ServiceItem(icon: SvgAssets.beauty, label: 'Beauty', isSelected: false),
   ];
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Ensure first index is selected by default
+    // Reset all services and set first one as selected
+    for (int i = 0; i < ServicesData.services.length; i++) {
+      ServicesData.services[i].isSelected = (i == 0);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +57,7 @@ class HomeScreen extends StatelessWidget {
         top: false,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -64,33 +88,14 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 25.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Row(
-                  children: [
-                    Text(
-                      'Our Services',
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 19.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Spacer(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, allServicesScreen);
-                      },
-                      child: Text(
-                        'View All',
-                        style: TextStyle(
-                          height: 0,
-                          fontSize: 14.sp,
-                          color: AppColors.textBlackColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  'Our Services',
+                  style: TextStyle(
+                    height: 0,
+                    fontSize: 19.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
                 ),
               ),
               SizedBox(height: 15.h),
@@ -115,6 +120,54 @@ class HomeScreen extends StatelessWidget {
               // ),
               _buildServicesSection(context),
               SizedBox(height: 30.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Text(
+                      'Nearby',
+                      style: TextStyle(
+                        height: 0,
+                        fontSize: 19.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Spacer(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, allGopherScreen);
+                      },
+                      child: Text(
+                        'View All',
+                        style: TextStyle(
+                          height: 0,
+                          fontSize: 14.sp,
+                          color: AppColors.textBlackColor,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 15.h),
+              ListView.separated(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
+                itemCount: 1,
+                separatorBuilder: (context, index) => SizedBox(height: 10.h),
+                itemBuilder: (context, index) {
+                  return GopherTile(
+                    gopher: gophers[index],
+                    onTap: () {
+                      Navigator.pushNamed(context, serviceDetailScreen);
+                    },
+                  );
+                },
+              ),
+
               // Padding(
               //   padding: EdgeInsets.symmetric(horizontal: 20.w),
               //   child: GopherTile(
@@ -140,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Top Gopher',
+                      'Top Professionals',
                       style: TextStyle(
                         height: 0,
                         fontSize: 19.sp,
@@ -190,25 +243,35 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildServicesSection(BuildContext context) {
-    return Wrap(
-      spacing: 15.w,
-      runSpacing: 18.h,
-      children: [
-        for (var service in ServicesData.services)
-          SizedBox(
-            width: (MediaQuery.of(context).size.width - 32.w - 36.w) / 4,
-            child: ServiceItemWidget(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  allGopherScreen,
-                  arguments: service.label,
-                );
-              },
-              service: service,
+    return SizedBox(
+      height: 71.h,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: ServicesData.services.length,
+        itemBuilder: (context, index) {
+          final service = ServicesData.services[index];
+          return Padding(
+            padding: EdgeInsets.only(
+              left: index == 0 ? 20.0 : 0,
+              right: index == ServicesData.services.length - 1 ? 20.0 : 24.0,
             ),
-          ),
-      ],
+            child: ServiceItemWidget(
+              service: service,
+              onTap: () {
+                setState(() {
+                  // Deselect all services
+                  for (int i = 0; i < ServicesData.services.length; i++) {
+                    ServicesData.services[i].isSelected = false;
+                  }
+                  // Select the tapped service
+                  ServicesData.services[index].isSelected = true;
+                });
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

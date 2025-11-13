@@ -48,17 +48,7 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomShadowBar(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => YourAddressScreen()),
-            );
-          },
-          child: Text('Continue'),
-        ),
-      ),
+      bottomNavigationBar: BottomShadowBar(child: _buildBottomBar()),
     );
   }
 
@@ -411,76 +401,76 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
   }
 
   Widget _buildBottomBar() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 74,
-            offset: Offset(20, 0),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // Price Section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Total Price',
-                style: TextStyle(
-                  height: 0,
-                  color: AppColors.textGreyColor,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
-                ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Visiting Charges',
+              style: TextStyle(
+                height: 0,
+                color: Color(0xFF757273),
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
               ),
-              SizedBox(height: 12.h),
-              Text(
-                '\$74',
-                style: TextStyle(
-                  height: 0,
-                  color: AppColors.textBlackColor,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-
-          // Continue Button
-          GestureDetector(
-            onTap: () {
-              // Handle continue
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => YourAddressScreen()),
-              );
-            },
-            child: Container(
-              width: 210.w,
-              height: 50.h,
-              decoration: BoxDecoration(
-                color: AppColors.kPrimaryColor,
-                borderRadius: BorderRadius.circular(10.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.kPrimaryColor.withOpacity(0.16),
-                    blurRadius: 12,
-                    offset: Offset(0, 12),
-                    spreadRadius: -8,
+            ),
+            SizedBox(height: 2.h),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '\$25',
+                    style: TextStyle(
+                      height: 0,
+                      color: AppColors.textBlackColor,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
+                  // TextSpan(
+                  //   text: '/hour',
+                  //   style: TextStyle(
+                  //     height: 0,
+                  //     color: AppColors.textGreyColor,
+                  //     fontSize: 13.sp,
+                  //     fontWeight: FontWeight.w400,
+                  //   ),
+                  // ),
                 ],
               ),
-              child: Center(
-                child: Text(
-                  'Continue',
+            ),
+          ],
+        ),
+
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, yourAddressScreen  );
+          },
+          child: Container(
+            width: 210.w,
+            height: 50.h,
+            decoration: BoxDecoration(
+              color: AppColors.kPrimaryColor,
+              borderRadius: BorderRadius.circular(10.r),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.kPrimaryColor.withValues(alpha: 0.16),
+                  blurRadius: 12,
+                  offset: Offset(0, 12),
+                  spreadRadius: -8,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.send, size: 20.sp, color: Colors.white),
+                SizedBox(width: 10.w),
+                Text(
+                  'Book Now',
                   style: TextStyle(
                     height: 0,
                     color: Colors.white,
@@ -488,11 +478,11 @@ class _ServiceBookingScreenState extends State<ServiceBookingScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-              ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

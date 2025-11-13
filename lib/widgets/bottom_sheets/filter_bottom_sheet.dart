@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gopher/utils/assets.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/color_constant.dart';
+import '../../view_models/filter_view_model.dart';
 
 class FilterBottomSheet extends StatefulWidget {
   const FilterBottomSheet({super.key});
@@ -26,18 +27,12 @@ class FilterBottomSheet extends StatefulWidget {
 
 class _FilterBottomSheetState extends State<FilterBottomSheet> {
   String location = 'New York';
-  String selectedService = 'All';
   String availability = '';
   RangeValues priceRange = RangeValues(10, 100);
   String selectedRating = 'All';
 
-  final List<Map<String, dynamic>> services = [
-    {'icon': SvgAssets.all, 'label': 'All'},
-    {'icon': SvgAssets.appliance, 'label': 'Appliance'},
-    {'icon': SvgAssets.shifting, 'label': 'Shifting'},
-    {'icon': SvgAssets.cleaning, 'label': 'Cleaning'},
-  ];
-
+  // This is the ONLY services list used in the filter bottom sheet
+ 
   final List<String> ratings = ['All', '5', '4', '3', '2', '1'];
 
   @override
@@ -151,49 +146,62 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                       // Service Type
                       _buildSectionTitle('Service Type'),
                       SizedBox(height: 12.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: services.map((service) {
-                          final isSelected =
-                              selectedService == service['label'];
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedService = service['label'];
-                              });
-                            },
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 52.w,
-                                  height: 52.h,
-                                  padding: EdgeInsets.all(14.w),
-                                  decoration: BoxDecoration(
-                                    color: isSelected
-                                        ? AppColors.kPrimaryColor
-                                        : Color(0xFFF6F8F9),
-                                    shape: BoxShape.circle,
+                      Consumer<FilterViewModel>(
+                        builder: (context, filterViewModel, child) {
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              spacing: 34.w,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: filterViewModel.flitterServices.map((service) {
+                                final serviceLabel = service['label'] as String;
+                                final isSelected = serviceLabel == 'All'
+                                    ? filterViewModel.isAllSelected
+                                    : filterViewModel.selectedFilters.contains(
+                                        serviceLabel,
+                                      );
+
+                                return GestureDetector(
+                                  onTap: () {
+                                    filterViewModel.toggleServiceSelection(
+                                      serviceLabel,
+                                    );
+                                  },
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 52.w,
+                                        height: 52.h,
+                                        padding: EdgeInsets.all(14.w),
+                                        decoration: BoxDecoration(
+                                          color: isSelected
+                                              ? AppColors.kPrimaryColor
+                                              : Color(0xFFF6F8F9),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: SvgPicture.asset(
+                                          service['icon'] as String,
+                                          color: isSelected
+                                              ? Colors.white
+                                              : AppColors.kPrimaryColor,
+                                          //  height: 24.sp,
+                                        ),
+                                      ),
+                                      SizedBox(height: 6.h),
+                                      Text(
+                                        service['label'] as String,
+                                        style: TextStyle(
+                                          fontSize: 13.sp,
+                                          color: AppColors.iconColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  child: SvgPicture.asset(
-                                    service['icon'],
-                                    color: isSelected
-                                        ? Colors.white
-                                        : AppColors.kPrimaryColor,
-                                    //  height: 24.sp,
-                                  ),
-                                ),
-                                SizedBox(height: 6.h),
-                                Text(
-                                  service['label'],
-                                  style: TextStyle(
-                                    fontSize: 13.sp,
-                                    color: AppColors.iconColor,
-                                  ),
-                                ),
-                              ],
+                                );
+                              }).toList(),
                             ),
                           );
-                        }).toList(),
+                        },
                       ),
 
                       SizedBox(height: 20.h),
@@ -379,9 +387,13 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     Expanded(
                       child: OutlinedButton(
                         onPressed: () {
+                          final filterViewModel = Provider.of<FilterViewModel>(
+                            context,
+                            listen: false,
+                          );
+                          filterViewModel.clearAllSelections();
                           setState(() {
                             location = 'New York';
-                            selectedService = 'All';
                             availability = '';
                             priceRange = RangeValues(10, 100);
                             selectedRating = 'All';
@@ -411,9 +423,14 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          final filterViewModel = Provider.of<FilterViewModel>(
+                            context,
+                            listen: false,
+                          );
                           Navigator.pop(context, {
                             'location': location,
-                            'service': selectedService,
+                            'services': filterViewModel.selectedFilters,
+                            'isAllSelected': filterViewModel.isAllSelected,
                             'availability': availability,
                             'priceRange': priceRange,
                             'rating': selectedRating,
