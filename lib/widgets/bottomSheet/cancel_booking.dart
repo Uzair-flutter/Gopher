@@ -6,6 +6,7 @@ import 'package:gopher/widgets/bottom_shadow_bar.dart';
 void showCancelBookingSheet(BuildContext context) {
   showModalBottomSheet(
     backgroundColor: Colors.white,
+    constraints: BoxConstraints(minWidth: double.infinity),
     context: context,
     isScrollControlled: true,
     showDragHandle: true,
@@ -135,7 +136,7 @@ void showCancelBookingSheet(BuildContext context) {
                               "No, Go back",
                               style: TextStyle(
                                 height: 0,
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -164,7 +165,7 @@ void showCancelBookingSheet(BuildContext context) {
                               "Cancel Booking",
                               style: TextStyle(
                                 height: 0,
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
