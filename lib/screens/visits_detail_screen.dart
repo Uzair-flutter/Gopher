@@ -7,13 +7,13 @@ import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:iconsax/iconsax.dart';
 
-class JobDetailScreen extends StatelessWidget {
-  const JobDetailScreen({super.key});
+class VisitsDetailScreen extends StatelessWidget {
+  const VisitsDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Booking Detail"),
+      appBar: CustomAppBar(title: "Review Summary"),
       body: SafeArea(
         child: Container(
           height: double.infinity,
@@ -203,7 +203,11 @@ class JobDetailScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: AppColors.kSecondaryColor,
                     ),
-                    child: Icon(Iconsax.clock, size: 24.sp, color: Colors.white),
+                    child: Icon(
+                      Iconsax.clock,
+                      size: 24.sp,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

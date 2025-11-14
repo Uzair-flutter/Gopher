@@ -5,14 +5,14 @@ import 'package:gopher/utils/color_constant.dart';
 import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/job_title.dart';
 
-class JobsScreen extends StatefulWidget {
-  const JobsScreen({super.key});
+class VisitsScreen extends StatefulWidget {
+  const VisitsScreen({super.key});
 
   @override
-  State<JobsScreen> createState() => _JobsScreenState();
+  State<VisitsScreen> createState() => _VisitsScreenState();
 }
 
-class _JobsScreenState extends State<JobsScreen> {
+class _VisitsScreenState extends State<VisitsScreen> {
   bool alljobs = true;
   bool upcoming = false;
   bool completed = false;
@@ -21,7 +21,7 @@ class _JobsScreenState extends State<JobsScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         isBackButtonVisible: false,
-        title: "Jobs",
+        title: "Visits",
         showSearchIcon: true,
       ),
       body: SafeArea(

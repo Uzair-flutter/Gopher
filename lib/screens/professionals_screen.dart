@@ -82,7 +82,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'All Services',
+        title: 'Professionals',
         showSearchIcon: true,
         actionIcon: SvgAssets.filter,
         onActionIconTap: () {

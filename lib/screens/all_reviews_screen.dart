@@ -37,55 +37,64 @@ Widget _buildReviewsTab() {
       'name': 'John Doe',
       'rating': '5.0',
       'date': 'Oct 16, 2025',
-      'comment': 'Excellent service! Very professional and thorough.',
+      'comment':
+          'Very satisfied! The team was punctual and worked efficiently. My home feels brand new. A big thank you to everyone involved!',
     },
     {
       'name': 'Jane Smith',
       'rating': '4.5',
       'date': 'Oct 05, 2025',
-      'comment': 'Great job! My house looks amazing.',
+      'comment':
+          'Outstanding experience! The crew was friendly and worked tirelessly to ensure everything was spotless. Highly recommend!',
     },
     {
       'name': 'Mike Johnson',
       'rating': '4.8',
       'date': 'Oct 26, 2025',
-      'comment': 'Highly recommended. Will book again!',
+      'comment':
+          'Very satisfied! The team was punctual and worked efficiently. My home feels brand new. A big thank you to everyone involved!',
     },
     {
       'name': 'John Doe',
       'rating': '5.0',
       'date': 'Oct 16, 2025',
-      'comment': 'Excellent service! Very professional and thorough.',
+      'comment':
+          'Outstanding experience! The crew was friendly and worked tirelessly to ensure everything was spotless. Highly recommend!',
     },
     {
       'name': 'Jane Smith',
       'rating': '4.5',
       'date': 'Oct 05, 2025',
-      'comment': 'Great job! My house looks amazing.',
+      'comment':
+          'Very satisfied! The team was punctual and worked efficiently. My home feels brand new. A big thank you to everyone involved!',
     },
     {
       'name': 'Mike Johnson',
       'rating': '4.8',
       'date': 'Oct 26, 2025',
-      'comment': 'Highly recommended. Will book again!',
+      'comment':
+          'Outstanding experience! The crew was friendly and worked tirelessly to ensure everything was spotless. Highly recommend!',
     },
     {
       'name': 'John Doe',
       'rating': '5.0',
       'date': 'Oct 16, 2025',
-      'comment': 'Excellent service! Very professional and thorough.',
+      'comment':
+          'Very satisfied! The team was punctual and worked efficiently. My home feels brand new. A big thank you to everyone involved!',
     },
     {
       'name': 'Jane Smith',
       'rating': '4.5',
       'date': 'Oct 05, 2025',
-      'comment': 'Great job! My house looks amazing.',
+      'comment':
+          'Outstanding experience! The crew was friendly and worked tirelessly to ensure everything was spotless. Highly recommend!',
     },
     {
       'name': 'Mike Johnson',
       'rating': '4.8',
       'date': 'Oct 26, 2025',
-      'comment': 'Highly recommended. Will book again!',
+      'comment':
+          'Very satisfied! The team was punctual and worked efficiently. My home feels brand new. A big thank you to everyone involved!',
     },
   ];
 

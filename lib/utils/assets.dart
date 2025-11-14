@@ -8,7 +8,7 @@ class PngAssets {
   static const String launch3 = '${_assets}launch_3.png';
   static const String flower = '${_assets}flower.png';
   static const String professional = '${_assets}professional.png';
-  static const String gopher = '${_assets}gopher.png';
+  static const String gopher = '${_assets}gopher1.png';
   static const String rider = '${_assets}rider.png';
   static const String delivery = '${_assets}delivery.png';
   static const String upto5Kg = '${_assets}upto_5_kg.png';
@@ -50,7 +50,8 @@ class SvgAssets {
   static const String services = '${_assets}services.svg';
   static const String chat = '${_assets}chat.svg';
   static const String chatFilled = '${_assets}chatFilled.svg';
-
+  static const String visits = '${_assets}visits.svg';
+  static const String visitsFilled = '${_assets}visits_filled.svg';
   static const String profile = '${_assets}profile.svg';
   static const String profileFilled = '${_assets}profile_filled.svg';
   static const String message = '${_assets}message.svg';
@@ -81,6 +82,8 @@ class SvgAssets {
   static const String credit = '${_assets}credit.svg';
   static const String creditCard = '${_assets}credit_card.svg';
   static const String all = '${_assets}all.svg';
+  static const String ridesFilled = '${_assets}rides_filled.svg';
+  static const String rides = '${_assets}rides.svg';
 }
 
 class LottieAssets {

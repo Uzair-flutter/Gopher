@@ -18,9 +18,14 @@ class BottomNavBar extends StatelessWidget {
       unselectedIcon: SvgAssets.home,
     ),
     BottomNavItem(
-      label: 'Jobs',
-      selectedIcon: SvgAssets.jobsFilled,
-      unselectedIcon: SvgAssets.jobs,
+      label: 'Visits',
+      selectedIcon: SvgAssets.visitsFilled,
+      unselectedIcon: SvgAssets.visits,
+    ),
+    BottomNavItem(
+      label: 'Rides',
+      selectedIcon: SvgAssets.ridesFilled,
+      unselectedIcon: SvgAssets.rides,
     ),
     BottomNavItem(
       label: 'Chat',
@@ -59,7 +64,7 @@ class BottomNavBar extends StatelessWidget {
                     index: 1,
                     isSelected: currentPage == 1,
                   ),
-                  SizedBox(width: 40.w),
+
                   _buildNavBarItem(
                     context: context,
                     item: _items[2],
@@ -71,6 +76,12 @@ class BottomNavBar extends StatelessWidget {
                     item: _items[3],
                     index: 3,
                     isSelected: currentPage == 3,
+                  ),
+                  _buildNavBarItem(
+                    context: context,
+                    item: _items[4],
+                    index: 4,
+                    isSelected: currentPage == 4,
                   ),
                 ],
               );

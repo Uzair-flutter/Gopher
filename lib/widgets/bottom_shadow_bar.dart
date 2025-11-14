@@ -3,7 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomShadowBar extends StatelessWidget {
   final Widget child;
-  const BottomShadowBar({super.key, required this.child});
+  final bool addPadding;
+  const BottomShadowBar({
+    super.key,
+    required this.child,
+    this.addPadding = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,9 @@ class BottomShadowBar extends StatelessWidget {
         ],
         color: Colors.white,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      padding: addPadding
+          ? EdgeInsets.symmetric(horizontal: 24.w)
+          : EdgeInsets.zero,
       child: Center(
         child: SizedBox(height: 56.h, width: double.infinity, child: child),
       ),
