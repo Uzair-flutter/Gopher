@@ -40,7 +40,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
               SizedBox(height: 24.h),
               SizedBox(
                 height: 253.h,
-                child: Image.asset(DummyAssets.deliveryMap, fit: BoxFit.fill),
+                width: double.infinity,
+                child: Image.asset(DummyAssets.deliveryMap, fit: BoxFit.cover),
               ),
               SizedBox(height: 24.h),
               Padding(

@@ -5,8 +5,11 @@ import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../route_generator.dart';
+
 class JobTitle extends StatelessWidget {
   final bool isUpcoming;
+
   const JobTitle({super.key, required this.isUpcoming});
 
   @override
@@ -104,16 +107,22 @@ class JobTitle extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              SvgPicture.asset(
-                isUpcoming ? SvgAssets.message : SvgAssets.star,
-                height: 30.h,
-                width: 30.w,
+              InkWell(
+                onTap: () {
+                  isUpcoming
+                      ? Navigator.pushNamed(context, chatScreen)
+                      : Navigator.pushNamed(context, ratingScreen);
+                },
+                child: SvgPicture.asset(
+                  isUpcoming ? SvgAssets.message : SvgAssets.star,
+                  height: 30.h,
+                  width: 30.w,
+                ),
               ),
             ],
           ),
         ],
       ),
     );
-    
   }
 }

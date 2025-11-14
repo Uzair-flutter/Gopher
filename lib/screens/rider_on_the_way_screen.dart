@@ -8,6 +8,8 @@ import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/dialog%20box/ride_complete_dailog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../route_generator.dart';
+
 class RiderOnTheWayScreen extends StatefulWidget {
   const RiderOnTheWayScreen({super.key});
 
@@ -202,7 +204,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
 
                     Container(
                       height: 303.h,
-                      width: 342.w,
+                      width: double.infinity,
                       padding: EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: AppColors.textFieldFillColor,
@@ -210,7 +212,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                       ),
                       child: Image.asset(
                         DummyAssets.deliveryMap,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     SizedBox(height: 5.h),
@@ -277,7 +279,7 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
     );
   }
 
-  buildRiderInfo() {
+  Container buildRiderInfo() {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -338,10 +340,15 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                 ],
               ),
               Spacer(),
-              SvgPicture.asset(
-                SvgAssets.messageBlue,
-                height: 38.h,
-                width: 38.w,
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, chatScreen);
+                },
+                child: SvgPicture.asset(
+                  SvgAssets.messageBlue,
+                  height: 38.h,
+                  width: 38.w,
+                ),
               ),
             ],
           ),

@@ -6,23 +6,28 @@ import 'package:gopher/view_models/ride_request_view_model.dart';
 import 'package:gopher/widgets/bottomSheet/ride_request_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/custom_app_bar.dart';
+
 class SearchForRider extends StatelessWidget {
   const SearchForRider({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Searching For A Rider',
-          style: TextStyle(
-            color: AppColors.textBlackColor,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+      appBar: CustomAppBar(
+        title: 'Searching For A Rider',
       ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text(
+      //     'Searching For A Rider',
+      //     style: TextStyle(
+      //       color: AppColors.textBlackColor,
+      //       fontSize: 20.sp,
+      //       fontWeight: FontWeight.w600,
+      //     ),
+      //   ),
+      // ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
