@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 void showRidesRequestSheet(BuildContext context) {
   showModalBottomSheet(
+    constraints: BoxConstraints(minWidth: double.infinity),
     backgroundColor: Colors.white,
     context: context,
     isScrollControlled: true,

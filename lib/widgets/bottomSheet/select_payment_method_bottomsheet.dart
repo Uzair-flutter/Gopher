@@ -7,6 +7,7 @@ import 'package:iconsax/iconsax.dart';
 
 void selectPaymentMethodBottomSheet(BuildContext context) {
   showModalBottomSheet(
+    constraints: BoxConstraints(minWidth: double.infinity),
     backgroundColor: Colors.white,
     context: context,
     isScrollControlled: true,

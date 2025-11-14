@@ -8,7 +8,7 @@ import 'package:gopher/widgets/custom_app_bar.dart';
 import 'package:gopher/widgets/service_item_widget.dart';
 
 import '../utils/assets.dart';
-import '../widgets/bottom_sheets/filter_bottom_sheet.dart';
+import '../widgets/bottomSheet/filter_bottom_sheet.dart';
 import '../widgets/custom_search_bar.dart';
 import '../widgets/gopher_tile_widget.dart';
 

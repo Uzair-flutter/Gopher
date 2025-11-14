@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 import '../utils/assets.dart';
 import '../utils/color_constant.dart';
 import '../view_models/profile_view_model.dart';
+import '../widgets/bottomSheet/image_selection_bottom_sheet.dart';
 import '../widgets/bottom_shadow_bar.dart';
-import '../widgets/bottom_sheets/image_selection_bottom_sheet.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/phone_widget.dart';
 

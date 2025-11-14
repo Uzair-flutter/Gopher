@@ -37,6 +37,7 @@ import 'package:gopher/screens/verify_your_email_screen.dart';
 import 'package:gopher/screens/wallet_screen.dart';
 import 'package:gopher/screens/wallet_transaction_screen.dart';
 import 'package:gopher/screens/your_address_screen.dart';
+import 'package:gopher/view_models/filter_view_model.dart';
 import 'package:gopher/view_models/profile_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -185,7 +186,11 @@ class RouteGenerator {
       case allGopherScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: allGopherScreen),
-          builder: (_) => AllGopherScreen(),
+          builder: (_) => ChangeNotifierProvider(
+            create: (_) =>
+                FilterViewModel(services: FilterViewModel.professionalServices),
+            child: AllGopherScreen(),
+          ),
         );
       case allReviewsScreen:
         return MaterialPageRoute(
@@ -298,7 +303,7 @@ class RouteGenerator {
           builder: (_) =>
               ImageViewer(imageView: settings.arguments as ImageView),
         );
-        case yourAddressScreen:
+      case yourAddressScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: yourAddressScreen),
           builder: (_) => const YourAddressScreen(),

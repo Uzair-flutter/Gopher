@@ -6,6 +6,7 @@ void showAddFundsBottomSheet(BuildContext context) {
   List<int> amount = [50, 75, 100, 125, 150];
   int? selectedIndex;
   showModalBottomSheet(
+    constraints: BoxConstraints(minWidth: double.infinity),
     backgroundColor: Colors.white,
     context: context,
     isScrollControlled: true,

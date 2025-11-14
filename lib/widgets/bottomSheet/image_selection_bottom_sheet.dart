@@ -15,6 +15,7 @@ class ImageSelectionBottomSheet {
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
+      constraints: BoxConstraints(minWidth: double.infinity),
       builder: (BuildContext context) {
         return ImageSelectionBottomSheetContent(title: title ?? 'Select Image');
       },

@@ -16,6 +16,7 @@ class FilterBottomSheet extends StatefulWidget {
 
   static Future<Map<String, dynamic>?> show(BuildContext context) {
     return showModalBottomSheet<Map<String, dynamic>>(
+      constraints: BoxConstraints(minWidth: double.infinity),
       context: context,
       showDragHandle: true,
       isScrollControlled: true,
