@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/screens/service_detail_screen.dart';
 import 'package:gopher/widgets/bottomSheet/filter_bottom_sheet.dart';
+
 import 'package:gopher/widgets/custom_app_bar.dart';
 
 import '../utils/assets.dart';
@@ -114,7 +115,16 @@ class _ServiceScreenState extends State<ServiceScreen> {
                       child: Padding(
                         padding: EdgeInsets.only(right: 10.w),
                         child: Chip(
-                          avatar: icon != null ? SvgPicture.asset(icon) : null,
+                          avatar: icon != null
+                              ? SvgPicture.asset(
+                                  icon,
+                                  height: 16.h,
+                                  width: 16.w,
+                                  color: isSelected
+                                      ? AppColors.kPrimaryColor
+                                      : AppColors.textGreyColor,
+                                )
+                              : null,
                           backgroundColor: isSelected
                               ? Color(0xFFE8F5E9)
                               : Color(0xFFF6F8F9),

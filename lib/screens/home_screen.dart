@@ -295,40 +295,48 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       borderRadius: BorderRadius.circular(10.r),
-      child: Ink(
-        height: 156.h,
-        width: double.infinity,
-        padding: EdgeInsets.only(
-          left: 21.w,
-          right: type == ServiceType.gopher ? 0 : 21.w,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.textFieldFillColor,
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(top: 35.h),
-                child: Text(
-                  type == ServiceType.professional
-                      ? "Professional\nGopher"
-                      : type.name.capitalize,
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    height: 0,
-                    fontWeight: FontWeight.w600,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.r),
+        child: Ink(
+          height: 156.h,
+          width: double.infinity,
+          padding: EdgeInsets.only(
+            left: 21.w,
+            right: type == ServiceType.gopher ? 0 : 21.w,
+          ),
+
+          decoration: BoxDecoration(
+            color: AppColors.textFieldFillColor,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 35.h),
+                  child: Text(
+                    type == ServiceType.professional
+                        ? "Professional\nGopher"
+                        : type.name.capitalize,
+                    style: TextStyle(
+                      fontSize: 24.sp,
+                      height: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset(type.asset, height: 138.h, fit: BoxFit.cover),
-            ),
-          ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  type.asset,
+                  height: 138.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

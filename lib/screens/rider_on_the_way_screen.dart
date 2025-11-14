@@ -22,216 +22,231 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 24.h),
-                buildRiderInfo(),
-                SizedBox(height: 20.h),
-                GestureDetector(
-                  onTap: () {
-                    showRideCompleteDialog(screenContext: context);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: AppColors.textFieldFillColor,
-                      borderRadius: BorderRadius.circular(10.0.r),
-                    ),
-                    child: Column(
-                      children: [
-                        Opacity(
-                          opacity: 0.6,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: 24.h),
+                    buildRiderInfo(),
+                    SizedBox(height: 20.h),
+                    GestureDetector(
+                      onTap: () {
+                        showRideCompleteDialog(screenContext: context);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: AppColors.textFieldFillColor,
+                          borderRadius: BorderRadius.circular(10.0.r),
+                        ),
+                        child: Column(
+                          children: [
+                            Opacity(
+                              opacity: 0.6,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    height: 35.h,
-                                    width: 35.w,
-                                    padding: EdgeInsets.all(6.w),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.kPrimaryColor,
-                                      //borderRadius: BorderRadius.circular(10.0.r),
-                                    ),
-                                    child: Icon(
-                                      Iconsax.location,
-                                      color: Colors.white,
-                                      size: 18.w,
-                                    ),
-                                  ),
-                                  SizedBox(width: 8.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  Row(
                                     children: [
-                                      Text(
-                                        'Pickup',
-                                        style: TextStyle(
-                                          color: AppColors.textBlackColor,
-                                          fontSize: 13.sp,
-                                          height: 0,
+                                      Container(
+                                        height: 35.h,
+                                        width: 35.w,
+                                        padding: EdgeInsets.all(6.w),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: AppColors.kPrimaryColor,
+                                          //borderRadius: BorderRadius.circular(10.0.r),
+                                        ),
+                                        child: Icon(
+                                          Iconsax.location,
+                                          color: Colors.white,
+                                          size: 18.w,
                                         ),
                                       ),
-                                      SizedBox(height: 2.h),
-                                      Text(
-                                        '02:12 pm',
-                                        style: TextStyle(
-                                          height: 0,
-                                          color: AppColors.textGreyColor,
-                                          fontSize: 13.sp,
-                                        ),
+                                      SizedBox(width: 8.w),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Pickup',
+                                            style: TextStyle(
+                                              color: AppColors.textBlackColor,
+                                              fontSize: 13.sp,
+                                              height: 0,
+                                            ),
+                                          ),
+                                          SizedBox(height: 2.h),
+                                          Text(
+                                            '02:12 pm',
+                                            style: TextStyle(
+                                              height: 0,
+                                              color: AppColors.textGreyColor,
+                                              fontSize: 13.sp,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
+
+                                  Text(
+                                    'Completed',
+                                    style: TextStyle(
+                                      height: 0,
+                                      color: AppColors.kPrimaryColor,
+                                      fontSize: 13.sp,
+                                    ),
+                                  ),
                                 ],
                               ),
-
-                              Text(
-                                'Completed',
-                                style: TextStyle(
-                                  height: 0,
-                                  color: AppColors.kPrimaryColor,
-                                  fontSize: 13.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                            ),
+                            SizedBox(height: 20.h),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 35.h,
-                                  width: 35.w,
-                                  padding: EdgeInsets.all(6.w),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.kSecondaryColor,
-                                    //borderRadius: BorderRadius.circular(10.0.r),
-                                  ),
-                                  child: Icon(
-                                    Iconsax.location,
-                                    color: Colors.white,
-                                    size: 18.w,
-                                  ),
-                                ),
-                                SizedBox(width: 8.w),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                Row(
                                   children: [
-                                    Text(
-                                      'DropOff',
-                                      style: TextStyle(
-                                        color: AppColors.textBlackColor,
-                                        fontSize: 13.sp,
-                                        height: 0,
+                                    Container(
+                                      height: 35.h,
+                                      width: 35.w,
+                                      padding: EdgeInsets.all(6.w),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.kSecondaryColor,
+                                        //borderRadius: BorderRadius.circular(10.0.r),
+                                      ),
+                                      child: Icon(
+                                        Iconsax.location,
+                                        color: Colors.white,
+                                        size: 18.w,
                                       ),
                                     ),
-                                    SizedBox(height: 2.h),
-                                    Text(
-                                      'Estd. Time • 02:46 pm',
-                                      style: TextStyle(
-                                        height: 0,
-                                        color: AppColors.textGreyColor,
-                                        fontSize: 13.sp,
-                                      ),
+                                    SizedBox(width: 8.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'DropOff',
+                                          style: TextStyle(
+                                            color: AppColors.textBlackColor,
+                                            fontSize: 13.sp,
+                                            height: 0,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.h),
+                                        Text(
+                                          'Estd. Time • 02:46 pm',
+                                          style: TextStyle(
+                                            height: 0,
+                                            color: AppColors.textGreyColor,
+                                            fontSize: 13.sp,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
 
-                            Text(
-                              'Ongoing',
-                              style: TextStyle(
-                                color: AppColors.kSecondaryColor,
-                                fontSize: 13.sp,
-                              ),
+                                Text(
+                                  'Ongoing',
+                                  style: TextStyle(
+                                    color: AppColors.kSecondaryColor,
+                                    fontSize: 13.sp,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                SizedBox(height: 20.h),
-                _itemsWidget(),
-                SizedBox(height: 20.h),
-                Container(
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: AppColors.textFieldFillColor,
-                    borderRadius: BorderRadius.circular(10.0.r),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Total Price',
-                        style: TextStyle(
-                          height: 0,
-                          color: AppColors.textGreyColor,
-                          fontSize: 13.sp,
-                        ),
+                    SizedBox(height: 20.h),
+                    _itemsWidget(),
+                    SizedBox(height: 20.h),
+                    Container(
+                      padding: EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: AppColors.textFieldFillColor,
+                        borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      Text(
-                        '\$1.120',
-                        style: TextStyle(
-                          height: 0,
-                          color: AppColors.textBlackColor,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total Price',
+                            style: TextStyle(
+                              height: 0,
+                              color: AppColors.textGreyColor,
+                              fontSize: 13.sp,
+                            ),
+                          ),
+                          Text(
+                            '\$1.120',
+                            style: TextStyle(
+                              height: 0,
+                              color: AppColors.textBlackColor,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20.h),
+                    ),
+                    SizedBox(height: 20.h),
 
-                Container(
-                  height: 303.h,
-                  width: 342.w,
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: AppColors.textFieldFillColor,
-                    borderRadius: BorderRadius.circular(10.0.r),
-                  ),
-                  child: Image.asset(DummyAssets.deliveryMap, fit: BoxFit.fill),
-                ),
-                BottomShadowBar(
-                  addPadding: false,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      showCancelBookingSheet(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFFE6EB), // Background color
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
+                    Container(
+                      height: 303.h,
+                      width: 342.w,
+                      padding: EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: AppColors.textFieldFillColor,
+                        borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      elevation: 0,
-                    ),
-                    child: Text(
-                      'Cancel Booking',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFFD72547), // Text color
+                      child: Image.asset(
+                        DummyAssets.deliveryMap,
+                        fit: BoxFit.fill,
                       ),
                     ),
-                  ),
+                    SizedBox(height: 5.h),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 20.0.w,
+                right: 20.0.w,
+                top: 13.h,
+                bottom: 20.h,
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  showCancelBookingSheet(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFFFE6EB), // Background color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  elevation: 0,
+                ),
+                child: Text(
+                  'Cancel Booking',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFFD72547), // Text color
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       // bottomNavigationBar: BottomShadowBar(
