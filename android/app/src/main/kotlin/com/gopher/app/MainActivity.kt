@@ -1,4 +1,4 @@
-package com.gopher.app.gopher
+package com.gopher.app
 
 import io.flutter.embedding.android.FlutterActivity
 
