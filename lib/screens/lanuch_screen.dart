@@ -98,7 +98,6 @@ class _LaunchScreenState extends State<LaunchScreen> {
                       : PngAssets.launch3,
                 ),
               ),
-              color: Colors.amber,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20.r),
                 bottomRight: Radius.circular(20.r),
