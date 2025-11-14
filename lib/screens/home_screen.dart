@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gopher/route_generator.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/utils/enums.dart';
+import 'package:gopher/utils/string_utils.dart';
 
 import '../utils/assets.dart';
 import '../widgets/custom_appbar_home.dart';
@@ -59,182 +61,190 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: CustomSearchBar(),
-              ),
-              // SizedBox(height: 8.h),
-              HomeCarouselWidget(),
-              SizedBox(height: 10.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Container(
-                  // height: 158.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.r),
-                    //    color: Colors.red,
-                    // image: DecorationImage(
-                    //   image: AssetImage(DummyAssets.map),
-                    //   fit: BoxFit.cover,
-                    // ),
-                  ),
-                  child: Image.asset(
-                    DummyAssets.map,
-                    fit: BoxFit.cover,
-                    // height: 185.h,
-                  ),
-                ),
-              ),
-              SizedBox(height: 25.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Text(
-                  'Our Services',
-                  style: TextStyle(
-                    height: 0,
-                    fontSize: 19.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              SizedBox(height: 15.h),
-              // ServicesSection(
-              //   services: [
-              //     ServiceItem(icon: Icons.kitchen, label: 'Appliance'),
-              //     ServiceItem(icon: Icons.format_paint, label: 'Painting'),
-              //     ServiceItem(icon: Icons.local_shipping, label: 'Shifting'),
-              //     ServiceItem(icon: Icons.cleaning_services, label: 'Cleaning'),
-              //     ServiceItem(icon: Icons.ac_unit, label: 'AC Clean'),
-              //     ServiceItem(icon: Icons.spa, label: 'Massage'),
-              //     ServiceItem(
-              //       icon: Icons.local_laundry_service,
-              //       label: 'Laundry',
-              //     ),
-              //     ServiceItem(icon: Icons.face, label: 'Beauty'),
-              //   ],
-              //   onViewAll: () {
-              //     // Navigate to all services page
-              //     print('View All tapped');
-              //   },
-              // ),
-              _buildServicesSection(context),
-              SizedBox(height: 30.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Row(
-                  children: [
-                    Text(
-                      'Nearby',
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 19.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Spacer(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, allGopherScreen);
-                      },
-                      child: Text(
-                        'View All',
-                        style: TextStyle(
-                          height: 0,
-                          fontSize: 14.sp,
-                          color: AppColors.textBlackColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 15.h),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
-                itemCount: 1,
-                separatorBuilder: (context, index) => SizedBox(height: 10.h),
-                itemBuilder: (context, index) {
-                  return GopherTile(
-                    gopher: gophers[index],
-                    onTap: () {
-                      Navigator.pushNamed(context, serviceDetailScreen);
-                    },
-                  );
-                },
-              ),
-
               // Padding(
               //   padding: EdgeInsets.symmetric(horizontal: 20.w),
-              //   child: GopherTile(
-              //     gopher: GopherModel(
-              //       name: 'Christopher Smith',
-              //       imageUrl: DummyAssets.person,
-              //       profession: 'Electrician',
-              //       rating: 4.9,
-              //       services: ['Electric', 'Plumbing', 'Repair'],
-              //       additionalServicesCount: 3,
-              //       pricePerHour: 25,
-              //       isAvailable: true,
-              //       isVerified: true,
+              //   child: CustomSearchBar(),
+              // ),
+              // SizedBox(height: 8.h),
+              HomeCarouselWidget(),
+              for (final type in ServiceType.values)
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 12.h,
+                  ),
+                  child: _buildServiceCard(context, type),
+                ),
+              //   SizedBox(height: 10.h),
+              //   Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //     child: Container(
+              //       // height: 158.h,
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(16.r),
+              //         //    color: Colors.red,
+              //         // image: DecorationImage(
+              //         //   image: AssetImage(DummyAssets.map),
+              //         //   fit: BoxFit.cover,
+              //         // ),
+              //       ),
+              //       child: Image.asset(
+              //         DummyAssets.map,
+              //         fit: BoxFit.cover,
+              //         // height: 185.h,
+              //       ),
               //     ),
-              //     onTap: () {
-              //       // Navigate to gopher detail page
-              //       print('Gopher tile tapped');
+              //   ),
+              //   SizedBox(height: 25.h),
+              //   Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //     child: Text(
+              //       'Our Services',
+              //       style: TextStyle(
+              //         height: 0,
+              //         fontSize: 19.sp,
+              //         fontWeight: FontWeight.w600,
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //   ),
+              //   SizedBox(height: 15.h),
+              //   // ServicesSection(
+              //   //   services: [
+              //   //     ServiceItem(icon: Icons.kitchen, label: 'Appliance'),
+              //   //     ServiceItem(icon: Icons.format_paint, label: 'Painting'),
+              //   //     ServiceItem(icon: Icons.local_shipping, label: 'Shifting'),
+              //   //     ServiceItem(icon: Icons.cleaning_services, label: 'Cleaning'),
+              //   //     ServiceItem(icon: Icons.ac_unit, label: 'AC Clean'),
+              //   //     ServiceItem(icon: Icons.spa, label: 'Massage'),
+              //   //     ServiceItem(
+              //   //       icon: Icons.local_laundry_service,
+              //   //       label: 'Laundry',
+              //   //     ),
+              //   //     ServiceItem(icon: Icons.face, label: 'Beauty'),
+              //   //   ],
+              //   //   onViewAll: () {
+              //   //     // Navigate to all services page
+              //   //     print('View All tapped');
+              //   //   },
+              //   // ),
+              //   _buildServicesSection(context),
+              //   SizedBox(height: 30.h),
+              //   Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //     child: Row(
+              //       children: [
+              //         Text(
+              //           'Nearby',
+              //           style: TextStyle(
+              //             height: 0,
+              //             fontSize: 19.sp,
+              //             fontWeight: FontWeight.w600,
+              //             color: Colors.black,
+              //           ),
+              //         ),
+              //         Spacer(),
+              //         InkWell(
+              //           onTap: () {
+              //             Navigator.pushNamed(context, allGopherScreen);
+              //           },
+              //           child: Text(
+              //             'View All',
+              //             style: TextStyle(
+              //               height: 0,
+              //               fontSize: 14.sp,
+              //               color: AppColors.textBlackColor,
+              //               fontWeight: FontWeight.w500,
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              //   SizedBox(height: 15.h),
+              //   ListView.separated(
+              //     shrinkWrap: true,
+              //     physics: NeverScrollableScrollPhysics(),
+              //     padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
+              //     itemCount: 1,
+              //     separatorBuilder: (context, index) => SizedBox(height: 10.h),
+              //     itemBuilder: (context, index) {
+              //       return GopherTile(
+              //         gopher: gophers[index],
+              //         onTap: () {
+              //           Navigator.pushNamed(context, serviceDetailScreen);
+              //         },
+              //       );
               //     },
               //   ),
-              // ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Row(
-                  children: [
-                    Text(
-                      'Top Professionals',
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 19.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Spacer(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, allGopherScreen);
-                      },
-                      child: Text(
-                        'View All',
-                        style: TextStyle(
-                          height: 0,
-                          fontSize: 14.sp,
-                          color: AppColors.textBlackColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 15.h),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
-                itemCount: 4,
-                separatorBuilder: (context, index) => SizedBox(height: 10.h),
-                itemBuilder: (context, index) {
-                  return GopherTile(
-                    gopher: gophers[index],
-                    onTap: () {
-                      Navigator.pushNamed(context, serviceDetailScreen);
-                    },
-                  );
-                },
-              ),
+
+              //   // Padding(
+              //   //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //   //   child: GopherTile(
+              //   //     gopher: GopherModel(
+              //   //       name: 'Christopher Smith',
+              //   //       imageUrl: DummyAssets.person,
+              //   //       profession: 'Electrician',
+              //   //       rating: 4.9,
+              //   //       services: ['Electric', 'Plumbing', 'Repair'],
+              //   //       additionalServicesCount: 3,
+              //   //       pricePerHour: 25,
+              //   //       isAvailable: true,
+              //   //       isVerified: true,
+              //   //     ),
+              //   //     onTap: () {
+              //   //       // Navigate to gopher detail page
+              //   //       print('Gopher tile tapped');
+              //   //     },
+              //   //   ),
+              //   // ),
+              //   Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 20.w),
+              //     child: Row(
+              //       children: [
+              //         Text(
+              //           'Top Professionals',
+              //           style: TextStyle(
+              //             height: 0,
+              //             fontSize: 19.sp,
+              //             fontWeight: FontWeight.w600,
+              //             color: Colors.black,
+              //           ),
+              //         ),
+              //         Spacer(),
+              //         InkWell(
+              //           onTap: () {
+              //             Navigator.pushNamed(context, allGopherScreen);
+              //           },
+              //           child: Text(
+              //             'View All',
+              //             style: TextStyle(
+              //               height: 0,
+              //               fontSize: 14.sp,
+              //               color: AppColors.textBlackColor,
+              //               fontWeight: FontWeight.w500,
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              //   SizedBox(height: 15.h),
+              //   ListView.separated(
+              //     shrinkWrap: true,
+              //     physics: NeverScrollableScrollPhysics(),
+              //     padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 35.h),
+              //     itemCount: 4,
+              //     separatorBuilder: (context, index) => SizedBox(height: 10.h),
+              //     itemBuilder: (context, index) {
+              //       return GopherTile(
+              //         gopher: gophers[index],
+              //         onTap: () {
+              //           Navigator.pushNamed(context, serviceDetailScreen);
+              //         },
+              //       );
+              //     },
+              //   ),
             ],
           ),
         ),
@@ -271,6 +281,55 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  InkWell _buildServiceCard(BuildContext context, ServiceType type) {
+    return InkWell(
+      onTap: () {
+        if (type == ServiceType.gopher) {
+          Navigator.pushNamed(context, selectGopherScreen);
+        } else {
+          Navigator.pushNamed(context, allServicesScreen);
+        }
+      },
+      borderRadius: BorderRadius.circular(10.r),
+      child: Ink(
+        height: 156.h,
+        width: double.infinity,
+        padding: EdgeInsets.only(
+          left: 21.w,
+          right: type == ServiceType.gopher ? 0 : 21.w,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.textFieldFillColor,
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(top: 35.h),
+                child: Text(
+                  type == ServiceType.professional
+                      ? "Professional\nGopher"
+                      : type.name.capitalize,
+                  style: TextStyle(
+                    fontSize: 24.sp,
+                    height: 0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset(type.asset, height: 138.h, fit: BoxFit.cover),
+            ),
+          ],
+        ),
       ),
     );
   }

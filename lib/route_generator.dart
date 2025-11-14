@@ -14,7 +14,7 @@ import 'package:gopher/screens/e_receipt_screen.dart';
 import 'package:gopher/screens/edit_profile_screen.dart';
 import 'package:gopher/screens/faqs_screen.dart';
 import 'package:gopher/screens/home_screen.dart';
-import 'package:gopher/screens/job_detail_screen.dart';
+import 'package:gopher/screens/visits_detail_screen.dart';
 import 'package:gopher/screens/lanuch_screen.dart';
 import 'package:gopher/screens/login_screen.dart';
 import 'package:gopher/screens/notification_screen.dart';
@@ -46,7 +46,7 @@ import 'screens/bottom_nav_page.dart';
 import 'screens/delivery_form_screen.dart';
 import 'screens/image_viewer.dart';
 import 'screens/register_your_details_screen.dart';
-import 'screens/service_screen.dart';
+import 'screens/professionals_screen.dart';
 
 const String splashScreen = '/';
 const String bottomNavPage = '/bottom_nav_page';
@@ -179,7 +179,7 @@ class RouteGenerator {
         );
       case jobsDetailScreen:
         return MaterialPageRoute(
-          builder: (_) => JobDetailScreen(),
+          builder: (_) => VisitsDetailScreen(),
           settings: RouteSettings(name: jobsDetailScreen),
         );
 

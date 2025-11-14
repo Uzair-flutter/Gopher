@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gopher/utils/assets.dart';
 import 'package:gopher/utils/color_constant.dart';
+import 'package:gopher/widgets/bottomSheet/cancel_booking.dart';
+import 'package:gopher/widgets/bottom_shadow_bar.dart';
 import 'package:gopher/widgets/dialog%20box/ride_complete_dailog_box.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -19,13 +21,13 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 63.h),
+                SizedBox(height: 24.h),
                 buildRiderInfo(),
                 SizedBox(height: 20.h),
                 GestureDetector(
@@ -203,6 +205,29 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                     borderRadius: BorderRadius.circular(10.0.r),
                   ),
                   child: Image.asset(DummyAssets.deliveryMap, fit: BoxFit.fill),
+                ),
+                BottomShadowBar(
+                  addPadding: false,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showCancelBookingSheet(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFFFE6EB), // Background color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      elevation: 0,
+                    ),
+                    child: Text(
+                      'Cancel Booking',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFFD72547), // Text color
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
