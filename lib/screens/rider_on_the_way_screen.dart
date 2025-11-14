@@ -230,7 +230,10 @@ class _RiderOnTheWayScreenState extends State<RiderOnTheWayScreen> {
                   showCancelBookingSheet(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFFFE6EB), // Background color
+                  shadowColor: Colors.transparent,
+                  backgroundColor: Color(
+                    0xFFD72547,
+                  ).withValues(alpha: 0.2), // Background color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.r),
                   ),
